@@ -1,0 +1,1550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModeloDomosti.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accesos">
+          <Key>
+            <PropertyRef Name="IdAcceso" />
+          </Key>
+          <Property Name="IdAcceso" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAcceso" Type="datetime" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdPermiso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditoriaDrvs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="IdDispositivoResidenteVivienda" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditoriaPermisos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Campo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ValorAntiguo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ValorNuevo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+          <Property Name="IdPermiso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CabecerasPermisos">
+          <Key>
+            <PropertyRef Name="IdCabeceraPermiso" />
+          </Key>
+          <Property Name="IdCabeceraPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudadelas">
+          <Key>
+            <PropertyRef Name="IdCiudadela" />
+          </Key>
+          <Property Name="IdCiudadela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DispositivoResidenteViviendas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="IdVivienda" Type="int" Nullable="false" />
+          <Property Name="IdResidente" Type="int" Nullable="false" />
+          <Property Name="IdDispositivo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dispositivos">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+          </Key>
+          <Property Name="IdDispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDevice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imei" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IccId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="IdUsuarioApp" Type="int" Nullable="false" />
+          <Property Name="UpdateToken" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Errores">
+          <Key>
+            <PropertyRef Name="IdError" />
+          </Key>
+          <Property Name="IdError" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Mensaje" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Detalle" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FotosResidentes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
+          <Property Name="UpdateToken" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MotivosAccesos">
+          <Key>
+            <PropertyRef Name="IdMotivoAcceso" />
+          </Key>
+          <Property Name="IdMotivoAcceso" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notificaciones">
+          <Key>
+            <PropertyRef Name="IdNotificacion" />
+          </Key>
+          <Property Name="IdNotificacion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mensaje" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="IdResidente" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicial" Type="datetime" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="PermisoContinuo" Type="bit" Nullable="false" />
+          <Property Name="FechaUltimaActualizacion" Type="datetime" Nullable="false" />
+          <Property Name="DetalleAdicional" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdCabeceraPermiso" Type="int" Nullable="false" />
+          <Property Name="IdDispositivo" Type="int" Nullable="false" />
+          <Property Name="IdVisitante" Type="int" Nullable="false" />
+          <Property Name="IdResidente" Type="int" Nullable="false" />
+          <Property Name="IdMotivoAcceso" Type="smallint" Nullable="false" />
+          <Property Name="UpdateToken" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IdVivienda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermisosManuales">
+          <Key>
+            <PropertyRef Name="IdPermisoManual" />
+          </Key>
+          <Property Name="IdPermisoManual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CedulaVisitante" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="NombreVisitante" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdResidente" Type="int" Nullable="false" />
+          <Property Name="IdMotivoAcceso" Type="smallint" Nullable="false" />
+          <Property Name="IdVivienda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoIdentificacion" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="UpdateToken" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas_Residente">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="TelefonoMovil" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="EstaActivo" Type="bit" Nullable="false" />
+          <Property Name="PuedeUsarApp" Type="bit" Nullable="false" />
+          <Property Name="EstaEliminado" Type="bit" Nullable="false" />
+          <Property Name="IdUsuarioApp" Type="int" />
+          <Property Name="PoseeDeudas" Type="bit" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="FotoResidente_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas_UsuarioApp">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Contrasena" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas_Visitante">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="EstaEliminado" Type="bit" Nullable="false" />
+          <Property Name="IdResidente" Type="int" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResidenteVivienda">
+          <Key>
+            <PropertyRef Name="Residentes_IdPersona" />
+            <PropertyRef Name="Viviendas_IdVivienda" />
+          </Key>
+          <Property Name="Residentes_IdPersona" Type="int" Nullable="false" />
+          <Property Name="Viviendas_IdVivienda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contrasena" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdCiudadela" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Viviendas">
+          <Key>
+            <PropertyRef Name="IdVivienda" />
+          </Key>
+          <Property Name="IdVivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Manzana" Type="smallint" Nullable="false" />
+          <Property Name="Villa" Type="smallint" Nullable="false" />
+          <Property Name="Calle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EstaEliminada" Type="bit" Nullable="false" />
+          <Property Name="EsSistema" Type="bit" Nullable="false" />
+          <Property Name="IdCiudadela" Type="int" Nullable="false" />
+          <Property Name="UpdateToken" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CabeceraPermisoPermiso">
+          <End Role="CabecerasPermisos" Type="Self.CabecerasPermisos" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CabecerasPermisos">
+              <PropertyRef Name="IdCabeceraPermiso" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdCabeceraPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiudadelaUsuario">
+          <End Role="Ciudadelas" Type="Self.Ciudadelas" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadelas">
+              <PropertyRef Name="IdCiudadela" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCiudadela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiudadelaVivienda">
+          <End Role="Ciudadelas" Type="Self.Ciudadelas" Multiplicity="1" />
+          <End Role="Viviendas" Type="Self.Viviendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadelas">
+              <PropertyRef Name="IdCiudadela" />
+            </Principal>
+            <Dependent Role="Viviendas">
+              <PropertyRef Name="IdCiudadela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DispositivoDispositivoResidenteVivienda">
+          <End Role="Dispositivos" Type="Self.Dispositivos" Multiplicity="1" />
+          <End Role="DispositivoResidenteViviendas" Type="Self.DispositivoResidenteViviendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dispositivos">
+              <PropertyRef Name="IdDispositivo" />
+            </Principal>
+            <Dependent Role="DispositivoResidenteViviendas">
+              <PropertyRef Name="IdDispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DispositivoPermiso">
+          <End Role="Dispositivos" Type="Self.Dispositivos" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dispositivos">
+              <PropertyRef Name="IdDispositivo" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdDispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DispositivoResidenteViviendaAuditoriaDrv">
+          <End Role="DispositivoResidenteViviendas" Type="Self.DispositivoResidenteViviendas" Multiplicity="1" />
+          <End Role="AuditoriaDrvs" Type="Self.AuditoriaDrvs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DispositivoResidenteViviendas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuditoriaDrvs">
+              <PropertyRef Name="IdDispositivoResidenteVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DispositivoUsuarioApp">
+          <End Role="Personas_UsuarioApp" Type="Self.Personas_UsuarioApp" Multiplicity="1" />
+          <End Role="Dispositivos" Type="Self.Dispositivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_UsuarioApp">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Dispositivos">
+              <PropertyRef Name="IdUsuarioApp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MotivoAccesoPermiso">
+          <End Role="MotivosAccesos" Type="Self.MotivosAccesos" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotivosAccesos">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisoAcceso">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+          <End Role="Accesos" Type="Self.Accesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="IdPermiso" />
+            </Principal>
+            <Dependent Role="Accesos">
+              <PropertyRef Name="IdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisoAuditoriaPermiso">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AuditoriaPermisos" Type="Self.AuditoriaPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="IdPermiso" />
+            </Principal>
+            <Dependent Role="AuditoriaPermisos">
+              <PropertyRef Name="IdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisoManualMotivoAcceso">
+          <End Role="MotivosAccesos" Type="Self.MotivosAccesos" Multiplicity="1" />
+          <End Role="PermisosManuales" Type="Self.PermisosManuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotivosAccesos">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Principal>
+            <Dependent Role="PermisosManuales">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisoManualVivienda">
+          <End Role="Viviendas" Type="Self.Viviendas" Multiplicity="1" />
+          <End Role="PermisosManuales" Type="Self.PermisosManuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viviendas">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="PermisosManuales">
+              <PropertyRef Name="IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Residente_inherits_Persona">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteDispositivoResidenteVivienda">
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="1" />
+          <End Role="DispositivoResidenteViviendas" Type="Self.DispositivoResidenteViviendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="DispositivoResidenteViviendas">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteFotoResidente">
+          <End Role="FotosResidentes" Type="Self.FotosResidentes" Multiplicity="1" />
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FotosResidentes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personas_Residente">
+              <PropertyRef Name="FotoResidente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteNotificacion">
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="1" />
+          <End Role="Notificaciones" Type="Self.Notificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Notificaciones">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentePermiso">
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentePermisoManual">
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="1" />
+          <End Role="PermisosManuales" Type="Self.PermisosManuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="PermisosManuales">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteUsuarioApp">
+          <End Role="Personas_UsuarioApp" Type="Self.Personas_UsuarioApp" Multiplicity="0..1" />
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_UsuarioApp">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Personas_Residente">
+              <PropertyRef Name="IdUsuarioApp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteVisitante">
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="1" />
+          <End Role="Personas_Visitante" Type="Self.Personas_Visitante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Personas_Visitante">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteVivienda_Residente">
+          <End Role="Personas_Residente" Type="Self.Personas_Residente" Multiplicity="1" />
+          <End Role="ResidenteVivienda" Type="Self.ResidenteVivienda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="ResidenteVivienda">
+              <PropertyRef Name="Residentes_IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidenteVivienda_Vivienda">
+          <End Role="Viviendas" Type="Self.Viviendas" Multiplicity="1" />
+          <End Role="ResidenteVivienda" Type="Self.ResidenteVivienda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viviendas">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="ResidenteVivienda">
+              <PropertyRef Name="Viviendas_IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioApp_inherits_Persona">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Personas_UsuarioApp" Type="Self.Personas_UsuarioApp" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Personas_UsuarioApp">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitante_inherits_Persona">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Personas_Visitante" Type="Self.Personas_Visitante" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Personas_Visitante">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitantePermiso">
+          <End Role="Personas_Visitante" Type="Self.Personas_Visitante" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas_Visitante">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdVisitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViviendaDispositivoResidenteVivienda">
+          <End Role="Viviendas" Type="Self.Viviendas" Multiplicity="1" />
+          <End Role="DispositivoResidenteViviendas" Type="Self.DispositivoResidenteViviendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viviendas">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="DispositivoResidenteViviendas">
+              <PropertyRef Name="IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViviendaPermiso">
+          <End Role="Viviendas" Type="Self.Viviendas" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viviendas">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModeloDomostiStoreContainer">
+          <EntitySet Name="Accesos" EntityType="Self.Accesos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditoriaDrvs" EntityType="Self.AuditoriaDrvs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditoriaPermisos" EntityType="Self.AuditoriaPermisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CabecerasPermisos" EntityType="Self.CabecerasPermisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudadelas" EntityType="Self.Ciudadelas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispositivoResidenteViviendas" EntityType="Self.DispositivoResidenteViviendas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Errores" EntityType="Self.Errores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FotosResidentes" EntityType="Self.FotosResidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotivosAccesos" EntityType="Self.MotivosAccesos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notificaciones" EntityType="Self.Notificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermisosManuales" EntityType="Self.PermisosManuales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas_Residente" EntityType="Self.Personas_Residente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas_UsuarioApp" EntityType="Self.Personas_UsuarioApp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas_Visitante" EntityType="Self.Personas_Visitante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResidenteVivienda" EntityType="Self.ResidenteVivienda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Viviendas" EntityType="Self.Viviendas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CabeceraPermisoPermiso" Association="Self.FK_CabeceraPermisoPermiso">
+            <End Role="CabecerasPermisos" EntitySet="CabecerasPermisos" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiudadelaUsuario" Association="Self.FK_CiudadelaUsuario">
+            <End Role="Ciudadelas" EntitySet="Ciudadelas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiudadelaVivienda" Association="Self.FK_CiudadelaVivienda">
+            <End Role="Ciudadelas" EntitySet="Ciudadelas" />
+            <End Role="Viviendas" EntitySet="Viviendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DispositivoDispositivoResidenteVivienda" Association="Self.FK_DispositivoDispositivoResidenteVivienda">
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+            <End Role="DispositivoResidenteViviendas" EntitySet="DispositivoResidenteViviendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DispositivoPermiso" Association="Self.FK_DispositivoPermiso">
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DispositivoResidenteViviendaAuditoriaDrv" Association="Self.FK_DispositivoResidenteViviendaAuditoriaDrv">
+            <End Role="DispositivoResidenteViviendas" EntitySet="DispositivoResidenteViviendas" />
+            <End Role="AuditoriaDrvs" EntitySet="AuditoriaDrvs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DispositivoUsuarioApp" Association="Self.FK_DispositivoUsuarioApp">
+            <End Role="Personas_UsuarioApp" EntitySet="Personas_UsuarioApp" />
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MotivoAccesoPermiso" Association="Self.FK_MotivoAccesoPermiso">
+            <End Role="MotivosAccesos" EntitySet="MotivosAccesos" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisoAcceso" Association="Self.FK_PermisoAcceso">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="Accesos" EntitySet="Accesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisoAuditoriaPermiso" Association="Self.FK_PermisoAuditoriaPermiso">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="AuditoriaPermisos" EntitySet="AuditoriaPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisoManualMotivoAcceso" Association="Self.FK_PermisoManualMotivoAcceso">
+            <End Role="MotivosAccesos" EntitySet="MotivosAccesos" />
+            <End Role="PermisosManuales" EntitySet="PermisosManuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisoManualVivienda" Association="Self.FK_PermisoManualVivienda">
+            <End Role="Viviendas" EntitySet="Viviendas" />
+            <End Role="PermisosManuales" EntitySet="PermisosManuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Residente_inherits_Persona" Association="Self.FK_Residente_inherits_Persona">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteDispositivoResidenteVivienda" Association="Self.FK_ResidenteDispositivoResidenteVivienda">
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+            <End Role="DispositivoResidenteViviendas" EntitySet="DispositivoResidenteViviendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteFotoResidente" Association="Self.FK_ResidenteFotoResidente">
+            <End Role="FotosResidentes" EntitySet="FotosResidentes" />
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteNotificacion" Association="Self.FK_ResidenteNotificacion">
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+            <End Role="Notificaciones" EntitySet="Notificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentePermiso" Association="Self.FK_ResidentePermiso">
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentePermisoManual" Association="Self.FK_ResidentePermisoManual">
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+            <End Role="PermisosManuales" EntitySet="PermisosManuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteUsuarioApp" Association="Self.FK_ResidenteUsuarioApp">
+            <End Role="Personas_UsuarioApp" EntitySet="Personas_UsuarioApp" />
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteVisitante" Association="Self.FK_ResidenteVisitante">
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+            <End Role="Personas_Visitante" EntitySet="Personas_Visitante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteVivienda_Residente" Association="Self.FK_ResidenteVivienda_Residente">
+            <End Role="Personas_Residente" EntitySet="Personas_Residente" />
+            <End Role="ResidenteVivienda" EntitySet="ResidenteVivienda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidenteVivienda_Vivienda" Association="Self.FK_ResidenteVivienda_Vivienda">
+            <End Role="Viviendas" EntitySet="Viviendas" />
+            <End Role="ResidenteVivienda" EntitySet="ResidenteVivienda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioApp_inherits_Persona" Association="Self.FK_UsuarioApp_inherits_Persona">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Personas_UsuarioApp" EntitySet="Personas_UsuarioApp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitante_inherits_Persona" Association="Self.FK_Visitante_inherits_Persona">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Personas_Visitante" EntitySet="Personas_Visitante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitantePermiso" Association="Self.FK_VisitantePermiso">
+            <End Role="Personas_Visitante" EntitySet="Personas_Visitante" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViviendaDispositivoResidenteVivienda" Association="Self.FK_ViviendaDispositivoResidenteVivienda">
+            <End Role="Viviendas" EntitySet="Viviendas" />
+            <End Role="DispositivoResidenteViviendas" EntitySet="DispositivoResidenteViviendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViviendaPermiso" Association="Self.FK_ViviendaPermiso">
+            <End Role="Viviendas" EntitySet="Viviendas" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModeloDomosti" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModeloDomostiContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ciudadelas" EntityType="ModeloDomosti.Ciudadela" />
+          <EntitySet Name="Usuarios" EntityType="ModeloDomosti.Usuario" />
+          <AssociationSet Name="CiudadelaUsuario" Association="ModeloDomosti.CiudadelaUsuario">
+            <End Role="Ciudadela" EntitySet="Ciudadelas" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Viviendas" EntityType="ModeloDomosti.Vivienda" />
+          <AssociationSet Name="CiudadelaVivienda" Association="ModeloDomosti.CiudadelaVivienda">
+            <End Role="Ciudadela" EntitySet="Ciudadelas" />
+            <End Role="Vivienda" EntitySet="Viviendas" />
+          </AssociationSet>
+          <EntitySet Name="Personas" EntityType="ModeloDomosti.Persona" />
+          <EntitySet Name="FotosResidentes" EntityType="ModeloDomosti.FotoResidente" />
+          <AssociationSet Name="ResidenteFotoResidente" Association="ModeloDomosti.ResidenteFotoResidente">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="FotoResidente" EntitySet="FotosResidentes" />
+          </AssociationSet>
+          <AssociationSet Name="ResidenteUsuarioApp" Association="ModeloDomosti.ResidenteUsuarioApp">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="UsuarioApp" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="ResidenteVisitante" Association="ModeloDomosti.ResidenteVisitante">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="Visitante" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="ResidenteVivienda" Association="ModeloDomosti.ResidenteVivienda">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="Vivienda" EntitySet="Viviendas" />
+          </AssociationSet>
+          <EntitySet Name="Dispositivos" EntityType="ModeloDomosti.Dispositivo" />
+          <AssociationSet Name="DispositivoUsuarioApp" Association="ModeloDomosti.DispositivoUsuarioApp">
+            <End Role="Dispositivo" EntitySet="Dispositivos" />
+            <End Role="UsuarioApp" EntitySet="Personas" />
+          </AssociationSet>
+          <EntitySet Name="DispositivoResidenteViviendas" EntityType="ModeloDomosti.DispositivoResidenteVivienda" />
+          <AssociationSet Name="ViviendaDispositivoResidenteVivienda" Association="ModeloDomosti.ViviendaDispositivoResidenteVivienda">
+            <End Role="Vivienda" EntitySet="Viviendas" />
+            <End Role="DispositivoResidenteVivienda" EntitySet="DispositivoResidenteViviendas" />
+          </AssociationSet>
+          <AssociationSet Name="ResidenteDispositivoResidenteVivienda" Association="ModeloDomosti.ResidenteDispositivoResidenteVivienda">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="DispositivoResidenteVivienda" EntitySet="DispositivoResidenteViviendas" />
+          </AssociationSet>
+          <AssociationSet Name="DispositivoDispositivoResidenteVivienda" Association="ModeloDomosti.DispositivoDispositivoResidenteVivienda">
+            <End Role="Dispositivo" EntitySet="Dispositivos" />
+            <End Role="DispositivoResidenteVivienda" EntitySet="DispositivoResidenteViviendas" />
+          </AssociationSet>
+          <EntitySet Name="AuditoriaDrvs" EntityType="ModeloDomosti.AuditoriaDrv" />
+          <AssociationSet Name="DispositivoResidenteViviendaAuditoriaDrv" Association="ModeloDomosti.DispositivoResidenteViviendaAuditoriaDrv">
+            <End Role="DispositivoResidenteVivienda" EntitySet="DispositivoResidenteViviendas" />
+            <End Role="AuditoriaDrv" EntitySet="AuditoriaDrvs" />
+          </AssociationSet>
+          <EntitySet Name="CabecerasPermisos" EntityType="ModeloDomosti.CabeceraPermiso" />
+          <EntitySet Name="Permisos" EntityType="ModeloDomosti.Permiso" />
+          <AssociationSet Name="CabeceraPermisoPermiso" Association="ModeloDomosti.CabeceraPermisoPermiso">
+            <End Role="CabeceraPermiso" EntitySet="CabecerasPermisos" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="DispositivoPermiso" Association="ModeloDomosti.DispositivoPermiso">
+            <End Role="Dispositivo" EntitySet="Dispositivos" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="VisitantePermiso" Association="ModeloDomosti.VisitantePermiso">
+            <End Role="Visitante" EntitySet="Personas" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="ResidentePermiso" Association="ModeloDomosti.ResidentePermiso">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+          <EntitySet Name="MotivosAccesos" EntityType="ModeloDomosti.MotivoAcceso" />
+          <AssociationSet Name="MotivoAccesoPermiso" Association="ModeloDomosti.MotivoAccesoPermiso">
+            <End Role="MotivoAcceso" EntitySet="MotivosAccesos" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+          <EntitySet Name="AuditoriaPermisos" EntityType="ModeloDomosti.AuditoriaPermiso" />
+          <AssociationSet Name="PermisoAuditoriaPermiso" Association="ModeloDomosti.PermisoAuditoriaPermiso">
+            <End Role="Permiso" EntitySet="Permisos" />
+            <End Role="AuditoriaPermiso" EntitySet="AuditoriaPermisos" />
+          </AssociationSet>
+          <EntitySet Name="PermisosManuales" EntityType="ModeloDomosti.PermisoManual" />
+          <AssociationSet Name="ResidentePermisoManual" Association="ModeloDomosti.ResidentePermisoManual">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="PermisoManual" EntitySet="PermisosManuales" />
+          </AssociationSet>
+          <EntitySet Name="Accesos" EntityType="ModeloDomosti.Acceso" />
+          <AssociationSet Name="PermisoAcceso" Association="ModeloDomosti.PermisoAcceso">
+            <End Role="Permiso" EntitySet="Permisos" />
+            <End Role="Acceso" EntitySet="Accesos" />
+          </AssociationSet>
+          <EntitySet Name="Errores" EntityType="ModeloDomosti.Error" />
+          <AssociationSet Name="PermisoManualMotivoAcceso" Association="ModeloDomosti.PermisoManualMotivoAcceso">
+            <End Role="PermisoManual" EntitySet="PermisosManuales" />
+            <End Role="MotivoAcceso" EntitySet="MotivosAccesos" />
+          </AssociationSet>
+          <EntitySet Name="Notificaciones" EntityType="ModeloDomosti.Notificacion" />
+          <AssociationSet Name="ResidenteNotificacion" Association="ModeloDomosti.ResidenteNotificacion">
+            <End Role="Residente" EntitySet="Personas" />
+            <End Role="Notificacion" EntitySet="Notificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="PermisoManualVivienda" Association="ModeloDomosti.PermisoManualVivienda">
+            <End Role="PermisoManual" EntitySet="PermisosManuales" />
+            <End Role="Vivienda" EntitySet="Viviendas" />
+          </AssociationSet>
+          <AssociationSet Name="ViviendaPermiso" Association="ModeloDomosti.ViviendaPermiso">
+            <End Role="Vivienda" EntitySet="Viviendas" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ciudadela">
+          <Key>
+            <PropertyRef Name="IdCiudadela" />
+          </Key>
+          <Property Name="IdCiudadela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" FixedLength="false" MaxLength="50" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="ModeloDomosti.CiudadelaUsuario" FromRole="Ciudadela" ToRole="Usuario" />
+          <NavigationProperty Name="Viviendas" Relationship="ModeloDomosti.CiudadelaVivienda" FromRole="Ciudadela" ToRole="Vivienda" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" FixedLength="false" MaxLength="20" Unicode="true" />
+          <Property Name="Contrasena" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="Ciudadela" Relationship="ModeloDomosti.CiudadelaUsuario" FromRole="Usuario" ToRole="Ciudadela" />
+          <Property Name="IdCiudadela" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CiudadelaUsuario">
+          <End Type="ModeloDomosti.Ciudadela" Role="Ciudadela" Multiplicity="1" />
+          <End Type="ModeloDomosti.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadela">
+              <PropertyRef Name="IdCiudadela" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdCiudadela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vivienda">
+          <Key>
+            <PropertyRef Name="IdVivienda" />
+          </Key>
+          <Property Name="IdVivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Manzana" Type="Int16" Nullable="false" ConcurrencyMode="None" />
+          <Property Name="Villa" Type="Int16" Nullable="false" ConcurrencyMode="None" />
+          <Property Name="Calle" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" FixedLength="false" MaxLength="10" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="EstaEliminada" Type="Boolean" Nullable="false" />
+          <Property Name="EsSistema" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ciudadela" Relationship="ModeloDomosti.CiudadelaVivienda" FromRole="Vivienda" ToRole="Ciudadela" />
+          <Property Name="IdCiudadela" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Residentes" Relationship="ModeloDomosti.ResidenteVivienda" FromRole="Vivienda" ToRole="Residente" />
+          <NavigationProperty Name="DispositivoResidenteViviendas" Relationship="ModeloDomosti.ViviendaDispositivoResidenteVivienda" FromRole="Vivienda" ToRole="DispositivoResidenteVivienda" />
+          <Property Name="UpdateToken" Type="Binary" Nullable="false" FixedLength="true" MaxLength="8" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+          <NavigationProperty Name="PermisosManuales" Relationship="ModeloDomosti.PermisoManualVivienda" FromRole="Vivienda" ToRole="PermisoManual" />
+          <NavigationProperty Name="Permisos" Relationship="ModeloDomosti.ViviendaPermiso" FromRole="Vivienda" ToRole="Permiso" />
+        </EntityType>
+        <Association Name="CiudadelaVivienda">
+          <End Type="ModeloDomosti.Ciudadela" Role="Ciudadela" Multiplicity="1" />
+          <End Type="ModeloDomosti.Vivienda" Role="Vivienda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadela">
+              <PropertyRef Name="IdCiudadela" />
+            </Principal>
+            <Dependent Role="Vivienda">
+              <PropertyRef Name="IdCiudadela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoIdentificacion" Type="String" Nullable="false" FixedLength="true" MaxLength="1" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Identificacion" Type="String" Nullable="false" FixedLength="false" MaxLength="15" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Nombres" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Apellidos" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" FixedLength="false" MaxLength="30" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="UpdateToken" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+        </EntityType>
+        <EntityType Name="Residente" BaseType="ModeloDomosti.Persona" >
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TelefonoMovil" Type="String" Nullable="false" FixedLength="false" MaxLength="13" Unicode="true" />
+          <Property Name="EstaActivo" Type="Boolean" Nullable="false" />
+          <Property Name="PuedeUsarApp" Type="Boolean" Nullable="false" />
+          <Property Name="EstaEliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FotoResidente" Relationship="ModeloDomosti.ResidenteFotoResidente" FromRole="Residente" ToRole="FotoResidente" />
+          <NavigationProperty Name="UsuarioApp" Relationship="ModeloDomosti.ResidenteUsuarioApp" FromRole="Residente" ToRole="UsuarioApp" />
+          <Property Name="IdUsuarioApp" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Visitantes" Relationship="ModeloDomosti.ResidenteVisitante" FromRole="Residente" ToRole="Visitante" />
+          <NavigationProperty Name="Viviendas" Relationship="ModeloDomosti.ResidenteVivienda" FromRole="Residente" ToRole="Vivienda" />
+          <NavigationProperty Name="DispositivoResidenteViviendas" Relationship="ModeloDomosti.ResidenteDispositivoResidenteVivienda" FromRole="Residente" ToRole="DispositivoResidenteVivienda" />
+          <NavigationProperty Name="Permisos" Relationship="ModeloDomosti.ResidentePermiso" FromRole="Residente" ToRole="Permiso" />
+          <NavigationProperty Name="PermisosManuales" Relationship="ModeloDomosti.ResidentePermisoManual" FromRole="Residente" ToRole="PermisoManual" />
+          <Property Name="PoseeDeudas" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Notificaciones" Relationship="ModeloDomosti.ResidenteNotificacion" FromRole="Residente" ToRole="Notificacion" />
+        </EntityType>
+        <EntityType Name="FotoResidente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto" Type="Binary" Nullable="false" ConcurrencyMode="None" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Residente" Relationship="ModeloDomosti.ResidenteFotoResidente" FromRole="FotoResidente" ToRole="Residente" />
+          <Property Name="UpdateToken" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+        </EntityType>
+        <Association Name="ResidenteFotoResidente">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="1" />
+          <End Type="ModeloDomosti.FotoResidente" Role="FotoResidente" Multiplicity="1" />
+        </Association>
+        <EntityType Name="UsuarioApp" BaseType="ModeloDomosti.Persona" >
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Contrasena" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="Residentes" Relationship="ModeloDomosti.ResidenteUsuarioApp" FromRole="UsuarioApp" ToRole="Residente" />
+          <NavigationProperty Name="Dispositivos" Relationship="ModeloDomosti.DispositivoUsuarioApp" FromRole="UsuarioApp" ToRole="Dispositivo" />
+        </EntityType>
+        <Association Name="ResidenteUsuarioApp">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="*" />
+          <End Type="ModeloDomosti.UsuarioApp" Role="UsuarioApp" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioApp">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Residente">
+              <PropertyRef Name="IdUsuarioApp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Visitante" BaseType="ModeloDomosti.Persona" >
+          <Property Name="Telefono" Type="String" Nullable="false" FixedLength="false" MaxLength="15" Unicode="true" />
+          <Property Name="EstaEliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Residente" Relationship="ModeloDomosti.ResidenteVisitante" FromRole="Visitante" ToRole="Residente" />
+          <Property Name="IdResidente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Permisos" Relationship="ModeloDomosti.VisitantePermiso" FromRole="Visitante" ToRole="Permiso" />
+        </EntityType>
+        <Association Name="ResidenteVisitante">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="1" />
+          <End Type="ModeloDomosti.Visitante" Role="Visitante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Visitante">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResidenteVivienda">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="*" />
+          <End Type="ModeloDomosti.Vivienda" Role="Vivienda" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Dispositivo">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+          </Key>
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDevice" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Imei" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="IccId" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" FixedLength="false" MaxLength="50" ConcurrencyMode="None" Unicode="true" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UsuarioApp" Relationship="ModeloDomosti.DispositivoUsuarioApp" FromRole="Dispositivo" ToRole="UsuarioApp" />
+          <Property Name="IdUsuarioApp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DispositivoResidenteViviendas" Relationship="ModeloDomosti.DispositivoDispositivoResidenteVivienda" FromRole="Dispositivo" ToRole="DispositivoResidenteVivienda" />
+          <NavigationProperty Name="Permisos" Relationship="ModeloDomosti.DispositivoPermiso" FromRole="Dispositivo" ToRole="Permiso" />
+          <Property Name="UpdateToken" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="DispositivoUsuarioApp">
+          <End Type="ModeloDomosti.Dispositivo" Role="Dispositivo" Multiplicity="*" />
+          <End Type="ModeloDomosti.UsuarioApp" Role="UsuarioApp" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioApp">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Dispositivo">
+              <PropertyRef Name="IdUsuarioApp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DispositivoResidenteVivienda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" />
+          <NavigationProperty Name="Vivienda" Relationship="ModeloDomosti.ViviendaDispositivoResidenteVivienda" FromRole="DispositivoResidenteVivienda" ToRole="Vivienda" />
+          <Property Name="IdVivienda" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Residente" Relationship="ModeloDomosti.ResidenteDispositivoResidenteVivienda" FromRole="DispositivoResidenteVivienda" ToRole="Residente" />
+          <Property Name="IdResidente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dispositivo" Relationship="ModeloDomosti.DispositivoDispositivoResidenteVivienda" FromRole="DispositivoResidenteVivienda" ToRole="Dispositivo" />
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AuditoriaDrvs" Relationship="ModeloDomosti.DispositivoResidenteViviendaAuditoriaDrv" FromRole="DispositivoResidenteVivienda" ToRole="AuditoriaDrv" />
+        </EntityType>
+        <Association Name="ViviendaDispositivoResidenteVivienda">
+          <End Type="ModeloDomosti.Vivienda" Role="Vivienda" Multiplicity="1" />
+          <End Type="ModeloDomosti.DispositivoResidenteVivienda" Role="DispositivoResidenteVivienda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vivienda">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="DispositivoResidenteVivienda">
+              <PropertyRef Name="IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResidenteDispositivoResidenteVivienda">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="1" />
+          <End Type="ModeloDomosti.DispositivoResidenteVivienda" Role="DispositivoResidenteVivienda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="DispositivoResidenteVivienda">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DispositivoDispositivoResidenteVivienda">
+          <End Type="ModeloDomosti.Dispositivo" Role="Dispositivo" Multiplicity="1" />
+          <End Type="ModeloDomosti.DispositivoResidenteVivienda" Role="DispositivoResidenteVivienda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dispositivo">
+              <PropertyRef Name="IdDispositivo" />
+            </Principal>
+            <Dependent Role="DispositivoResidenteVivienda">
+              <PropertyRef Name="IdDispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AuditoriaDrv">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DispositivoResidenteVivienda" Relationship="ModeloDomosti.DispositivoResidenteViviendaAuditoriaDrv" FromRole="AuditoriaDrv" ToRole="DispositivoResidenteVivienda" />
+          <Property Name="IdDispositivoResidenteVivienda" Type="Int64" Nullable="false" />
+        </EntityType>
+        <Association Name="DispositivoResidenteViviendaAuditoriaDrv">
+          <End Type="ModeloDomosti.DispositivoResidenteVivienda" Role="DispositivoResidenteVivienda" Multiplicity="1" />
+          <End Type="ModeloDomosti.AuditoriaDrv" Role="AuditoriaDrv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DispositivoResidenteVivienda">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuditoriaDrv">
+              <PropertyRef Name="IdDispositivoResidenteVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CabeceraPermiso">
+          <Key>
+            <PropertyRef Name="IdCabeceraPermiso" />
+          </Key>
+          <Property Name="IdCabeceraPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Permisos" Relationship="ModeloDomosti.CabeceraPermisoPermiso" FromRole="CabeceraPermiso" ToRole="Permiso" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicial" Type="DateTime" Nullable="false" ConcurrencyMode="None" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" ConcurrencyMode="None" Precision="3" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" ConcurrencyMode="None" Precision="3" />
+          <Property Name="Estado" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" />
+          <Property Name="PermisoContinuo" Type="Boolean" Nullable="false" ConcurrencyMode="None" />
+          <Property Name="FechaUltimaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DetalleAdicional" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" ConcurrencyMode="None" Unicode="true" />
+          <NavigationProperty Name="CabeceraPermiso" Relationship="ModeloDomosti.CabeceraPermisoPermiso" FromRole="Permiso" ToRole="CabeceraPermiso" />
+          <Property Name="IdCabeceraPermiso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dispositivo" Relationship="ModeloDomosti.DispositivoPermiso" FromRole="Permiso" ToRole="Dispositivo" />
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Visitante" Relationship="ModeloDomosti.VisitantePermiso" FromRole="Permiso" ToRole="Visitante" />
+          <Property Name="IdVisitante" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Residente" Relationship="ModeloDomosti.ResidentePermiso" FromRole="Permiso" ToRole="Residente" />
+          <Property Name="IdResidente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MotivoAcceso" Relationship="ModeloDomosti.MotivoAccesoPermiso" FromRole="Permiso" ToRole="MotivoAcceso" />
+          <Property Name="IdMotivoAcceso" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="AuditoriaPermisos" Relationship="ModeloDomosti.PermisoAuditoriaPermiso" FromRole="Permiso" ToRole="AuditoriaPermiso" />
+          <NavigationProperty Name="Accesos" Relationship="ModeloDomosti.PermisoAcceso" FromRole="Permiso" ToRole="Acceso" />
+          <Property Name="UpdateToken" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
+          <NavigationProperty Name="Vivienda" Relationship="ModeloDomosti.ViviendaPermiso" FromRole="Permiso" ToRole="Vivienda" />
+          <Property Name="IdVivienda" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CabeceraPermisoPermiso">
+          <End Type="ModeloDomosti.CabeceraPermiso" Role="CabeceraPermiso" Multiplicity="1" />
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CabeceraPermiso">
+              <PropertyRef Name="IdCabeceraPermiso" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="IdCabeceraPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DispositivoPermiso">
+          <End Type="ModeloDomosti.Dispositivo" Role="Dispositivo" Multiplicity="1" />
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dispositivo">
+              <PropertyRef Name="IdDispositivo" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="IdDispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VisitantePermiso">
+          <End Type="ModeloDomosti.Visitante" Role="Visitante" Multiplicity="1" />
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitante">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="IdVisitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResidentePermiso">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="1" />
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MotivoAcceso">
+          <Key>
+            <PropertyRef Name="IdMotivoAcceso" />
+          </Key>
+          <Property Name="IdMotivoAcceso" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" FixedLength="false" MaxLength="50" Unicode="true" />
+          <NavigationProperty Name="Permisos" Relationship="ModeloDomosti.MotivoAccesoPermiso" FromRole="MotivoAcceso" ToRole="Permiso" />
+          <NavigationProperty Name="PermisosManuales" Relationship="ModeloDomosti.PermisoManualMotivoAcceso" FromRole="MotivoAcceso" ToRole="PermisoManual" />
+        </EntityType>
+        <Association Name="MotivoAccesoPermiso">
+          <End Type="ModeloDomosti.MotivoAcceso" Role="MotivoAcceso" Multiplicity="1" />
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotivoAcceso">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AuditoriaPermiso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Campo" Type="String" Nullable="false" FixedLength="false" MaxLength="30" Unicode="true" />
+          <Property Name="ValorAntiguo" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <Property Name="ValorNuevo" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Permiso" Relationship="ModeloDomosti.PermisoAuditoriaPermiso" FromRole="AuditoriaPermiso" ToRole="Permiso" />
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PermisoAuditoriaPermiso">
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ModeloDomosti.AuditoriaPermiso" Role="AuditoriaPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="IdPermiso" />
+            </Principal>
+            <Dependent Role="AuditoriaPermiso">
+              <PropertyRef Name="IdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PermisoManual">
+          <Key>
+            <PropertyRef Name="IdPermisoManual" />
+          </Key>
+          <Property Name="IdPermisoManual" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observaciones" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <Property Name="CedulaVisitante" Type="String" Nullable="false" FixedLength="false" MaxLength="15" Unicode="true" />
+          <Property Name="NombreVisitante" Type="String" Nullable="false" FixedLength="false" MaxLength="100" Unicode="true" />
+          <NavigationProperty Name="Residente" Relationship="ModeloDomosti.ResidentePermisoManual" FromRole="PermisoManual" ToRole="Residente" />
+          <Property Name="IdResidente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MotivoAcceso" Relationship="ModeloDomosti.PermisoManualMotivoAcceso" FromRole="PermisoManual" ToRole="MotivoAcceso" />
+          <Property Name="IdMotivoAcceso" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Vivienda" Relationship="ModeloDomosti.PermisoManualVivienda" FromRole="PermisoManual" ToRole="Vivienda" />
+          <Property Name="IdVivienda" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ResidentePermisoManual">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="1" />
+          <End Type="ModeloDomosti.PermisoManual" Role="PermisoManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="PermisoManual">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Acceso">
+          <Key>
+            <PropertyRef Name="IdAcceso" />
+          </Key>
+          <Property Name="IdAcceso" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAcceso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observaciones" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <NavigationProperty Name="Permiso" Relationship="ModeloDomosti.PermisoAcceso" FromRole="Acceso" ToRole="Permiso" />
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PermisoAcceso">
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="1" />
+          <End Type="ModeloDomosti.Acceso" Role="Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="IdPermiso" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="IdError" />
+          </Key>
+          <Property Name="IdError" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Mensaje" Type="String" Nullable="false" FixedLength="false" MaxLength="255" Unicode="true" />
+          <Property Name="Detalle" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+        </EntityType>
+        <Association Name="PermisoManualMotivoAcceso">
+          <End Type="ModeloDomosti.PermisoManual" Role="PermisoManual" Multiplicity="*" />
+          <End Type="ModeloDomosti.MotivoAcceso" Role="MotivoAcceso" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="MotivoAcceso">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Principal>
+            <Dependent Role="PermisoManual">
+              <PropertyRef Name="IdMotivoAcceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Notificacion">
+          <Key>
+            <PropertyRef Name="IdNotificacion" />
+          </Key>
+          <Property Name="IdNotificacion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mensaje" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Residente" Relationship="ModeloDomosti.ResidenteNotificacion" FromRole="Notificacion" ToRole="Residente" />
+          <Property Name="IdResidente" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="ResidenteNotificacion">
+          <End Type="ModeloDomosti.Residente" Role="Residente" Multiplicity="1" />
+          <End Type="ModeloDomosti.Notificacion" Role="Notificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residente">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Notificacion">
+              <PropertyRef Name="IdResidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PermisoManualVivienda">
+          <End Type="ModeloDomosti.PermisoManual" Role="PermisoManual" Multiplicity="*" />
+          <End Type="ModeloDomosti.Vivienda" Role="Vivienda" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Vivienda">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="PermisoManual">
+              <PropertyRef Name="IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ViviendaPermiso">
+          <End Type="ModeloDomosti.Vivienda" Role="Vivienda" Multiplicity="1" />
+          <End Type="ModeloDomosti.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vivienda">
+              <PropertyRef Name="IdVivienda" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="IdVivienda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloDomostiStoreContainer" CdmEntityContainer="ModeloDomostiContainer">
+    <EntitySetMapping Name="Ciudadelas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Ciudadela)">
+        <MappingFragment StoreEntitySet="Ciudadelas">
+          <ScalarProperty Name="IdCiudadela" ColumnName="IdCiudadela" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="IdCiudadela" ColumnName="IdCiudadela" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viviendas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Vivienda)">
+        <MappingFragment StoreEntitySet="Viviendas">
+          <ScalarProperty Name="IdVivienda" ColumnName="IdVivienda" />
+          <ScalarProperty Name="Manzana" ColumnName="Manzana" />
+          <ScalarProperty Name="Villa" ColumnName="Villa" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="EstaEliminada" ColumnName="EstaEliminada" />
+          <ScalarProperty Name="EsSistema" ColumnName="EsSistema" />
+          <ScalarProperty Name="IdCiudadela" ColumnName="IdCiudadela" />
+          <ScalarProperty Name="UpdateToken" ColumnName="UpdateToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Persona)">
+        <MappingFragment StoreEntitySet="Personas">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UpdateToken" ColumnName="UpdateToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Residente)">
+        <MappingFragment StoreEntitySet="Personas_Residente">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="TelefonoMovil" ColumnName="TelefonoMovil" />
+          <ScalarProperty Name="EstaActivo" ColumnName="EstaActivo" />
+          <ScalarProperty Name="PuedeUsarApp" ColumnName="PuedeUsarApp" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
+          <ScalarProperty Name="IdUsuarioApp" ColumnName="IdUsuarioApp" />
+          <ScalarProperty Name="PoseeDeudas" ColumnName="PoseeDeudas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.UsuarioApp)">
+        <MappingFragment StoreEntitySet="Personas_UsuarioApp">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Visitante)">
+        <MappingFragment StoreEntitySet="Personas_Visitante">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
+          <ScalarProperty Name="IdResidente" ColumnName="IdResidente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FotosResidentes">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.FotoResidente)">
+        <MappingFragment StoreEntitySet="FotosResidentes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="UpdateToken" ColumnName="UpdateToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dispositivos">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Dispositivo)">
+        <MappingFragment StoreEntitySet="Dispositivos">
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="IdDevice" ColumnName="IdDevice" />
+          <ScalarProperty Name="Imei" ColumnName="Imei" />
+          <ScalarProperty Name="IccId" ColumnName="IccId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioApp" ColumnName="IdUsuarioApp" />
+          <ScalarProperty Name="UpdateToken" ColumnName="UpdateToken" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DispositivoResidenteViviendas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.DispositivoResidenteVivienda)">
+        <MappingFragment StoreEntitySet="DispositivoResidenteViviendas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdVivienda" ColumnName="IdVivienda" />
+          <ScalarProperty Name="IdResidente" ColumnName="IdResidente" />
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditoriaDrvs">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.AuditoriaDrv)">
+        <MappingFragment StoreEntitySet="AuditoriaDrvs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdDispositivoResidenteVivienda" ColumnName="IdDispositivoResidenteVivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CabecerasPermisos">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.CabeceraPermiso)">
+        <MappingFragment StoreEntitySet="CabecerasPermisos">
+          <ScalarProperty Name="IdCabeceraPermiso" ColumnName="IdCabeceraPermiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisos">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Permiso)">
+        <MappingFragment StoreEntitySet="Permisos">
+          <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+          <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="PermisoContinuo" ColumnName="PermisoContinuo" />
+          <ScalarProperty Name="FechaUltimaActualizacion" ColumnName="FechaUltimaActualizacion" />
+          <ScalarProperty Name="DetalleAdicional" ColumnName="DetalleAdicional" />
+          <ScalarProperty Name="IdCabeceraPermiso" ColumnName="IdCabeceraPermiso" />
+          <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+          <ScalarProperty Name="IdVisitante" ColumnName="IdVisitante" />
+          <ScalarProperty Name="IdResidente" ColumnName="IdResidente" />
+          <ScalarProperty Name="IdMotivoAcceso" ColumnName="IdMotivoAcceso" />
+          <ScalarProperty Name="UpdateToken" ColumnName="UpdateToken" />
+          <ScalarProperty Name="IdVivienda" ColumnName="IdVivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotivosAccesos">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.MotivoAcceso)">
+        <MappingFragment StoreEntitySet="MotivosAccesos">
+          <ScalarProperty Name="IdMotivoAcceso" ColumnName="IdMotivoAcceso" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditoriaPermisos">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.AuditoriaPermiso)">
+        <MappingFragment StoreEntitySet="AuditoriaPermisos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Campo" ColumnName="Campo" />
+          <ScalarProperty Name="ValorAntiguo" ColumnName="ValorAntiguo" />
+          <ScalarProperty Name="ValorNuevo" ColumnName="ValorNuevo" />
+          <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+          <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermisosManuales">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.PermisoManual)">
+        <MappingFragment StoreEntitySet="PermisosManuales">
+          <ScalarProperty Name="IdPermisoManual" ColumnName="IdPermisoManual" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="CedulaVisitante" ColumnName="CedulaVisitante" />
+          <ScalarProperty Name="NombreVisitante" ColumnName="NombreVisitante" />
+          <ScalarProperty Name="IdResidente" ColumnName="IdResidente" />
+          <ScalarProperty Name="IdMotivoAcceso" ColumnName="IdMotivoAcceso" />
+          <ScalarProperty Name="IdVivienda" ColumnName="IdVivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accesos">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Acceso)">
+        <MappingFragment StoreEntitySet="Accesos">
+          <ScalarProperty Name="IdAcceso" ColumnName="IdAcceso" />
+          <ScalarProperty Name="FechaAcceso" ColumnName="FechaAcceso" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Errores">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Error)">
+        <MappingFragment StoreEntitySet="Errores">
+          <ScalarProperty Name="IdError" ColumnName="IdError" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notificaciones">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDomosti.Notificacion)">
+        <MappingFragment StoreEntitySet="Notificaciones">
+          <ScalarProperty Name="IdNotificacion" ColumnName="IdNotificacion" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdResidente" ColumnName="IdResidente" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ResidenteFotoResidente" TypeName="ModeloDomosti.ResidenteFotoResidente" StoreEntitySet="Personas_Residente">
+      <EndProperty Name="FotoResidente">
+        <ScalarProperty Name="Id" ColumnName="FotoResidente_Id" />
+      </EndProperty>
+      <EndProperty Name="Residente">
+        <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ResidenteVivienda" TypeName="ModeloDomosti.ResidenteVivienda" StoreEntitySet="ResidenteVivienda">
+      <EndProperty Name="Residente">
+        <ScalarProperty Name="IdPersona" ColumnName="Residentes_IdPersona" />
+      </EndProperty>
+      <EndProperty Name="Vivienda">
+        <ScalarProperty Name="IdVivienda" ColumnName="Viviendas_IdVivienda" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

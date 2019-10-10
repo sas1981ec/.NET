@@ -1,0 +1,112 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Vivienda
+
+@{
+    ViewBag.Title = "Crear Vivienda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Vivienda", FormMethod.Post, new { name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+        {
+            <h4>Nueva Vivienda</h4>
+        }
+        else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+        {
+            <h4>Nuevo Departamento</h4>
+        }
+        else
+        {
+            <h4>Nueva Oficina</h4>
+        }
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.LabelFor(model => model.Calle, new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.Calle, "Detalle Adicional", new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Calle, new { htmlAttributes = new { @class = "form-control", style = "width:150px", onkeydown = "return SoloLetras(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Calle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.LabelFor(model => model.Manzana, new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.Manzana, "Piso", new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Manzana, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return ValidateNumber(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Manzana, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.LabelFor(model => model.Villa, new { @class = "control-label col-md-2" })
+            }
+            else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+            {
+                @Html.LabelFor(model => model.Villa, "Departamento", new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.Villa, "Oficina", new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Villa, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return ValidateNumber(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Villa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefono, "Teléfono", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", style = "width:150px", onkeydown = "return ValidateNumber(event);", onpaste = "return false" })
+                @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Grabar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $('form').submit(function() {
+            if ($(this).valid()) {
+                $('input[type=submit][data-loading]').addClass('disabled');
+
+                if ($(this).data('submitted') == true) {
+                    $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                    return false;
+                }
+                $(this).data('submitted', true);
+            }
+        });
+
+    </script>
+}

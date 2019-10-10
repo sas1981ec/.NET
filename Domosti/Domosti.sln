@@ -1,0 +1,162 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Capa Datos", "1. Capa Datos", "{AAEC06B9-7E53-43B6-BE09-17F5A14346D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Capa Negocios", "2. Capa Negocios", "{47B8A334-0621-4A79-8047-D7C4B497D34C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Capa Presentación", "4. Capa Presentación", "{CAB9E956-1206-4D37-97ED-0899EB67CAE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{FB35596C-0484-4F40-9972-D14FBB6E208B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosWCF_REST", "ServiciosWCF_REST\ServiciosWCF_REST.csproj", "{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClienteWebMVC5", "ClienteWebMVC5\ClienteWebMVC5.csproj", "{C78761F3-1CB0-4D65-957C-698A1119A101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{DC49F010-5DB6-4956-A132-7E86316FF21C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Capa Servicios", "3. Capa Servicios", "{E187C0B7-6BA9-4076-9B7B-05C4EBBDEF8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Recursos", "5. Recursos", "{4D5CF466-DDAB-4E29-A081-B290DD1BA58C}"
+	ProjectSection(SolutionItems) = preProject
+		Recursos\Common.Logging.dll = Recursos\Common.Logging.dll
+		Recursos\Spring.Aop.dll = Recursos\Spring.Aop.dll
+		Recursos\Spring.Aop.pdb = Recursos\Spring.Aop.pdb
+		Recursos\Spring.Aop.xml = Recursos\Spring.Aop.xml
+		Recursos\Spring.Core.dll = Recursos\Spring.Core.dll
+		Recursos\Spring.Core.pdb = Recursos\Spring.Core.pdb
+		Recursos\Spring.Core.xml = Recursos\Spring.Core.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Deploy", "6. Deploy", "{BE626BEA-2718-44B0-B963-E779AE6657A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicios", "Servicios", "{AEF97E6F-17FF-45D2-ABDB-22EB76B7ECC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3E55D02F-B70D-4FC8-912A-013E8AD6F24F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2016-12-29", "2016-12-29", "{15C70EBB-B127-4FBA-BF79-276AF978679D}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Servicios\29-12-2016\bin.zip = Publicacion Servicios\29-12-2016\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-06", "2017-01-06", "{0FA8401A-13C6-4309-ABE5-A12ED4AAA9DD}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Servicios\2017-01-06\bin.zip = Publicacion Servicios\2017-01-06\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-06", "2017-01-06", "{A38DAB6C-47CE-41CC-8541-60DDEBCE7270}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Web\2017-01-06\bin.zip = Publicacion Web\2017-01-06\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-11", "2017-01-11", "{97AD38DE-0C1C-469F-8E51-FD450D59390E}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Servicios\2017-01-11\bin.zip = Publicacion Servicios\2017-01-11\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-11", "2017-01-11", "{8976198B-47DD-4D5A-AE67-52846BDB843A}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Web\2017-01-11\bin.zip = Publicacion Web\2017-01-11\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-27", "2017-01-27", "{AEBD5C2C-5949-4644-A0E0-758E7C24DFB1}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Web\2017-01-27\bin.zip = Publicacion Web\2017-01-27\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-02-17", "2017-02-17", "{2761629D-0660-47B3-BCFD-221B4C2562FF}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Servicios\2017-02-17\bin.zip = Publicacion Servicios\2017-02-17\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-02-17", "2017-02-17", "{AA56CC2F-027F-406C-9190-B85DAADF9F7C}"
+	ProjectSection(SolutionItems) = preProject
+		Publicacion Web\2017-02-17\bin.zip = Publicacion Web\2017-02-17\bin.zip
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Debug|x64.ActiveCfg = Debug|x64
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Debug|x64.Build.0 = Debug|x64
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Debug|x64.Deploy.0 = Debug|x64
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Release|x64.ActiveCfg = Release|x64
+		{FB35596C-0484-4F40-9972-D14FBB6E208B}.Release|x64.Build.0 = Release|x64
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Debug|x64.ActiveCfg = Debug|x64
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Debug|x64.Build.0 = Debug|x64
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Release|x64.ActiveCfg = Release|x64
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7}.Release|x64.Build.0 = Release|x64
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Debug|x64.ActiveCfg = Debug|x64
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Debug|x64.Build.0 = Debug|x64
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Release|x64.ActiveCfg = Release|x64
+		{C78761F3-1CB0-4D65-957C-698A1119A101}.Release|x64.Build.0 = Release|x64
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Debug|x64.ActiveCfg = Debug|x64
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Debug|x64.Build.0 = Debug|x64
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Release|x64.ActiveCfg = Release|x64
+		{DC49F010-5DB6-4956-A132-7E86316FF21C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB35596C-0484-4F40-9972-D14FBB6E208B} = {AAEC06B9-7E53-43B6-BE09-17F5A14346D7}
+		{4B76CFC5-B15B-444E-A5D8-B862A6F7E0A7} = {E187C0B7-6BA9-4076-9B7B-05C4EBBDEF8A}
+		{C78761F3-1CB0-4D65-957C-698A1119A101} = {CAB9E956-1206-4D37-97ED-0899EB67CAE7}
+		{DC49F010-5DB6-4956-A132-7E86316FF21C} = {47B8A334-0621-4A79-8047-D7C4B497D34C}
+		{AEF97E6F-17FF-45D2-ABDB-22EB76B7ECC6} = {BE626BEA-2718-44B0-B963-E779AE6657A3}
+		{3E55D02F-B70D-4FC8-912A-013E8AD6F24F} = {BE626BEA-2718-44B0-B963-E779AE6657A3}
+		{15C70EBB-B127-4FBA-BF79-276AF978679D} = {AEF97E6F-17FF-45D2-ABDB-22EB76B7ECC6}
+		{0FA8401A-13C6-4309-ABE5-A12ED4AAA9DD} = {AEF97E6F-17FF-45D2-ABDB-22EB76B7ECC6}
+		{A38DAB6C-47CE-41CC-8541-60DDEBCE7270} = {3E55D02F-B70D-4FC8-912A-013E8AD6F24F}
+		{97AD38DE-0C1C-469F-8E51-FD450D59390E} = {AEF97E6F-17FF-45D2-ABDB-22EB76B7ECC6}
+		{8976198B-47DD-4D5A-AE67-52846BDB843A} = {3E55D02F-B70D-4FC8-912A-013E8AD6F24F}
+		{AEBD5C2C-5949-4644-A0E0-758E7C24DFB1} = {3E55D02F-B70D-4FC8-912A-013E8AD6F24F}
+		{2761629D-0660-47B3-BCFD-221B4C2562FF} = {AEF97E6F-17FF-45D2-ABDB-22EB76B7ECC6}
+		{AA56CC2F-027F-406C-9190-B85DAADF9F7C} = {3E55D02F-B70D-4FC8-912A-013E8AD6F24F}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://stalinalvaradosanchez.visualstudio.com/
+		SccProjectUniqueName0 = ClienteWebMVC5\\ClienteWebMVC5.csproj
+		SccProjectTopLevelParentUniqueName0 = Domosti.sln
+		SccProjectName0 = ClienteWebMVC5
+		SccLocalPath0 = ClienteWebMVC5
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = AccesoDatos\\AccesoDatos.csproj
+		SccProjectTopLevelParentUniqueName2 = Domosti.sln
+		SccProjectName2 = AccesoDatos
+		SccLocalPath2 = AccesoDatos
+		SccProjectUniqueName3 = Logica\\Logica.csproj
+		SccProjectTopLevelParentUniqueName3 = Domosti.sln
+		SccProjectName3 = Logica
+		SccLocalPath3 = Logica
+		SccProjectUniqueName4 = ServiciosWCF_REST\\ServiciosWCF_REST.csproj
+		SccProjectTopLevelParentUniqueName4 = Domosti.sln
+		SccProjectName4 = ServiciosWCF_REST
+		SccLocalPath4 = ServiciosWCF_REST
+	EndGlobalSection
+EndGlobal

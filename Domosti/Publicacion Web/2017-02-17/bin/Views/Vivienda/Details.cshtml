@@ -1,0 +1,86 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Vivienda
+
+@{
+    ViewBag.Title = "Detalle de Vivienda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+    {
+        <h4>Detalles de la Vivienda</h4>
+    }
+    else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+    {
+        <h4>Detalles del Departamento</h4>
+    }
+    else
+    {
+        <h4>Detalles de la Oficina</h4>
+    }   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.DisplayNameFor(model => model.Calle)
+            }
+            else
+            {
+                @Html.DisplayName("Detalle Adicional")
+            }
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.DisplayNameFor(model => model.Manzana)
+            }
+            else
+            {
+                @Html.DisplayName("Piso")
+            }
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manzana)
+        </dd>
+
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.DisplayNameFor(model => model.Villa)
+            }
+            else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+            {
+                @Html.DisplayName("Departamento")
+            }
+            else
+            {
+                @Html.DisplayName("Oficina")
+            }
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Villa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdVivienda }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

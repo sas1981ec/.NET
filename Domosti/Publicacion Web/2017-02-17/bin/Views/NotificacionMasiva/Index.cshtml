@@ -1,0 +1,38 @@
+﻿@using Domosti.CapaPresentacion.Models
+
+@{
+    ViewBag.Title = "Notificaciones Masivas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "NotificacionMasiva", FormMethod.Post, new { name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h4>Notificaciones Masivas</h4>
+
+        <hr />
+        <textarea type="text" name="texto" maxlength="525" min-width =100% style="height: 300px" placeholder="Aquí su texto" class="form-control" value=@ViewData["Texto"] onkeydown="return SoloTexto(event);" onpaste="return false"></textarea>
+        <input type="submit" value="Enviar" class="btn btn-default" />
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('form').submit(function () {
+            if ($(this).valid()) {
+                $('input[type=submit][data-loading]').addClass('disabled');
+
+                if ($(this).data('submitted') == true) {
+                    $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                    return false;
+                }
+                $(this).data('submitted', true);
+            }
+        });
+    </script>
+}

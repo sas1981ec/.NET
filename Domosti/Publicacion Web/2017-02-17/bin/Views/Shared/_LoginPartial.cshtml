@@ -1,0 +1,17 @@
+﻿@if (HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("CerrarSesion", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Cambiar Contraseña", "CambiarContrasena", "Account")</li>
+            <li>@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Account")</li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Iniciar Sesion", "Login", "Account", null, new { id = "loginLink" })</li>
+    </ul>
+}

@@ -1,0 +1,179 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model IEnumerable<Domosti.CapaDatos.Modelos.Residente>
+
+@{
+    ViewBag.Title = "Residentes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+{
+    <h2>Empresas</h2>
+}
+else
+{
+    <h2>Residentes</h2>
+}
+
+<p>
+    @if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+    {
+        if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            @Html.ActionLink("Nueva Empresa", "Create")
+        }
+        else
+        {
+            @Html.ActionLink("Nuevo Residente", "Create")
+        }
+    }
+</p>
+@using (Html.BeginForm("Index", "Residente", FormMethod.Post,new { name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                <input type="text" name="busqueda" class="form-control" placeholder="Nombre de la empresa" style="width:350px" value=@ViewData["Busqueda"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+            }
+            else
+            {
+                <input type="text" name="busqueda" class="form-control" placeholder="Nombre del residente" style="width:350px" value=@ViewData["Busqueda"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+            }
+            <input type="submit" value="Buscar" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Tipo ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </th>
+        <th>
+            Nombre
+        </th>
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <th>
+                Fecha Constitución
+            </th>
+        }
+        else
+        {
+            <th>
+                Fecha Nacimiento
+            </th>
+        }
+        <th>
+            Celular
+        </th>
+        <th>
+            Al Día
+        </th>
+        <th>
+            Puede Usar APP
+        </th>
+        <th>
+            Esta Activo
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoIdentificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoMovil)
+            </td>
+            <td>
+                @if (!item.PoseeDeudas)
+                {
+                    <img src="../../Imagenes/enabled.png" style="width:25px; height:25px" />
+                }
+                else
+                {
+                    <img src="~/Imagenes/dañado.png" style="width:25px; height:25px" />
+                }
+            </td>
+            <td>
+                @if (item.PuedeUsarApp)
+                {
+                    <img src="../../Imagenes/enabled.png" style="width:25px; height:25px" />
+                }
+                else
+                {
+                    <img src="~/Imagenes/dañado.png" style="width:25px; height:25px" />
+                }
+            </td>
+            <td>
+                @if (item.EstaActivo)
+                {
+                    <img src="../../Imagenes/enabled.png" style="width:25px; height:25px" />
+                }
+                else
+                {
+                    <img src="~/Imagenes/dañado.png" style="width:25px; height:25px" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.IdPersona }) |
+                @if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+                {
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdPersona })
+                }|
+                @if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+                {
+                    if (((CustomPrincipal) HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+                    {
+                        @Html.ActionLink("Oficinas", "Asignar", new { id = item.IdPersona })
+                    }
+                    else if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+                    {
+                        @Html.ActionLink("Departamentos", "Asignar", new { id = item.IdPersona })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Viviendas", "Asignar", new { id = item.IdPersona })
+                    }
+                }|
+                @if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1 && !item.Visitantes.Any() && item.Viviendas.Count(v => !v.EsSistema) == 0)
+                {
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdPersona })
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+
+}

@@ -1,0 +1,128 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Permiso
+
+@{
+    ViewBag.Title = "Ingreso Visitante";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>¿Está seguro de registrar el ingreso del visitante?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID Visitante
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visitante.Identificacion)
+        </dd>
+
+        <dt>
+            Nombre Visitante
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visitante.NombreCompleto)
+        </dd>
+
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("RUC")
+            }
+            else
+            {
+                @Html.DisplayName("ID Residente")
+            }
+            
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residente.Identificacion)
+        </dd>
+
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("Empresa")
+            }
+            else
+            {
+                @Html.DisplayName("Nombre Residente")
+            }
+            
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residente.NombreCompleto)
+        </dd>
+
+        <dt>
+            Fecha Inicial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicialConHora)
+        </dd>
+
+        <dt>
+            Fecha Fin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinConHora)
+        </dd>
+        <dt>
+            Detalle Adicional
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetalleAdicional)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Ingreso", "Permiso", FormMethod.Post, new { name = "form", id = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.IdDispositivo)
+        @Html.HiddenFor(model => model.Estado)
+        @Html.HiddenFor(model => model.FechaCreacion)
+        @Html.HiddenFor(model => model.FechaFin)
+        @Html.HiddenFor(model => model.FechaInicial)
+        @Html.HiddenFor(model => model.IdMotivoAcceso)
+        @Html.HiddenFor(model => model.PermisoContinuo)
+        @Html.HiddenFor(model => model.IdPermiso)
+        @Html.HiddenFor(model => model.IdResidente)
+        @Html.HiddenFor(model => model.IdVisitante)
+        @Html.HiddenFor(model => model.FechaUltimaActualizacion)
+        @Html.HiddenFor(model => model.IdCabeceraPermiso)
+        @Html.HiddenFor(model => model.DetalleAdicional)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observaciones, "Observaciones", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return SoloTexto(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Grabar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            if ($(this).valid()) {
+                $('input[type=submit][data-loading]').addClass('disabled');
+
+                if ($(this).data('submitted') == true) {
+                    $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                    return false;
+                }
+                $(this).data('submitted', true);
+            }
+        });
+    </script>
+}

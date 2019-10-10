@@ -1,0 +1,71 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaPresentacion.Models.AsignarVivienda
+
+@{
+    ViewBag.Title = "Asignar Viviendas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+    {
+        <h4>Asignar Viviendas a Residente</h4>
+    }
+    else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+    {
+        <h4>Asignar Departamentos a Residente</h4>
+    }
+    else
+    {
+        <h4>Asignar Oficinas a Empresa</h4>
+    }
+    
+    <hr />
+    @{
+        if (ViewBag.Mensaje != null)
+        {
+            <h5 style="color: red">@ViewBag.Mensaje</h5>
+        }
+    }
+    @using (Html.BeginForm("Asignar", "Residente", FormMethod.Post, new { name = "form", id = "form" }))
+    {
+
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.IdResidente)
+        <div>
+            @Html.EditorFor(x => x.ViviendasSeleccionadas)
+        </div>
+        <div>
+            <input type="submit" name="Boton" value="Asignar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+ 
+

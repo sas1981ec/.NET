@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+          type="Domosti.CapaServicios.Aspectos.Excepcion, Domosti.CapaServicios.ServiciosWCF_REST">
+  </object>
+  <object id="throwsConcurrencia"
+  type="Domosti.CapaServicios.Aspectos.Concurrencia, Domosti.CapaServicios.ServiciosWCF_REST">
+  </object>
+
+  <object id="ResidenteAdmin" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="Domosti.CapaNegocios.Implementaciones.ResidenteBl,Domosti.CapaNegocios.Logica">
+        <constructor-arg ref="Repository"/>
+        <constructor-arg ref="RepositoryPersona"/>
+        <constructor-arg ref="RepositoryVivienda"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+        <value>throwsConcurrencia</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="Repository" type="Domosti.CapaDatos.Implementaciones.ResidenteDal,Domosti.CapaDatos.AccesoDatos"/>
+  <object name ="RepositoryPersona" type="Domosti.CapaDatos.Implementaciones.PersonaDal,Domosti.CapaDatos.AccesoDatos"/>
+  <object name ="RepositoryVivienda" type="Domosti.CapaDatos.Implementaciones.ViviendaDal,Domosti.CapaDatos.AccesoDatos"/>
+</objects>

@@ -1,0 +1,13 @@
+﻿@model HandleErrorInfo
+
+@{
+    ViewBag.Title = "Oops";
+}
+
+<h1 class="text-danger">OOOPS</h1>
+
+<h2 class="text-danger">@ViewData["Mensaje"]</h2>
+@Html.ActionLink("Regresar", "Index","Home")
+<img src="~/Imagenes/Marte.jpg" style="width:1100px; height: 400px" />
+
+

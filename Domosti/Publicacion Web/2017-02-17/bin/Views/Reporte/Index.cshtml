@@ -1,0 +1,166 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model IEnumerable<Domosti.CapaDatos.Modelos.Acceso>
+
+@{
+    ViewBag.Title = "Reporte Accesos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reporte de Accesos</h2>
+
+@using (Html.BeginForm("Index", "Reporte", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <input type="text" name="busquedaIdentificacionVisitante" placeholder="ID Visitante" style="width:110px" value=@ViewData["BusquedaIdentificacionVisitante"] onkeydown="return CaracteresParaIdentificacion(event);" onpaste="return false" />
+        <input type="text" name="busquedaNombreVisitante" placeholder="Nombre Visitante" style="width:160px" value=@ViewData["BusquedaNombreVisitante"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <input type="text" name="busquedaIdentificacionResidente" placeholder="RUC" style="width:110px" value=@ViewData["BusquedaIdentificacionResidente"] onkeydown="return CaracteresParaIdentificacion(event);" onpaste="return false" />
+            <input type="text" name="busquedaNombreResidente" placeholder="Empresa" style="width:160px" value=@ViewData["BusquedaNombreResidente"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+        }
+        else
+        {
+            <input type="text" name="busquedaIdentificacionResidente" placeholder="ID Residente" style="width:110px" value=@ViewData["BusquedaIdentificacionResidente"] onkeydown="return CaracteresParaIdentificacion(event);" onpaste="return false" />
+            <input type="text" name="busquedaNombreResidente" placeholder="Nombre Residente" style="width:160px" value=@ViewData["BusquedaNombreResidente"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+        }
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <input type="text" name="busquedaManzana" placeholder="Piso" style="width:70px" value=@ViewData["BusquedaManzana"] onkeydown="return ValidateNumber(event);" onpaste="return false" />
+            <input type="text" name="busquedaVilla" placeholder="Oficina" style="width:40px" value=@ViewData["BusquedaVilla"] onkeydown="return ValidateNumber(event);" onpaste="return false" />
+        }
+        else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+        {
+            <input type="text" name="busquedaManzana" placeholder="Piso" style="width:70px" value=@ViewData["BusquedaManzana"] onkeydown="return ValidateNumber(event);" onpaste="return false" />
+            <input type="text" name="busquedaVilla" placeholder="Departamento" style="width:40px" value=@ViewData["BusquedaVilla"] onkeydown="return ValidateNumber(event);" onpaste="return false" />
+        }
+        else
+        {
+            <input type="text" name="busquedaManzana" placeholder="Manzana" style="width:70px" value=@ViewData["BusquedaManzana"] onkeydown="return ValidateNumber(event);" onpaste="return false" />
+            <input type="text" name="busquedaVilla" placeholder="Villa" style="width:40px" value=@ViewData["BusquedaVilla"] onkeydown="return ValidateNumber(event);" onpaste="return false" />
+        }
+        <label>Desde:</label>
+        <input type="datetime-local" name="fechaInicialDesde" style="height:25px; width: 180px" value=@ViewData["FechaInicialDesde"] />
+        <label>Hasta:</label>
+        <input type="datetime-local" name="fechaInicialHasta" style="height:25px; width: 180px" value=@ViewData["FechaInicialHasta"] />
+        <label>Motivo:</label>
+        @Html.DropDownList("comboMotivo", new SelectList((System.Collections.IEnumerable)ViewData["Motivos"], "Value", "Text"), new { @class = "form-control-mandatory" })
+        <label>Tipo Acceso:</label>
+        @Html.DropDownList("comboTipoAcceso", new SelectList((System.Collections.IEnumerable)ViewData["TipoAccesos"], "Value", "Text"), new { @class = "form-control-mandatory" })
+        <input type="submit" value="Buscar" class="btn btn-default" name="submitButton" />
+    </div>
+    <table>
+        <tr><td></td><td><input class="btn btn-default" type="submit" name="submitButton" value="Exportar" /></td></tr>
+
+    </table>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            ID Visitante
+        </th>
+        <th>
+            Nombre Visitante
+        </th>
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <th>
+                Oficina
+            </th>
+        }
+        else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+        {
+            <th>
+                Departamento
+            </th>
+        }
+        else
+        {
+            <th>
+                Vivienda
+            </th>
+        }
+
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <th>
+                RUC
+            </th>
+            <th>
+                Empresa
+            </th>
+        }
+        else
+        {
+            <th>
+                ID Residente
+            </th>
+            <th>
+                Nombre Residente
+            </th>
+        }
+
+        <th>
+            Fecha Acceso
+        </th>
+        <th>
+            Motivo
+        </th>
+        <th>
+            Tipo Acceso
+        </th>
+        <th>
+            Observaciones
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permiso.Visitante.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permiso.Visitante.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permiso.Vivienda.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permiso.Residente.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permiso.Residente.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAccesoConHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Permiso.MotivoAcceso.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoAcceso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+        </tr>
+    }
+</table>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+}

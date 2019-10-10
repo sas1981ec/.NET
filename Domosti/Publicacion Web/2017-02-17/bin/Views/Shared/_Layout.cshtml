@@ -1,0 +1,145 @@
+﻿@using Domosti.CapaPresentacion.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link runat="server" rel="shortcut icon" href="~/LogoIcono.ico" type="image/x-icon" />
+    <link runat="server" rel="icon" href="~/LogoIcono.ico" type="image/ico" />
+    <title>@ViewBag.Title - DomOstium Web</title>
+    <script type="text/javascript">
+        function CaracteresParaContrasena(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if ((charCode < 65 || charCode > 90) && (charCode < 96 || charCode > 105) && (charCode < 48 || charCode > 57) && (charCode < 33 || charCode > 38) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39 && charCode != 64 && charCode != 190 && charCode != 190 && charCode != 95) {
+                return false;
+            }
+            return true;
+        };
+        function CaracteresParaIdentificacion(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if ((charCode < 65 || charCode > 90) && (charCode < 96 || charCode > 105) && (charCode < 48 || charCode > 57) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39) {
+                return false;
+            }
+            return true;
+        };
+        function SoloLetras(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if ((charCode < 65 || charCode > 90) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39 && charCode != 32) {
+                return false;
+            }
+            return true;
+        };
+        function SoloTexto(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if ((charCode < 65 || charCode > 90) && (charCode < 96 || charCode > 105) && (charCode < 48 || charCode > 57) && (charCode < 33 || charCode > 38) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39 && charCode != 64 && charCode != 190 && charCode != 190 && charCode != 95 && charCode != 32) {
+                return false;
+            }
+            return true;
+        };
+        function ValidateNumber(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if ((charCode < 96 || charCode > 105) && (charCode < 48 || charCode > 57) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39) {
+                return false;
+            }
+            return true;
+        };
+        function PrevenirEnter(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if (charCode == 13) {
+                return false;
+            }
+            return true;
+        };
+    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/jquery-ui.css")
+
+</head>
+    <body style="background-color: #FFF3E0">
+        <div class=" navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href='@Url.Action("About", "Home")'>
+                        <img src="~/Imagenes/Logo.png" style="width:50px; height: 50px; position:relative;" />
+                    </a>
+
+                    @Html.ActionLink("DomOstium", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+                        {
+                            if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+                            {
+                                <li>@Html.ActionLink("Viviendas", "Index", "Vivienda")</li>
+                            }
+                            else if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+                            {
+                                <li>@Html.ActionLink("Departamentos", "Index", "Vivienda")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Oficinas", "Index", "Vivienda")</li>
+                            }
+                        }
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+                            {
+                                <li>@Html.ActionLink("Empresas", "Index", "Residente")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Residentes", "Index", "Residente")</li>
+                            }
+                        }
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 2)
+                        {
+                            <li>@Html.ActionLink("Accesos", "Index", "Permiso")</li>
+                        }
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+                        {
+                            <li>@Html.ActionLink("Reportes Accesos", "Index", "Reporte")</li>
+                        }
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1 && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela != "E")
+                        {
+                            <li>@Html.ActionLink("Reporte CxP", "Index", "ReporteCxP")</li>
+                        }
+                        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+                        {
+                            <li>@Html.ActionLink("Notificaciones Masivas", "Index", "NotificacionMasiva")</li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+         </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - SOTIFU S.A.</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/Scripts/jquery-ui.js")
+        @Scripts.Render("~/Scripts/DatePickerReady.js")
+        @RenderSection("scripts", false)
+    
+
+    </body>
+</html>

@@ -1,0 +1,130 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Residente
+
+@{
+    ViewBag.Title = "Eliminar Residente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+{
+    <h3>¿Está seguro de eliminar la empresa?</h3>
+}
+else
+{
+    <h3>¿Está seguro de eliminar el residente?</h3>
+}
+<div>
+    <h4>Residente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tipo ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Identificacion)
+        </dd>
+        
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCompleto)
+        </dd>
+        
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <dt>
+                Fecha Constitución
+            </dt>
+        }
+        else
+        {
+            <dt>
+                Fecha Nacimiento
+            </dt>
+        }
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        
+        <dt>
+            Posee Deudas
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoseeDeudas)
+        </dd>
+
+        <dt>
+            Puedo Usar APP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuedeUsarApp)
+        </dd>
+
+        <dt>
+            Esta Activo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstaActivo)
+        </dd>
+    </dl>
+    <div style="position: absolute;top:170px;left:600px;">
+        <div>
+            @{
+                var base64 = Convert.ToBase64String(@Model.FotoResidente.Foto);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Delete", "Residente", FormMethod.Post,
+                            new { name = "form", id = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Apellidos)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.EstaActivo)
+        @Html.HiddenFor(model => model.EstaEliminado)
+        @Html.HiddenFor(model => model.FechaNacimiento)
+        @Html.HiddenFor(model => model.Identificacion)
+        @Html.HiddenFor(model => model.Nombres)
+        @Html.HiddenFor(model => model.PuedeUsarApp)
+        @Html.HiddenFor(model => model.IdPersona)
+        @Html.HiddenFor(model => model.TelefonoMovil)
+        @Html.HiddenFor(model => model.TipoIdentificacion)
+        @Html.HiddenFor(model => model.UpdateToken)
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+}

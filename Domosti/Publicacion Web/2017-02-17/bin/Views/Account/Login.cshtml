@@ -1,0 +1,54 @@
+﻿@model Domosti.CapaPresentacion.Models.LoginViewModel
+@{
+    ViewBag.Title = "Iniciar Sesión";
+}
+
+<h4>Inicio de Sesión</h4>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", name = "form", id = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Usuario, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control", style = "width:190px", onkeydown = "return SoloLetras(event);", onpaste = "return false" })
+                        @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, "Contraseña", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", style = "width:190px", onkeydown = "return CaracteresParaContrasena(event);", oncopy = "return false", onpaste = "return false" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Entrar" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('form').submit(function () {
+            if ($(this).valid()) {
+                $('input[type=submit][data-loading]').addClass('disabled');
+
+                if ($(this).data('submitted') == true) {
+                    $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                    return false;
+                }
+                $(this).data('submitted', true);
+            }
+        });
+    </script>
+}

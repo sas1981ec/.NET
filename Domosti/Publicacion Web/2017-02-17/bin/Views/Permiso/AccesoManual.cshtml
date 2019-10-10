@@ -1,0 +1,140 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.PermisoManual
+
+@{
+    ViewBag.Title = "Permiso Manual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AccesoManual", "Permiso", FormMethod.Post, new { name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Acceso Manual</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal) HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.LabelFor(model => model.IdResidente, "Empresa", new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.IdResidente, "Residente", new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.DropDownList("IdResidente", null, new { @class = "form-control", style = "width:300px" })
+                @Html.ValidationMessageFor(model => model.IdResidente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.LabelFor(model => model.IdVivienda, "Oficina", new { @class = "control-label col-md-2" })
+            }
+            else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+            {
+                @Html.LabelFor(model => model.IdVivienda, "Departamento", new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.IdVivienda, "Vivienda", new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.DropDownList("IdVivienda", null, new { @class = "form-control", style = "width:300px" })
+                @Html.ValidationMessageFor(model => model.IdVivienda, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdMotivoAcceso, "Motivo", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdMotivo", null, new { @class = "form-control", style = "width:300px" })
+                @Html.ValidationMessageFor(model => model.IdMotivoAcceso, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CedulaVisitante,"Cedula Visitante",  new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CedulaVisitante, new { htmlAttributes = new { @class = "form-control", style = "width:150px", onkeydown = "return ValidateNumber(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.CedulaVisitante, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreVisitante,"Nombre Visitante", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NombreVisitante, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return SoloLetras(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.NombreVisitante, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observaciones, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return SoloTexto(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="btnSubmit" type="submit" value="Grabar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+    $('form').submit(function () {
+        if ($(this).valid()) {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+            $(this).data('submitted', true);
+        }
+    });
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#IdResidente").change(function() {
+            $("#IdVivienda").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Viviendas")', // we are calling json method
+
+                dataType: 'json',
+
+                data: { idResidente: $("#IdResidente").val() },
+                // here we are get value of selected country and passing same value
+
+
+                success: function(viviendas) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+
+                    $.each(viviendas, function(i, vivienda) {
+                        $("#IdVivienda").append('<option value="' + vivienda.Value + '">' +
+                            vivienda.Text + '</option>');
+                        // here we are adding option for States
+
+                    });
+                },
+                error: function(ex) {
+                    alert('Failed to retrieve states.' + $("#IdResidente").val());
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+}
+

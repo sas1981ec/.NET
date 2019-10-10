@@ -1,0 +1,227 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Residente
+
+@{
+    ViewBag.Title = "Crear Residente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+       var tipoIdentificacionSeleccionado = 'C';
+       function ValidarIdentificacion(e) {
+           var evt = (e) ? e : window.event;
+           var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if (tipoIdentificacionSeleccionado == 'P') {
+                if ((charCode < 96 || charCode > 105) && (charCode < 48 || charCode > 57) && (charCode < 65 || charCode > 90) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39)
+                    return false;
+                return true;
+            }
+            if ((charCode < 96 || charCode > 105) && (charCode < 48 || charCode > 57) && charCode != 8 && charCode != 9 && charCode != 37 && charCode != 39) {
+                return false;
+            }
+            return true;
+       };
+        function CallChangefunc(val) {
+            tipoIdentificacionSeleccionado = val;
+            if ($("#IdentificacionTxt").val().length > 0) {
+                $("#IdentificacionTxt").focus();
+            }
+        }
+        function ValidarIdentificacionLostFocus() {
+            if (tipoIdentificacionSeleccionado == 'C') {
+                if ($("#IdentificacionTxt").val().length != 10) {
+                    alert('La Cédula debe tener 10 dígitos.');
+                    $("#IdentificacionTxt").focus();
+                }
+            }
+            if (tipoIdentificacionSeleccionado == 'R') {
+                if ($("#IdentificacionTxt").val().length != 13) {
+                    alert('El R.U.C. debe tener 13 dígitos.');
+                    $("#IdentificacionTxt").focus();
+                }
+            }
+            if (tipoIdentificacionSeleccionado == 'P') {
+                if ($("#IdentificacionTxt").val().length > 15) {
+                    alert('El pasaporte no debe exceder de 15 carácteres.');
+                    $("#IdentificacionTxt").focus();
+                }
+            }
+        }
+    </script>
+</head>
+
+@using (Html.BeginForm("Create", "Residente", FormMethod.Post,
+                            new { enctype = "multipart/form-data", name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <h4>Nueva Empresa</h4>
+        }
+        else
+        {
+            <h4>Nuevo Residente</h4>
+        }
+        
+        @{
+            if (ViewBag.Mensaje != null)
+            {
+                <h5 style="color: red">@ViewBag.Mensaje</h5>
+            }
+        }
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoIdentificacion, "Tipo Identificacion", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TipoIdentificacion", null, new { @class = "form-control", style = "width:130px", @onchange = "CallChangefunc(this.value)" })
+                @Html.ValidationMessageFor(model => model.TipoIdentificacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Identificacion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control", style = "width:150px", onkeydown = "return ValidarIdentificacion(event);", onblur = "ValidarIdentificacionLostFocus()", id = "IdentificacionTxt", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.LabelFor(model => model.Nombres,"Nombre Comercial", new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.Nombres, new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return SoloLetras(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.LabelFor(model => model.Apellidos,"Razón Social", new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.Apellidos, new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control", style = "width:280px", onkeydown = "return SoloLetras(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", style = "width:280px", PlaceHolder = "residente@domosti.com", onkeydown = "return PrevenirEnter(event);", onpaste = "return false" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.LabelFor(model => model.FechaNacimiento, "Fecha Constitución", new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                @Html.LabelFor(model => model.FechaNacimiento, "Fecha Nacimiento", new { @class = "control-label col-md-2" })
+            }
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", onkeydown = "return ValidateNumber(event);", onpaste = "return false" } })
+                @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TelefonoMovil, "Celular", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TelefonoMovil, new { @class = "form-control", style = "width:150px", onkeydown = "return ValidateNumber(event);", onpaste = "return false" })
+                @Html.ValidationMessageFor(model => model.TelefonoMovil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.PoseeDeudas, "Posee Deudas", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.PoseeDeudas)
+                    @Html.ValidationMessageFor(model => model.PoseeDeudas, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.PuedeUsarApp ,"Puede usar APP", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.PuedeUsarApp)
+                    @Html.ValidationMessageFor(model => model.PuedeUsarApp, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstaActivo, "Esta Activo", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.EstaActivo)
+                    @Html.ValidationMessageFor(model => model.EstaActivo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Grabar" class="btn btn-default" name="submitButton" />
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute;top:170px;left:800px;">
+        <div>
+            @{
+                var base64 = Convert.ToBase64String(@Model.FotoResidente.Foto);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+            <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+        </div>
+        <div style="position: relative;top:10px;">
+            <input type="file" name="file" id="file" style="width: 100%;" accept="image/*"/>
+            <input type="submit" value="Cargar" name="submitButton" class="btn btn-default" />
+            <input type="submit" value="Quitar" name="submitButton" class="btn btn-default" />
+        </div>
+    </div>
+    
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('form').submit(function () {
+            if ($(this).valid()) {
+                $('input[type=submit][data-loading]').addClass('disabled');
+
+                if ($(this).data('submitted') == true) {
+                    $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                    return false;
+                }
+                $(this).data('submitted', true);
+            }
+        });
+    </script>
+}
+

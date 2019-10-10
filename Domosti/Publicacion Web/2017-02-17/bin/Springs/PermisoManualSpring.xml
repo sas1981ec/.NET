@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+          type="Domosti.CapaPresentacion.Aspectos.Excepcion, Domosti.CapaPresentacion.ClienteWebMVC5">
+  </object>
+
+  <object id="PermisoManualAdmin" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="Domosti.CapaNegocios.Implementaciones.PermisoManualBl,  Domosti.CapaNegocios.Logica">
+        <constructor-arg ref="Repository"/>
+        <constructor-arg ref="RepositoryDrv"/>
+        <constructor-arg ref="RepositoryNotificacion"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="Repository" type="Domosti.CapaDatos.Implementaciones.PermisoManualDal,Domosti.CapaDatos.AccesoDatos"/>
+  <object name ="RepositoryDrv" type="Domosti.CapaDatos.Implementaciones.DrvDal,Domosti.CapaDatos.AccesoDatos"/>
+  <object name ="RepositoryNotificacion" type="Domosti.CapaDatos.Implementaciones.NotificacionDal,Domosti.CapaDatos.AccesoDatos"/>
+</objects>

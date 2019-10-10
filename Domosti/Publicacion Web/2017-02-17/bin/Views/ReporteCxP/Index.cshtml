@@ -1,0 +1,125 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model IEnumerable<Domosti.CapaNegocios.Contratos.DispositivoUsadoMes>
+
+@{
+    ViewBag.Title = "Reporte Cuentas por Pagar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reporte de Cuentas por Pagar</h2>
+
+@using (Html.BeginForm("Index", "ReporteCxP", FormMethod.Post, new { enctype = "multipart/form-data", name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Mes:</label>
+        @Html.DropDownList("comboMes", new SelectList((System.Collections.IEnumerable)ViewData["Meses"], "Value", "Text"), new { @class = "form-control-mandatory" })
+        <label>Año:</label>
+        @Html.DropDownList("comboAnio", new SelectList((System.Collections.IEnumerable)ViewData["Anios"], "Value", "Text"), new { @class = "form-control-mandatory" })
+        <input type="submit" value="Consultar" class="btn btn-default" name="submitButton" />
+        <input type="text" disabled="disabled" style="background: transparent; border: hidden; width: 300px" />
+        <label>Subtotal $:</label>
+        <input id="Subtotal" type="text" disabled="disabled" style="width: 80px" value=@ViewData["Subtotal"] />
+        <label>IVA $:</label>
+        <input id="Iva" type="text" disabled="disabled" style="width: 80px" value=@ViewData["Iva"] />
+        <label>TOTAL $:</label>
+        <input id="Total" type="text" disabled="disabled" style="width: 80px" value=@ViewData["Total"] />
+    </div>
+    <table>
+        <tr><td></td><td><input class="btn btn-default" type="submit" name="submitButton" value="Exportar" /></td></tr>
+    </table>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("RUC")
+            }
+            else
+            {
+                @Html.DisplayName("ID Residente")
+            }
+        </th>
+        <th>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("Empresa")
+            }
+            else
+            {
+                @Html.DisplayName("Nombre Residente")
+            }
+        </th>
+        <th>
+            ID Dispositivo
+        </th>
+        <th>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("Oficina")
+            }
+            else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+            {
+                @Html.DisplayName("Departamento")
+            }
+            else
+            {
+                @Html.DisplayName("Vivienda")
+            }
+        </th>
+        <th>
+            Fecha Activación
+        </th>
+        <th>
+            Fecha Desactivación
+        </th>
+        <th>
+            Valor
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentificacionResidente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompletoResidente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDispositivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreVivienda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaActivacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDesactivacion)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Valor)
+            </td>
+        </tr>
+    }
+</table>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+}

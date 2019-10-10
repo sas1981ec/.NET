@@ -1,0 +1,110 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model IEnumerable<Domosti.CapaDatos.Modelos.Permiso>
+
+@{
+    ViewBag.Title = "Permisos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Permisos</h2>
+<p>
+    @Html.ActionLink("Acceso Manual", "AccesoManual")
+</p>
+@using (Html.BeginForm("Index", "Permiso", FormMethod.Post, new { name = "form", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <input type="text" name="busquedaIdentificacionVisitante" placeholder="ID Visitante" style="width:120px" value=@ViewData["BusquedaIdentificacionVisitante"] onkeydown="return CaracteresParaIdentificacion(event);" onpaste="return false" />
+        <input type="text" name="busquedaNombreVisitante" placeholder="Nombre Visitante" style="width:200px" value=@ViewData["BusquedaNombreVisitante"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <input type="text" name="busquedaIdentificacionResidente" placeholder="RUC" style="width:120px" value=@ViewData["BusquedaIdentificacionResidente"] onkeydown="return CaracteresParaIdentificacion(event);" onpaste="return false" />
+            <input type="text" name="busquedaNombreResidente" placeholder="Empresa" style="width:200px" value=@ViewData["BusquedaNombreResidente"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+        }
+        else
+        {
+            <input type="text" name="busquedaIdentificacionResidente" placeholder="ID Residente" style="width:120px" value=@ViewData["BusquedaIdentificacionResidente"] onkeydown="return CaracteresParaIdentificacion(event);" onpaste="return false" />
+            <input type="text" name="busquedaNombreResidente" placeholder="Nombre Residente" style="width:200px" value=@ViewData["BusquedaNombreResidente"] onkeydown="return SoloLetras(event);" onpaste="return false" />
+        }
+        <input type="submit" value="Buscar" class="btn btn-default" /> 
+    </div>
+}
+
+ <table class="table">
+    <tr>
+        <th>
+            ID Visitante
+        </th>
+        <th>
+            Nombre Visitante
+        </th>
+        <th>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("RUC")
+            }
+            else
+            {
+                @Html.DisplayName("ID Residente")
+            }
+        </th>
+        <th>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+            {
+                @Html.DisplayName("Empresa")
+            }
+            else
+            {
+                @Html.DisplayName("Nombre Residente")
+            }    
+        </th>
+        <th>
+            Fecha Inicial
+        </th>
+        <th>
+            Fecha Fin
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr @(item.Residente.PoseeDeudas ? "style=background:red" : "style=background:transparent")>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visitante.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visitante.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Residente.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Residente.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicialConHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFinConHora)
+            </td>
+            <td>
+                @Html.ActionLink("Ingreso Visitante", "Ingreso", new { id = item.IdPermiso })
+            </td>
+        </tr>
+    }
+</table>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+}

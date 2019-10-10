@@ -1,0 +1,125 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Vivienda
+
+@{
+    ViewBag.Title = "Eliminar ViviendaS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+{
+    <h3>¿Está seguro de eliminar la vivienda?</h3>
+}
+else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+{
+    <h3>¿Está seguro de eliminar el departamento?</h3>
+}
+else
+{
+    <h3>¿Está seguro de eliminar la oficina?</h3>
+}
+
+<div>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+    {
+        <h4>Vivienda</h4>
+    }
+    else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+    {
+        <h4>Departamento</h4>
+    }
+    else
+    {
+        <h4>Oficina</h4>
+    }
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.DisplayNameFor(model => model.Calle)
+            }
+            else
+            {
+                @Html.DisplayName("Detalle Adicional")
+            }
+            
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.DisplayNameFor(model => model.Manzana)
+            }
+            else
+            {
+                @Html.DisplayName("Piso")
+            }
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manzana)
+        </dd>
+
+        <dt>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "U")
+            {
+                @Html.DisplayNameFor(model => model.Villa)
+            }
+            else if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "C")
+            {
+                @Html.DisplayName("Piso")
+            }
+            else
+            {
+                @Html.DisplayName("Oficina")
+            }
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Villa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Vivienda", FormMethod.Post, new { name = "form", id = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.IdVivienda)
+        @Html.HiddenFor(model => model.IdCiudadela)
+        @Html.HiddenFor(model => model.EstaEliminada)
+        @Html.HiddenFor(model => model.Calle)
+        @Html.HiddenFor(model => model.Manzana)
+        @Html.HiddenFor(model => model.Telefono)
+        @Html.HiddenFor(model => model.Villa)
+        @Html.HiddenFor(model => model.UpdateToken)
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $('form').submit(function () {
+            $('input[type=submit][data-loading]').addClass('disabled');
+
+            if ($(this).data('submitted') == true) {
+                $('input[type=submit][data-loading]').attr('disabled', 'disabled');
+                return false;
+            }
+
+            $(this).data('submitted', true);
+        });
+    </script>
+}

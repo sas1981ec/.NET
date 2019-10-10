@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB35596C-0484-4F40-9972-D14FBB6E208B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domosti.CapaDatos</RootNamespace>
+    <AssemblyName>Domosti.CapaDatos.AccesoDatos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bases\Liberador.cs" />
+    <Compile Include="Implementaciones\AccesoDal.cs" />
+    <Compile Include="Implementaciones\DispositivosDal.cs" />
+    <Compile Include="Implementaciones\DrvDal.cs" />
+    <Compile Include="Implementaciones\ErrorDal.cs" />
+    <Compile Include="Implementaciones\MotivoAccesoDal.cs" />
+    <Compile Include="Implementaciones\NotificacionDal.cs" />
+    <Compile Include="Implementaciones\PermisoDal.cs" />
+    <Compile Include="Implementaciones\PermisoManualDal.cs" />
+    <Compile Include="Implementaciones\PersonaDal.cs" />
+    <Compile Include="Implementaciones\ResidenteDal.cs" />
+    <Compile Include="Implementaciones\UsuarioDal.cs" />
+    <Compile Include="Implementaciones\ViviendaDal.cs" />
+    <Compile Include="Interfaces\IAccesoDal.cs" />
+    <Compile Include="Interfaces\IDispositivoDal.cs" />
+    <Compile Include="Interfaces\IDrvDal.cs" />
+    <Compile Include="Interfaces\IErrorDal.cs" />
+    <Compile Include="Interfaces\IMotivoAccesoDal.cs" />
+    <Compile Include="Interfaces\INotificacionDal.cs" />
+    <Compile Include="Interfaces\IPermisoDal.cs" />
+    <Compile Include="Interfaces\IPermisoManualDal.cs" />
+    <Compile Include="Interfaces\IPersonaDal.cs" />
+    <Compile Include="Interfaces\IResidenteDal.cs" />
+    <Compile Include="Interfaces\IUsuarioDal.cs" />
+    <Compile Include="Interfaces\IViviendaDal.cs" />
+    <Compile Include="Modelos\Acceso.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\AuditoriaDrv.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\AuditoriaPermiso.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\CabeceraPermiso.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Ciudadela.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Dispositivo.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DispositivoResidenteVivienda.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Error.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\FotoResidente.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\ModeloDomosti.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDomosti.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\ModeloDomosti.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\ModeloDomosti.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDomosti.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\MotivoAcceso.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Notificacion.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Permiso.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\PermisoManual.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Persona.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Residente.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Usuario.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\UsuarioApp.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Visitante.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Vivienda.cs">
+      <DependentUpon>ModeloDomosti.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parciales\Acceso.Parcial.cs" />
+    <Compile Include="Parciales\Permiso.Parcial.cs" />
+    <Compile Include="Parciales\PermisoManual.Parcial.cs" />
+    <Compile Include="Parciales\Residente.Partial.cs" />
+    <Compile Include="Parciales\Visitante.Parcial.cs" />
+    <Compile Include="Parciales\Vivienda.Parcial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Modelos\ModeloDomosti.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloDomosti.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\ModeloDomosti.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloDomosti.Context.cs</LastGenOutput>
+      <DependentUpon>ModeloDomosti.edmx</DependentUpon>
+    </None>
+    <None Include="Modelos\ModeloDomosti.edmx.diagram">
+      <DependentUpon>ModeloDomosti.edmx</DependentUpon>
+    </None>
+    <None Include="Modelos\ModeloDomosti.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloDomosti.cs</LastGenOutput>
+      <DependentUpon>ModeloDomosti.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelos\ModeloDomosti.edmx.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

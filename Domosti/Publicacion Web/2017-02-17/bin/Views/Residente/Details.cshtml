@@ -1,0 +1,104 @@
+﻿@using Domosti.CapaPresentacion.Models
+@model Domosti.CapaDatos.Modelos.Residente
+
+@{
+    ViewBag.Title = "Detalle de Residente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+    {
+        <h4>Detalles de la Empresa</h4>
+    }
+    else
+    {
+        <h4>Detalles del Residente</h4>
+    }
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tipo ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificacion)
+        </dd>
+
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCompleto)
+        </dd>
+
+        @if (HttpContext.Current.User.Identity.IsAuthenticated && ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.TipoCiudadela == "E")
+        {
+            <dt>
+                Fecha Constitución
+            </dt>
+        }
+        else
+        {
+            <dt>
+                Fecha Nacimiento
+            </dt>
+        }
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        
+        <dt>
+            Posee Deudas
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoseeDeudas)
+        </dd>
+
+        <dt>
+            Puedo Usar APP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuedeUsarApp)
+        </dd>
+
+        <dt>
+            Esta Activo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstaActivo)
+        </dd>
+    </dl>
+</div>
+<div style="position: absolute;top:100px;left:600px;">
+    <div>
+        @{
+            var base64 = Convert.ToBase64String(@Model.FotoResidente.Foto);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        }
+        <img src='@imgSrc' style="max-width:250px; max-height:250px;" />
+    </div>
+</div>
+
+<p>
+    @if (((CustomPrincipal)HttpContext.Current.User).CustomIdentity.UserRoleId == 1)
+    {
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IdPersona })
+    }
+    |
+    @Html.ActionLink("Regresar", "Index")
+</p>

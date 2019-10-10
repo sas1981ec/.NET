@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+          type="Domosti.CapaServicios.Aspectos.Excepcion, Domosti.CapaServicios.ServiciosWCF_REST">
+  </object>
+
+  <object id="ErrorAdmin" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="Domosti.CapaNegocios.Implementaciones.ErrorBl,Domosti.CapaNegocios.Logica">
+        <constructor-arg ref="Repository"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="Repository" type="Domosti.CapaDatos.Implementaciones.ErrorDal,Domosti.CapaDatos.AccesoDatos"/>
+</objects>

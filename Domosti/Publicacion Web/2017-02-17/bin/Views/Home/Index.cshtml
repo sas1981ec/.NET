@@ -1,0 +1,12 @@
+﻿@using Domosti.CapaPresentacion.Models
+@{
+    ViewBag.Title = "DomOstium";
+}
+
+<div >
+    <h1>BIENVENIDO</h1>
+    @{
+        var ruta = string.Format("/Imagenes/{0}.jpg", ((CustomPrincipal)HttpContext.Current.User).CustomIdentity.CiudadelaId);
+        <img src= @ruta style="width:500px; height: 300px" />
+    }
+</div>
