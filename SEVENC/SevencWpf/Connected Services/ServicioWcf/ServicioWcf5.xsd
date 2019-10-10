@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SEVENC.Aplicacion.Aplicacion.Contratos.Modulo_Seguridad" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SEVENC.Aplicacion.Aplicacion.Contratos.Modulo_Seguridad" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SEVENC.Dominio.Entidades" />
+  <xs:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="LoginData">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SEVENC.Dominio.Entidades" minOccurs="0" name="EmpresaSeleccionada" nillable="true" type="q1:Empresa" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SEVENC.Dominio.Entidades" minOccurs="0" name="Empresas" nillable="true" type="q2:ArrayOfEmpresa" />
+      <xs:element minOccurs="0" name="FueOk" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdSesion" type="xs:long" />
+      <xs:element minOccurs="0" name="IdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreUsuario" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Operaciones" nillable="true" type="q3:ArrayOfKeyValueOfintboolean" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginData" nillable="true" type="tns:LoginData" />
+</xs:schema>

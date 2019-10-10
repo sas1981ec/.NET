@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{818AA272-4632-4B38-9453-A7F54522F819}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SevencWpf</RootNamespace>
+    <AssemblyName>SevencWpf</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClearUsernameBinding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Recursos\ClearUsernameBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InfraestructuraVM\DialogCloser.cs" />
+    <Compile Include="InfraestructuraVM\GestionAuditoria.cs" />
+    <Compile Include="InfraestructuraVM\RelayCommand.cs" />
+    <Compile Include="Modelos\Empresa.cs" />
+    <Compile Include="Modelos\Operacion.cs" />
+    <Compile Include="Modelos\Rol.cs" />
+    <Compile Include="Modelos\Sucursal.cs" />
+    <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaAsignacionOperacionesViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaAsignacionRolesViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaAsignacionSucursalesViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaAsignacionUsuariosViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaAutenticacionViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaEdicionEmpresaViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaEdicionRolViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaEdicionSucursalViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaEdicionUsuarioViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaOperacionViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaRolViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaSeleccionEmpresaViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaSucursalViewModel.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaUsuarioViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Modulo Seguridad\VistaEmpresaViewModel.cs" />
+    <Compile Include="ViewModels\VistaPrincipalViewModel.cs" />
+    <Compile Include="Views\Modulo Seguridad\VistaAsignacionOperaciones.xaml.cs">
+      <DependentUpon>VistaAsignacionOperaciones.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaAsignacionRoles.xaml.cs">
+      <DependentUpon>VistaAsignacionRoles.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaAsignacionSurcusales.xaml.cs">
+      <DependentUpon>VistaAsignacionSurcusales.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaAsignacionUsuarios.xaml.cs">
+      <DependentUpon>VistaAsignacionUsuarios.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaAutenticacion.xaml.cs">
+      <DependentUpon>VistaAutenticacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaEdicionEmpresa.xaml.cs">
+      <DependentUpon>VistaEdicionEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaEdicionRol.xaml.cs">
+      <DependentUpon>VistaEdicionRol.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaEdicionSucursal.xaml.cs">
+      <DependentUpon>VistaEdicionSucursal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaEdicionUsuario.xaml.cs">
+      <DependentUpon>VistaEdicionUsuario.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaEmpresa.xaml.cs">
+      <DependentUpon>VistaEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaOperacion.xaml.cs">
+      <DependentUpon>VistaOperacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaRol.xaml.cs">
+      <DependentUpon>VistaRol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaSeleccionEmpresa.xaml.cs">
+      <DependentUpon>VistaSeleccionEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaSucursal.xaml.cs">
+      <DependentUpon>VistaSucursal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulo Seguridad\VistaUsuario.xaml.cs">
+      <DependentUpon>VistaUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VentanaBase.cs" />
+    <Compile Include="Views\VistaPrincipal.xaml.cs">
+      <DependentUpon>VistaPrincipal.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\ServicioWcf\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf.wsdl" />
+    <None Include="Connected Services\ServicioWcf\ServicioWcf.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWcf\SevencWpf.ServicioWcf.Empresa.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServicioWcf\SevencWpf.ServicioWcf.LoginData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServicioWcf\SevencWpf.ServicioWcf.Operacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServicioWcf\SevencWpf.ServicioWcf.Rol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServicioWcf\SevencWpf.ServicioWcf.Sucursal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServicioWcf\SevencWpf.ServicioWcf.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServicioWcf\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioWcf\ServicioWcf.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioWcf\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioWcf\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServicioWcf\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Recursos\Estilos\EstilosGenerales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaAsignacionOperaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaAsignacionRoles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaAsignacionSurcusales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaAsignacionUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaAutenticacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaEdicionEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaEdicionRol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaEdicionSucursal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaEdicionUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaOperacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaRol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaSeleccionEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaSucursal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modulo Seguridad\VistaUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Empresa.jpg" />
+    <Resource Include="Recursos\Imagenes\Seguridad.png" />
+    <Resource Include="Recursos\Imagenes\Sucursal.jpg" />
+    <Resource Include="Recursos\Imagenes\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Add.png" />
+    <Resource Include="Recursos\Imagenes\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\disabled.png" />
+    <Resource Include="Recursos\Imagenes\enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Keychain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Rol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Operaciones.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Contrasena.png" />
+    <Resource Include="Recursos\Imagenes\Login.png" />
+    <Resource Include="Recursos\Imagenes\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\General\General.csproj">
+      <Project>{f1f072c3-d82a-451e-a5d1-594cc41ed734}</Project>
+      <Name>General</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

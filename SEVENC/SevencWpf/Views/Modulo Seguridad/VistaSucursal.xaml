@@ -1,0 +1,47 @@
+﻿<Page x:Class="SevencWpf.Views.Modulo_Seguridad.VistaSucursal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+	  Title="Sucursales" Loaded="PageLoaded">
+    <Grid>
+        <StackPanel Orientation="Vertical" Height="800" VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Background="Transparent" Width="Auto" Height="36" >
+                <Button Command="{Binding NuevaSucursal}" Height="30" VerticalAlignment="Center" Width="130" Margin="0" Visibility="{Binding EsVisibleCrearSucursal}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Add.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Nueva Sucursal" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding EditarSucursal}"  Height="30" Width="130" VerticalAlignment="Center" Margin="0" Visibility="{Binding EsVisibleActualizarSucursal}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Edit.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Editar Sucursal" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding EliminarSucursal}"  Height="30" Width="140" VerticalAlignment="Center" Margin="0" Visibility="{Binding EsVisibleActualizarSucursal}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Delete.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Eliminar Sucursal" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <StackPanel Height="700" Width="320" Margin="10,5,0,2" Orientation="Vertical">
+               <TextBlock Text ="Sucursales" Foreground="#FF00002F" FontSize="22"  HorizontalAlignment="Left" />
+                <ListBox ItemsSource="{Binding Sucursales}"
+                            ItemTemplate="{StaticResource SucursalViewTemplate}"
+                            Style="{StaticResource ListBoxStandardStyle}"
+                            SelectedItem="{Binding SucursalSeleccionada, Mode=TwoWay}" Height="660" Width="Auto" >
+                </ListBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

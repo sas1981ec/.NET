@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModeloDatos.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModeloDatosStoreContainer">
+    <EntitySet Name="Empresas" EntityType="ModeloDatos.Store.Empresas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sucursales" EntityType="ModeloDatos.Store.Sucursales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="ModeloDatos.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Errores" EntityType="ModeloDatos.Store.Errores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="ModeloDatos.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Operaciones" EntityType="ModeloDatos.Store.Operaciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SesionesUsuarios" EntityType="ModeloDatos.Store.SesionesUsuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Auditorias" EntityType="ModeloDatos.Store.Auditorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetallesAuditorias" EntityType="ModeloDatos.Store.DetallesAuditorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmpresaSucursal" EntityType="ModeloDatos.Store.EmpresaSucursal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmpresaUsuario" EntityType="ModeloDatos.Store.EmpresaUsuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuarioRol" EntityType="ModeloDatos.Store.UsuarioRol" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolOperacion" EntityType="ModeloDatos.Store.RolOperacion" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_EmpresaSucursal_Empresa" Association="ModeloDatos.Store.FK_EmpresaSucursal_Empresa">
+      <End Role="Empresa" EntitySet="Empresas" />
+      <End Role="EmpresaSucursal" EntitySet="EmpresaSucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpresaSucursal_Sucursal" Association="ModeloDatos.Store.FK_EmpresaSucursal_Sucursal">
+      <End Role="Sucursal" EntitySet="Sucursales" />
+      <End Role="EmpresaSucursal" EntitySet="EmpresaSucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpresaUsuario_Empresa" Association="ModeloDatos.Store.FK_EmpresaUsuario_Empresa">
+      <End Role="Empresa" EntitySet="Empresas" />
+      <End Role="EmpresaUsuario" EntitySet="EmpresaUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpresaUsuario_Usuario" Association="ModeloDatos.Store.FK_EmpresaUsuario_Usuario">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="EmpresaUsuario" EntitySet="EmpresaUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioRol_Usuario" Association="ModeloDatos.Store.FK_UsuarioRol_Usuario">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="UsuarioRol" EntitySet="UsuarioRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioRol_Rol" Association="ModeloDatos.Store.FK_UsuarioRol_Rol">
+      <End Role="Rol" EntitySet="Roles" />
+      <End Role="UsuarioRol" EntitySet="UsuarioRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolOperacion_Rol" Association="ModeloDatos.Store.FK_RolOperacion_Rol">
+      <End Role="Rol" EntitySet="Roles" />
+      <End Role="RolOperacion" EntitySet="RolOperacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolOperacion_Operacion" Association="ModeloDatos.Store.FK_RolOperacion_Operacion">
+      <End Role="Operacion" EntitySet="Operaciones" />
+      <End Role="RolOperacion" EntitySet="RolOperacion" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioSesionUsuario" Association="ModeloDatos.Store.UsuarioSesionUsuario">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="SesionUsuario" EntitySet="SesionesUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioAuditoria" Association="ModeloDatos.Store.UsuarioAuditoria">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Auditoria" EntitySet="Auditorias" />
+    </AssociationSet>
+    <AssociationSet Name="OperacionAuditoria" Association="ModeloDatos.Store.OperacionAuditoria">
+      <End Role="Operacion" EntitySet="Operaciones" />
+      <End Role="Auditoria" EntitySet="Auditorias" />
+    </AssociationSet>
+    <AssociationSet Name="AuditoriaDetalleAuditoria" Association="ModeloDatos.Store.AuditoriaDetalleAuditoria">
+      <End Role="Auditoria" EntitySet="Auditorias" />
+      <End Role="DetalleAuditoria" EntitySet="DetallesAuditorias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Empresas">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RazonSocial" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="NombreComercial" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="RUC" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="IdRepresentanteLegal" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="NombreRepresentanteLegal" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="EstaActiva" Type="bit" Nullable="false" />
+    <Property Name="EstaEliminada" Type="bit" Nullable="false" />
+    <Property Name="Concurrencia" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="Sucursales">
+    <Key>
+      <PropertyRef Name="IdSucursal" />
+    </Key>
+    <Property Name="IdSucursal" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="EstaActiva" Type="bit" Nullable="false" />
+    <Property Name="EstaEliminada" Type="bit" Nullable="false" />
+    <Property Name="Concurrencia" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
+    <Property Name="EsMatriz" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Apellidos" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Contrasena" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" Nullable="false" />
+    <Property Name="EstaActivo" Type="bit" Nullable="false" />
+    <Property Name="EstaBloqueado" Type="bit" Nullable="false" />
+    <Property Name="EstaEliminado" Type="bit" Nullable="false" />
+    <Property Name="EsSistema" Type="bit" Nullable="false" />
+    <Property Name="Concurrencia" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="Errores">
+    <Key>
+      <PropertyRef Name="IdError" />
+    </Key>
+    <Property Name="IdError" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="1" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Mensaje" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="Detalle" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="Descripcion" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="EstaActivo" Type="bit" Nullable="false" />
+    <Property Name="EsSistema" Type="bit" Nullable="false" />
+    <Property Name="Concurrencia" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
+    <Property Name="EstaEliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="EstaActiva" Type="bit" Nullable="false" />
+    <Property Name="EsAuditable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SesionesUsuarios">
+    <Key>
+      <PropertyRef Name="IdSesion" />
+    </Key>
+    <Property Name="IdSesion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFin" Type="datetime" Nullable="true" />
+    <Property Name="Ip" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Auditorias">
+    <Key>
+      <PropertyRef Name="IdAuditoria" />
+    </Key>
+    <Property Name="IdAuditoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdOperacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetallesAuditorias">
+    <Key>
+      <PropertyRef Name="IdDetalleAuditoria" />
+    </Key>
+    <Property Name="IdDetalleAuditoria" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entidad" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ClaveEntidad" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Campo" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ValorAntiguo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ValorNuevo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdAuditoria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpresaSucursal">
+    <Key>
+      <PropertyRef Name="Empresas_IdEmpresa" />
+      <PropertyRef Name="Sucursales_IdSucursal" />
+    </Key>
+    <Property Name="Empresas_IdEmpresa" Type="tinyint" Nullable="false" />
+    <Property Name="Sucursales_IdSucursal" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpresaUsuario">
+    <Key>
+      <PropertyRef Name="Empresas_IdEmpresa" />
+      <PropertyRef Name="Usuarios_IdUsuario" />
+    </Key>
+    <Property Name="Empresas_IdEmpresa" Type="tinyint" Nullable="false" />
+    <Property Name="Usuarios_IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioRol">
+    <Key>
+      <PropertyRef Name="Usuarios_IdUsuario" />
+      <PropertyRef Name="Roles_IdRol" />
+    </Key>
+    <Property Name="Usuarios_IdUsuario" Type="int" Nullable="false" />
+    <Property Name="Roles_IdRol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolOperacion">
+    <Key>
+      <PropertyRef Name="Roles_IdRol" />
+      <PropertyRef Name="Operaciones_IdOperacion" />
+    </Key>
+    <Property Name="Roles_IdRol" Type="int" Nullable="false" />
+    <Property Name="Operaciones_IdOperacion" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UsuarioSesionUsuario">
+    <End Role="Usuario" Type="ModeloDatos.Store.Usuarios" Multiplicity="1" />
+    <End Role="SesionUsuario" Type="ModeloDatos.Store.SesionesUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="SesionUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioAuditoria">
+    <End Role="Usuario" Type="ModeloDatos.Store.Usuarios" Multiplicity="1" />
+    <End Role="Auditoria" Type="ModeloDatos.Store.Auditorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Auditoria">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OperacionAuditoria">
+    <End Role="Operacion" Type="ModeloDatos.Store.Operaciones" Multiplicity="1" />
+    <End Role="Auditoria" Type="ModeloDatos.Store.Auditorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operacion">
+        <PropertyRef Name="IdOperacion" />
+      </Principal>
+      <Dependent Role="Auditoria">
+        <PropertyRef Name="IdOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AuditoriaDetalleAuditoria">
+    <End Role="Auditoria" Type="ModeloDatos.Store.Auditorias" Multiplicity="1" />
+    <End Role="DetalleAuditoria" Type="ModeloDatos.Store.DetallesAuditorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auditoria">
+        <PropertyRef Name="IdAuditoria" />
+      </Principal>
+      <Dependent Role="DetalleAuditoria">
+        <PropertyRef Name="IdAuditoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpresaSucursal_Empresa">
+    <End Role="Empresa" Type="ModeloDatos.Store.Empresas" Multiplicity="1" />
+    <End Role="EmpresaSucursal" Type="ModeloDatos.Store.EmpresaSucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="EmpresaSucursal">
+        <PropertyRef Name="Empresas_IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpresaSucursal_Sucursal">
+    <End Role="EmpresaSucursal" Type="ModeloDatos.Store.EmpresaSucursal" Multiplicity="*" />
+    <End Role="Sucursal" Type="ModeloDatos.Store.Sucursales" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="IdSucursal" />
+      </Principal>
+      <Dependent Role="EmpresaSucursal">
+        <PropertyRef Name="Sucursales_IdSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpresaUsuario_Empresa">
+    <End Role="Empresa" Type="ModeloDatos.Store.Empresas" Multiplicity="1" />
+    <End Role="EmpresaUsuario" Type="ModeloDatos.Store.EmpresaUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="EmpresaUsuario">
+        <PropertyRef Name="Empresas_IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpresaUsuario_Usuario">
+    <End Role="EmpresaUsuario" Type="ModeloDatos.Store.EmpresaUsuario" Multiplicity="*" />
+    <End Role="Usuario" Type="ModeloDatos.Store.Usuarios" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="EmpresaUsuario">
+        <PropertyRef Name="Usuarios_IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioRol_Usuario">
+    <End Role="Usuario" Type="ModeloDatos.Store.Usuarios" Multiplicity="1" />
+    <End Role="UsuarioRol" Type="ModeloDatos.Store.UsuarioRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="UsuarioRol">
+        <PropertyRef Name="Usuarios_IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioRol_Rol">
+    <End Role="UsuarioRol" Type="ModeloDatos.Store.UsuarioRol" Multiplicity="*" />
+    <End Role="Rol" Type="ModeloDatos.Store.Roles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="UsuarioRol">
+        <PropertyRef Name="Roles_IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolOperacion_Rol">
+    <End Role="Rol" Type="ModeloDatos.Store.Roles" Multiplicity="1" />
+    <End Role="RolOperacion" Type="ModeloDatos.Store.RolOperacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="RolOperacion">
+        <PropertyRef Name="Roles_IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolOperacion_Operacion">
+    <End Role="RolOperacion" Type="ModeloDatos.Store.RolOperacion" Multiplicity="*" />
+    <End Role="Operacion" Type="ModeloDatos.Store.Operaciones" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Operacion">
+        <PropertyRef Name="IdOperacion" />
+      </Principal>
+      <Dependent Role="RolOperacion">
+        <PropertyRef Name="Operaciones_IdOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModeloDatos" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModeloDatosContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empresas" EntityType="ModeloDatos.Empresa" />
+          <EntitySet Name="Sucursales" EntityType="ModeloDatos.Sucursal" />
+          <EntitySet Name="Usuarios" EntityType="ModeloDatos.Usuario" />
+          <AssociationSet Name="EmpresaSucursal" Association="ModeloDatos.EmpresaSucursal">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Sucursal" EntitySet="Sucursales" />
+          </AssociationSet>
+          <AssociationSet Name="EmpresaUsuario" Association="ModeloDatos.EmpresaUsuario">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Errores" EntityType="ModeloDatos.Error" />
+          <EntitySet Name="Roles" EntityType="ModeloDatos.Rol" />
+          <AssociationSet Name="UsuarioRol" Association="ModeloDatos.UsuarioRol">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Rol" EntitySet="Roles" />
+          </AssociationSet>
+          <EntitySet Name="Operaciones" EntityType="ModeloDatos.Operacion" />
+          <AssociationSet Name="RolOperacion" Association="ModeloDatos.RolOperacion">
+            <End Role="Rol" EntitySet="Roles" />
+            <End Role="Operacion" EntitySet="Operaciones" />
+          </AssociationSet>
+          <EntitySet Name="SesionesUsuarios" EntityType="ModeloDatos.SesionUsuario" />
+          <AssociationSet Name="UsuarioSesionUsuario" Association="ModeloDatos.UsuarioSesionUsuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="SesionUsuario" EntitySet="SesionesUsuarios" />
+          </AssociationSet>
+          <EntitySet Name="Auditorias" EntityType="ModeloDatos.Auditoria" />
+          <AssociationSet Name="UsuarioAuditoria" Association="ModeloDatos.UsuarioAuditoria">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Auditoria" EntitySet="Auditorias" />
+          </AssociationSet>
+          <AssociationSet Name="OperacionAuditoria" Association="ModeloDatos.OperacionAuditoria">
+            <End Role="Operacion" EntitySet="Operaciones" />
+            <End Role="Auditoria" EntitySet="Auditorias" />
+          </AssociationSet>
+          <EntitySet Name="DetallesAuditorias" EntityType="ModeloDatos.DetalleAuditoria" />
+          <AssociationSet Name="AuditoriaDetalleAuditoria" Association="ModeloDatos.AuditoriaDetalleAuditoria">
+            <End Role="Auditoria" EntitySet="Auditorias" />
+            <End Role="DetalleAuditoria" EntitySet="DetallesAuditorias" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" FixedLength="false" MaxLength="255" />
+          <Property Name="NombreComercial" Type="String" Nullable="false" FixedLength="false" MaxLength="150" />
+          <Property Name="RUC" Type="String" Nullable="false" FixedLength="false" MaxLength="13" />
+          <Property Name="IdRepresentanteLegal" Type="String" Nullable="false" FixedLength="false" MaxLength="13" />
+          <Property Name="NombreRepresentanteLegal" Type="String" Nullable="false" FixedLength="false" MaxLength="200" />
+          <Property Name="EstaActiva" Type="Boolean" Nullable="false" />
+          <Property Name="EstaEliminada" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sucursales" Relationship="ModeloDatos.EmpresaSucursal" FromRole="Empresa" ToRole="Sucursal" />
+          <NavigationProperty Name="Usuarios" Relationship="ModeloDatos.EmpresaUsuario" FromRole="Empresa" ToRole="Usuario" />
+          <Property Name="Concurrencia" Type="Binary" Nullable="false" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" FixedLength="true" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+          </Key>
+          <Property Name="IdSucursal" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" FixedLength="false" MaxLength="150" />
+          <Property Name="Direccion" Type="String" Nullable="false" FixedLength="false" MaxLength="512" />
+          <Property Name="EstaActiva" Type="Boolean" Nullable="false" />
+          <Property Name="EstaEliminada" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empresas" Relationship="ModeloDatos.EmpresaSucursal" FromRole="Sucursal" ToRole="Empresa" />
+          <Property Name="Concurrencia" Type="Binary" Nullable="false" annotation:StoreGeneratedPattern="Computed" FixedLength="true" ConcurrencyMode="Fixed" MaxLength="8" />
+          <Property Name="EsMatriz" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" Nullable="false" FixedLength="false" MaxLength="100" />
+          <Property Name="Apellidos" Type="String" Nullable="false" FixedLength="false" MaxLength="100" />
+          <Property Name="Email" Type="String" Nullable="false" FixedLength="false" MaxLength="100" />
+          <Property Name="UserName" Type="String" Nullable="false" FixedLength="false" MaxLength="20" />
+          <Property Name="Contrasena" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" />
+          <Property Name="Foto" Type="Binary" Nullable="false" MaxLength="Max" />
+          <Property Name="EstaActivo" Type="Boolean" Nullable="false" />
+          <Property Name="EstaBloqueado" Type="Boolean" Nullable="false" />
+          <Property Name="EstaEliminado" Type="Boolean" Nullable="false" />
+          <Property Name="EsSistema" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empresas" Relationship="ModeloDatos.EmpresaUsuario" FromRole="Usuario" ToRole="Empresa" />
+          <Property Name="Concurrencia" Type="Binary" Nullable="false" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" FixedLength="true" MaxLength="8" />
+          <NavigationProperty Name="Roles" Relationship="ModeloDatos.UsuarioRol" FromRole="Usuario" ToRole="Rol" />
+          <NavigationProperty Name="SesionesUsuarios" Relationship="ModeloDatos.UsuarioSesionUsuario" FromRole="Usuario" ToRole="SesionUsuario" />
+          <NavigationProperty Name="Auditorias" Relationship="ModeloDatos.UsuarioAuditoria" FromRole="Usuario" ToRole="Auditoria" />
+        </EntityType>
+        <Association Name="EmpresaSucursal">
+          <End Type="ModeloDatos.Empresa" Role="Empresa" Multiplicity="*" />
+          <End Type="ModeloDatos.Sucursal" Role="Sucursal" Multiplicity="*" />
+        </Association>
+        <Association Name="EmpresaUsuario">
+          <End Type="ModeloDatos.Empresa" Role="Empresa" Multiplicity="*" />
+          <End Type="ModeloDatos.Usuario" Role="Usuario" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="IdError" />
+          </Key>
+          <Property Name="IdError" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" Nullable="false" FixedLength="false" MaxLength="1" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Mensaje" Type="String" Nullable="false" FixedLength="false" MaxLength="512" />
+          <Property Name="Detalle" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" FixedLength="false" MaxLength="25" />
+          <Property Name="Descripcion" Type="String" Nullable="false" FixedLength="false" MaxLength="255" />
+          <Property Name="EstaActivo" Type="Boolean" Nullable="false" />
+          <Property Name="EsSistema" Type="Boolean" Nullable="false" />
+          <Property Name="Concurrencia" Type="Binary" Nullable="false" annotation:StoreGeneratedPattern="Computed" FixedLength="true" MaxLength="8" ConcurrencyMode="Fixed" />
+          <NavigationProperty Name="Usuarios" Relationship="ModeloDatos.UsuarioRol" FromRole="Rol" ToRole="Usuario" />
+          <Property Name="EstaEliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Operaciones" Relationship="ModeloDatos.RolOperacion" FromRole="Rol" ToRole="Operacion" />
+        </EntityType>
+        <Association Name="UsuarioRol">
+          <End Type="ModeloDatos.Usuario" Role="Usuario" Multiplicity="*" />
+          <End Type="ModeloDatos.Rol" Role="Rol" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Operacion">
+          <Key>
+            <PropertyRef Name="IdOperacion" />
+          </Key>
+          <Property Name="IdOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" FixedLength="false" MaxLength="30" />
+          <Property Name="EstaActiva" Type="Boolean" Nullable="false" />
+          <Property Name="EsAuditable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="ModeloDatos.RolOperacion" FromRole="Operacion" ToRole="Rol" />
+          <NavigationProperty Name="Auditorias" Relationship="ModeloDatos.OperacionAuditoria" FromRole="Operacion" ToRole="Auditoria" />
+        </EntityType>
+        <Association Name="RolOperacion">
+          <End Type="ModeloDatos.Rol" Role="Rol" Multiplicity="*" />
+          <End Type="ModeloDatos.Operacion" Role="Operacion" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SesionUsuario">
+          <Key>
+            <PropertyRef Name="IdSesion" />
+          </Key>
+          <Property Name="IdSesion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="true" />
+          <Property Name="Ip" Type="String" Nullable="false" FixedLength="false" MaxLength="20" />
+          <NavigationProperty Name="Usuario" Relationship="ModeloDatos.UsuarioSesionUsuario" FromRole="SesionUsuario" ToRole="Usuario" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UsuarioSesionUsuario">
+          <End Type="ModeloDatos.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="ModeloDatos.SesionUsuario" Role="SesionUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="SesionUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Auditoria">
+          <Key>
+            <PropertyRef Name="IdAuditoria" />
+          </Key>
+          <Property Name="IdAuditoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="ModeloDatos.UsuarioAuditoria" FromRole="Auditoria" ToRole="Usuario" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Operacion" Relationship="ModeloDatos.OperacionAuditoria" FromRole="Auditoria" ToRole="Operacion" />
+          <Property Name="IdOperacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetallesAuditorias" Relationship="ModeloDatos.AuditoriaDetalleAuditoria" FromRole="Auditoria" ToRole="DetalleAuditoria" />
+        </EntityType>
+        <Association Name="UsuarioAuditoria">
+          <End Type="ModeloDatos.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="ModeloDatos.Auditoria" Role="Auditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Auditoria">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperacionAuditoria">
+          <End Type="ModeloDatos.Operacion" Role="Operacion" Multiplicity="1" />
+          <End Type="ModeloDatos.Auditoria" Role="Auditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operacion">
+              <PropertyRef Name="IdOperacion" />
+            </Principal>
+            <Dependent Role="Auditoria">
+              <PropertyRef Name="IdOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetalleAuditoria">
+          <Key>
+            <PropertyRef Name="IdDetalleAuditoria" />
+          </Key>
+          <Property Name="IdDetalleAuditoria" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entidad" Type="String" Nullable="false" FixedLength="false" MaxLength="50" />
+          <Property Name="ClaveEntidad" Type="String" Nullable="false" FixedLength="false" MaxLength="30" />
+          <Property Name="Campo" Type="String" Nullable="false" FixedLength="false" MaxLength="30" />
+          <Property Name="ValorAntiguo" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" />
+          <Property Name="ValorNuevo" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" />
+          <NavigationProperty Name="Auditoria" Relationship="ModeloDatos.AuditoriaDetalleAuditoria" FromRole="DetalleAuditoria" ToRole="Auditoria" />
+          <Property Name="IdAuditoria" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AuditoriaDetalleAuditoria">
+          <End Type="ModeloDatos.Auditoria" Role="Auditoria" Multiplicity="1" />
+          <End Type="ModeloDatos.DetalleAuditoria" Role="DetalleAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditoria">
+              <PropertyRef Name="IdAuditoria" />
+            </Principal>
+            <Dependent Role="DetalleAuditoria">
+              <PropertyRef Name="IdAuditoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloDatosStoreContainer" CdmEntityContainer="ModeloDatosContainer">
+    <EntitySetMapping Name="Empresas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Empresa)">
+        <MappingFragment StoreEntitySet="Empresas">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="IdRepresentanteLegal" ColumnName="IdRepresentanteLegal" />
+          <ScalarProperty Name="NombreRepresentanteLegal" ColumnName="NombreRepresentanteLegal" />
+          <ScalarProperty Name="EstaActiva" ColumnName="EstaActiva" />
+          <ScalarProperty Name="EstaEliminada" ColumnName="EstaEliminada" />
+          <ScalarProperty Name="Concurrencia" ColumnName="Concurrencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursales">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Sucursal)">
+        <MappingFragment StoreEntitySet="Sucursales">
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="EstaActiva" ColumnName="EstaActiva" />
+          <ScalarProperty Name="EstaEliminada" ColumnName="EstaEliminada" />
+          <ScalarProperty Name="Concurrencia" ColumnName="Concurrencia" />
+          <ScalarProperty Name="EsMatriz" ColumnName="EsMatriz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="EstaActivo" ColumnName="EstaActivo" />
+          <ScalarProperty Name="EstaBloqueado" ColumnName="EstaBloqueado" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
+          <ScalarProperty Name="EsSistema" ColumnName="EsSistema" />
+          <ScalarProperty Name="Concurrencia" ColumnName="Concurrencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Errores">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Error)">
+        <MappingFragment StoreEntitySet="Errores">
+          <ScalarProperty Name="IdError" ColumnName="IdError" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Rol)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EstaActivo" ColumnName="EstaActivo" />
+          <ScalarProperty Name="EsSistema" ColumnName="EsSistema" />
+          <ScalarProperty Name="Concurrencia" ColumnName="Concurrencia" />
+          <ScalarProperty Name="EstaEliminado" ColumnName="EstaEliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operaciones">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Operacion)">
+        <MappingFragment StoreEntitySet="Operaciones">
+          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="EstaActiva" ColumnName="EstaActiva" />
+          <ScalarProperty Name="EsAuditable" ColumnName="EsAuditable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SesionesUsuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.SesionUsuario)">
+        <MappingFragment StoreEntitySet="SesionesUsuarios">
+          <ScalarProperty Name="IdSesion" ColumnName="IdSesion" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Auditorias">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.Auditoria)">
+        <MappingFragment StoreEntitySet="Auditorias">
+          <ScalarProperty Name="IdAuditoria" ColumnName="IdAuditoria" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetallesAuditorias">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloDatos.DetalleAuditoria)">
+        <MappingFragment StoreEntitySet="DetallesAuditorias">
+          <ScalarProperty Name="IdDetalleAuditoria" ColumnName="IdDetalleAuditoria" />
+          <ScalarProperty Name="Entidad" ColumnName="Entidad" />
+          <ScalarProperty Name="ClaveEntidad" ColumnName="ClaveEntidad" />
+          <ScalarProperty Name="Campo" ColumnName="Campo" />
+          <ScalarProperty Name="ValorAntiguo" ColumnName="ValorAntiguo" />
+          <ScalarProperty Name="ValorNuevo" ColumnName="ValorNuevo" />
+          <ScalarProperty Name="IdAuditoria" ColumnName="IdAuditoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EmpresaSucursal" TypeName="ModeloDatos.EmpresaSucursal" StoreEntitySet="EmpresaSucursal">
+      <EndProperty Name="Empresa">
+        <ScalarProperty Name="IdEmpresa" ColumnName="Empresas_IdEmpresa" />
+      </EndProperty>
+      <EndProperty Name="Sucursal">
+        <ScalarProperty Name="IdSucursal" ColumnName="Sucursales_IdSucursal" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmpresaUsuario" TypeName="ModeloDatos.EmpresaUsuario" StoreEntitySet="EmpresaUsuario">
+      <EndProperty Name="Empresa">
+        <ScalarProperty Name="IdEmpresa" ColumnName="Empresas_IdEmpresa" />
+      </EndProperty>
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="IdUsuario" ColumnName="Usuarios_IdUsuario" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UsuarioRol" TypeName="ModeloDatos.UsuarioRol" StoreEntitySet="UsuarioRol">
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="IdUsuario" ColumnName="Usuarios_IdUsuario" />
+      </EndProperty>
+      <EndProperty Name="Rol">
+        <ScalarProperty Name="IdRol" ColumnName="Roles_IdRol" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RolOperacion" TypeName="ModeloDatos.RolOperacion" StoreEntitySet="RolOperacion">
+      <EndProperty Name="Rol">
+        <ScalarProperty Name="IdRol" ColumnName="Roles_IdRol" />
+      </EndProperty>
+      <EndProperty Name="Operacion">
+        <ScalarProperty Name="IdOperacion" ColumnName="Operaciones_IdOperacion" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

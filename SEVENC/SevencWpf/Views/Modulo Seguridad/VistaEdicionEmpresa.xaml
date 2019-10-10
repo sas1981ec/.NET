@@ -1,0 +1,44 @@
+﻿<my:VentanaBase 
+        xmlns:my="clr-namespace:SevencWpf.Views"
+        x:Class="SevencWpf.Views.Modulo_Seguridad.VistaEdicionEmpresa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xc="clr-namespace:SevencWpf.InfraestructuraVM"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding Titulo}" Height="300" Width="420">
+    <Grid>
+        <StackPanel Margin="3,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Razon Social:" VerticalAlignment="Center" Width="160"/>
+                <TextBox Text="{Binding Empresa.RazonSocial,Mode=TwoWay}" Height="25" Width="200" Margin="20,0,0,0" MaxLength="255" TabIndex="0" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Nombre Comercial:" VerticalAlignment="Center" Width="160"/>
+                <TextBox Text="{Binding Empresa.NombreComercial,Mode=TwoWay}" Height="25" Width="200" Margin="20,0,0,0" MaxLength="150" TabIndex="1" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="RUC:" VerticalAlignment="Center" Width="160"/>
+                <TextBox Text="{Binding Empresa.RUC,Mode=TwoWay}" Height="25" Width="200" Margin="20,0,0,0" MaxLength="13" TabIndex="2" GotFocus="TextBoxGotFocus" KeyDown="SoloNumeros"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="IdRepresentanteLegal:" VerticalAlignment="Center" Width="160"/>
+                <TextBox Text="{Binding Empresa.IdRepresentanteLegal,Mode=TwoWay}" Height="25" Width="200" Margin="20,0,0,0" MaxLength="13" TabIndex="3" GotFocus="TextBoxGotFocus" KeyDown="SoloNumeros"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Nombre Representante Legal :" VerticalAlignment="Center" Width="160"/>
+                <TextBox Text="{Binding Empresa.NombreRepresentanteLegal,Mode=TwoWay}" Height="25" Width="200" Margin="20,0,0,0" MaxLength="200" TabIndex="4" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <CheckBox TabIndex="5" IsChecked="{Binding Empresa.EstaActiva,Mode=TwoWay}" Content="Activa" FlowDirection="RightToLeft" Margin="180,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <Button TabIndex="6" Content="Grabar" Height="25" Width="70" Command="{Binding ComandoGrabar}" Margin="225,0,0,0"/>
+                <Button TabIndex="7" Content="Cancelar" Height="25" Width="70" Command="{Binding ComandoCancelar}" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</my:VentanaBase>

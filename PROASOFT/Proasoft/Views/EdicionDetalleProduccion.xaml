@@ -1,0 +1,33 @@
+﻿<my:VentanaBase 
+        xmlns:my="clr-namespace:Proasoft.Views"
+        x:Class="Proasoft.Views.EdicionDetalleProduccion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xc="clr-namespace:Proasoft.InfraestructuraVM"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding Titulo}" Height="200" Width="300">
+    <Grid>
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Empleado:" VerticalAlignment="Center"/>
+                <ComboBox TabIndex="0" ItemsSource="{Binding Empleados}" SelectedItem="{Binding EmpleadoSeleccionado, Mode=TwoWay}" Height="25" Width="185" Margin="21,0,0,0" DisplayMemberPath="NombreCompleto" IsEnabled="{Binding EsNuevo}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Producto:" VerticalAlignment="Center"/>
+                <ComboBox TabIndex="1" ItemsSource="{Binding Productos}" SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}" Height="25" Width="185" Margin="25,0,0,0" DisplayMemberPath="NOMBRE" IsEnabled="{Binding EsNuevo}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Cantidad:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="2" Text="{Binding DetalleProduccion.CANTIDAD,Mode=TwoWay}" Height="25" Width="185" Margin="25,0,0,0" MaxLength="25" GotFocus="TextBoxGotFocus" KeyDown="SoloNumeros"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <Button TabIndex="3" Content="Grabar" Height="25" Width="70" Command="{Binding ComandoGrabar}" Margin="15,0,0,0"/>
+                <Button TabIndex="4" Content="Cancelar" Height="25" Width="70" Command="{Binding ComandoCancelar}" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</my:VentanaBase>

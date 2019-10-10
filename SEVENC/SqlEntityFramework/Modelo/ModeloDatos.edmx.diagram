@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="206a123cc8f0493fab8ccefc432a6755" Name="Diagram1" >
+        <EntityTypeShape EntityType="ModeloDatos.Empresa" Width="2.125" PointX="2.25" PointY="1.125" />
+        <EntityTypeShape EntityType="ModeloDatos.Sucursal" Width="1.5" PointX="6.125" PointY="1.125" />
+        <EntityTypeShape EntityType="ModeloDatos.Usuario" Width="1.5" PointX="2.75" PointY="4.75" />
+        <AssociationConnector Association="ModeloDatos.EmpresaSucursal" />
+        <AssociationConnector Association="ModeloDatos.EmpresaUsuario" />
+        <EntityTypeShape EntityType="ModeloDatos.Error" Width="1.5" PointX="11.25" PointY="4.375" />
+        <EntityTypeShape EntityType="ModeloDatos.Rol" Width="1.5" PointX="5.875" PointY="5" />
+        <AssociationConnector Association="ModeloDatos.UsuarioRol" />
+        <EntityTypeShape EntityType="ModeloDatos.Operacion" Width="1.5" PointX="8.75" PointY="5" />
+        <AssociationConnector Association="ModeloDatos.RolOperacion" />
+        <EntityTypeShape EntityType="ModeloDatos.SesionUsuario" Width="1.5" PointX="2.75" PointY="9.625" />
+        <AssociationConnector Association="ModeloDatos.UsuarioSesionUsuario" />
+        <EntityTypeShape EntityType="ModeloDatos.Auditoria" Width="1.5" PointX="5.625" PointY="9" />
+        <AssociationConnector Association="ModeloDatos.UsuarioAuditoria" />
+        <AssociationConnector Association="ModeloDatos.OperacionAuditoria" />
+        <EntityTypeShape EntityType="ModeloDatos.DetalleAuditoria" Width="1.75" PointX="5.375" PointY="12" />
+        <AssociationConnector Association="ModeloDatos.AuditoriaDetalleAuditoria" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

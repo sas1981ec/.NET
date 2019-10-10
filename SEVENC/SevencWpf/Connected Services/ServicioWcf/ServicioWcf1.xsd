@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/SEVENC.Dominio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SEVENC.Dominio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Empresa" nillable="true" type="tns:Empresa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpresa" nillable="true" type="tns:ArrayOfEmpresa" />
+  <xs:complexType name="Empresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Concurrencia" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="EstaActiva" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaEliminada" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdEmpresa" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IdRepresentanteLegal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreComercial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreRepresentanteLegal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RUC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sucursales" nillable="true" type="tns:ArrayOfSucursal" />
+      <xs:element minOccurs="0" name="Usuarios" nillable="true" type="tns:ArrayOfUsuario" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Empresa" nillable="true" type="tns:Empresa" />
+  <xs:complexType name="ArrayOfSucursal">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sucursal" nillable="true" type="tns:Sucursal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSucursal" nillable="true" type="tns:ArrayOfSucursal" />
+  <xs:complexType name="Sucursal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Concurrencia" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Empresas" nillable="true" type="tns:ArrayOfEmpresa" />
+      <xs:element minOccurs="0" name="EsMatriz" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaActiva" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaEliminada" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdSucursal" type="xs:short" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Sucursal" nillable="true" type="tns:Sucursal" />
+  <xs:complexType name="ArrayOfUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Usuario" nillable="true" type="tns:Usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUsuario" nillable="true" type="tns:ArrayOfUsuario" />
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apellidos" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Auditorias" nillable="true" type="tns:ArrayOfAuditoria" />
+      <xs:element minOccurs="0" name="Concurrencia" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Contrasena" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Empresas" nillable="true" type="tns:ArrayOfEmpresa" />
+      <xs:element minOccurs="0" name="EsSistema" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaBloqueado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="IdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombres" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Roles" nillable="true" type="tns:ArrayOfRol" />
+      <xs:element minOccurs="0" name="SesionesUsuarios" nillable="true" type="tns:ArrayOfSesionUsuario" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="ArrayOfAuditoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Auditoria" nillable="true" type="tns:Auditoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuditoria" nillable="true" type="tns:ArrayOfAuditoria" />
+  <xs:complexType name="Auditoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DetallesAuditorias" nillable="true" type="tns:ArrayOfDetalleAuditoria" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdAuditoria" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOperacion" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUsuario" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Auditoria" nillable="true" type="tns:Auditoria" />
+  <xs:complexType name="ArrayOfDetalleAuditoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetalleAuditoria" nillable="true" type="tns:DetalleAuditoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetalleAuditoria" nillable="true" type="tns:ArrayOfDetalleAuditoria" />
+  <xs:complexType name="DetalleAuditoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Campo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaveEntidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Entidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdAuditoria" type="xs:int" />
+      <xs:element minOccurs="0" name="IdDetalleAuditoria" type="xs:long" />
+      <xs:element minOccurs="0" name="ValorAntiguo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValorNuevo" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="DetalleAuditoria" nillable="true" type="tns:DetalleAuditoria" />
+  <xs:complexType name="ArrayOfRol">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rol" nillable="true" type="tns:Rol" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRol" nillable="true" type="tns:ArrayOfRol" />
+  <xs:complexType name="Rol">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Concurrencia" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsSistema" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaActivo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaEliminado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdRol" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operaciones" nillable="true" type="tns:ArrayOfOperacion" />
+      <xs:element minOccurs="0" name="Usuarios" nillable="true" type="tns:ArrayOfUsuario" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Rol" nillable="true" type="tns:Rol" />
+  <xs:complexType name="ArrayOfOperacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Operacion" nillable="true" type="tns:Operacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperacion" nillable="true" type="tns:ArrayOfOperacion" />
+  <xs:complexType name="Operacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Auditorias" nillable="true" type="tns:ArrayOfAuditoria" />
+      <xs:element minOccurs="0" name="EsAuditable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EstaActiva" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdOperacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Roles" nillable="true" type="tns:ArrayOfRol" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Operacion" nillable="true" type="tns:Operacion" />
+  <xs:complexType name="ArrayOfSesionUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SesionUsuario" nillable="true" type="tns:SesionUsuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSesionUsuario" nillable="true" type="tns:ArrayOfSesionUsuario" />
+  <xs:complexType name="SesionUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdSesion" type="xs:long" />
+      <xs:element minOccurs="0" name="IdUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Ip" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="SesionUsuario" nillable="true" type="tns:SesionUsuario" />
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Detalle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdError" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Error" nillable="true" type="tns:Error" />
+</xs:schema>

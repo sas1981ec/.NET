@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{744B68DE-57C3-4722-A105-7B785BA49C24}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PROASOFT.CapaDominio.Dominio</RootNamespace>
+    <AssemblyName>PROASOFT.CapaDominio.Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Filtros\ExpressionBuilder.cs" />
+    <Compile Include="Filtros\FiltroAnd.cs" />
+    <Compile Include="Filtros\FiltroCompuesto.cs" />
+    <Compile Include="Filtros\FiltroDirecto.cs" />
+    <Compile Include="Filtros\FiltroNot.cs" />
+    <Compile Include="Filtros\FiltroOr.cs" />
+    <Compile Include="Filtros\Filtros.cs" />
+    <Compile Include="Filtros\IFiltros.cs" />
+    <Compile Include="Filtros\ParameterRebinder.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioEmpleado.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorio.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioCompra.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioDetalleCompra.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioDetalleProduccion.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioItem.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioMedida.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioProduccion.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioProveedor.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioReceta.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioStockProduccion.cs" />
+    <Compile Include="InterfacesRepositorios\IRepositorioUsuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{e98c1ae5-0522-4d2a-9b85-217c35c8bdfd}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

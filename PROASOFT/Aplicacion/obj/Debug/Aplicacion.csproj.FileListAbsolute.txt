@@ -1,0 +1,11 @@
+C:\Proyectos\PROASOFT\Aplicacion\bin\Debug\PROASOFT.CapaAplicacion.Aplicacion.dll
+C:\Proyectos\PROASOFT\Aplicacion\bin\Debug\PROASOFT.CapaAplicacion.Aplicacion.pdb
+C:\Proyectos\PROASOFT\Aplicacion\bin\Debug\PROASOFT.CapaAplicacion.Aplicacion.dll.CodeAnalysisLog.xml
+C:\Proyectos\PROASOFT\Aplicacion\bin\Debug\PROASOFT.CapaAplicacion.Aplicacion.dll.lastcodeanalysissucceeded
+C:\Proyectos\PROASOFT\Aplicacion\bin\Debug\PROASOFT.CapaDominio.Entidades.dll
+C:\Proyectos\PROASOFT\Aplicacion\bin\Debug\PROASOFT.CapaDominio.Entidades.pdb
+C:\Proyectos\PROASOFT\Aplicacion\obj\Debug\Aplicacion.csprojAssemblyReference.cache
+C:\Proyectos\PROASOFT\Aplicacion\obj\Debug\Aplicacion.csproj.CoreCompileInputs.cache
+C:\Proyectos\PROASOFT\Aplicacion\obj\Debug\Aplicacion.csproj.CopyComplete
+C:\Proyectos\PROASOFT\Aplicacion\obj\Debug\PROASOFT.CapaAplicacion.Aplicacion.dll
+C:\Proyectos\PROASOFT\Aplicacion\obj\Debug\PROASOFT.CapaAplicacion.Aplicacion.pdb

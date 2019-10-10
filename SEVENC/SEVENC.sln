@@ -1,0 +1,155 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Capa Presentación", "1. Capa Presentación", "{F8F42C74-BF59-4740-8207-9D0AC1D7DF02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Capa Servicios Distribuidos", "2. Capa Servicios Distribuidos", "{91D16EEE-5639-4C85-A3A8-325EDD436003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Capa Aplicación", "3. Capa Aplicación", "{4FC94175-FEA7-4FD8-AA9F-2A8708F0F696}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Capa Dominio", "4. Capa Dominio", "{EAC0E733-EADC-4028-A508-A02C735E02B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Capa Infraestructura", "5. Capa Infraestructura", "{E864C24C-B00C-4B73-8607-18D35AA3A142}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlEntityFramework", "SqlEntityFramework\SqlEntityFramework.csproj", "{013BECF1-6923-4BEF-A7C2-F51226661CC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{9E6C5B81-8085-4066-8C27-C39E207DF2AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{94DB37E2-EFEB-4B8C-A524-722D65E7AB69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsInfraestructura", "TestsInfraestructura\TestsInfraestructura.csproj", "{273E851B-291C-422F-B5DE-CFBDDD43AC0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Aplicacion.csproj", "{013F94AF-C0FA-46C8-B47E-6FE490460799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosDominio", "ServiciosDominio\ServiciosDominio.csproj", "{EF786F82-BC41-4CA4-A8A2-B8BDCDDD0600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsDominio", "TestsDominio\TestsDominio.csproj", "{A53AE448-98B6-4997-A5F4-144CCA257029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{2D1BDF59-47AF-49B2-9678-0F8A93146CD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Recursos", "6. Recursos", "{24CB0BFF-C10E-48AC-A532-D4A8FF2538AF}"
+	ProjectSection(SolutionItems) = preProject
+		Recursos\ClearUsernameBinding.dll = Recursos\ClearUsernameBinding.dll
+		Recursos\Common.Logging.dll = Recursos\Common.Logging.dll
+		Recursos\Spring.Aop.dll = Recursos\Spring.Aop.dll
+		Recursos\Spring.Core.dll = Recursos\Spring.Core.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevencWpf", "SevencWpf\SevencWpf.csproj", "{818AA272-4632-4B38-9453-A7F54522F819}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D1BDF59-47AF-49B2-9678-0F8A93146CD5} = {2D1BDF59-47AF-49B2-9678-0F8A93146CD5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General", "General\General.csproj", "{F1F072C3-D82A-451E-A5D1-594CC41ED734}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{013BECF1-6923-4BEF-A7C2-F51226661CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013BECF1-6923-4BEF-A7C2-F51226661CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013BECF1-6923-4BEF-A7C2-F51226661CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013BECF1-6923-4BEF-A7C2-F51226661CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6C5B81-8085-4066-8C27-C39E207DF2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6C5B81-8085-4066-8C27-C39E207DF2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6C5B81-8085-4066-8C27-C39E207DF2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6C5B81-8085-4066-8C27-C39E207DF2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94DB37E2-EFEB-4B8C-A524-722D65E7AB69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94DB37E2-EFEB-4B8C-A524-722D65E7AB69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94DB37E2-EFEB-4B8C-A524-722D65E7AB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94DB37E2-EFEB-4B8C-A524-722D65E7AB69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273E851B-291C-422F-B5DE-CFBDDD43AC0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273E851B-291C-422F-B5DE-CFBDDD43AC0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273E851B-291C-422F-B5DE-CFBDDD43AC0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273E851B-291C-422F-B5DE-CFBDDD43AC0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013F94AF-C0FA-46C8-B47E-6FE490460799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013F94AF-C0FA-46C8-B47E-6FE490460799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013F94AF-C0FA-46C8-B47E-6FE490460799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013F94AF-C0FA-46C8-B47E-6FE490460799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF786F82-BC41-4CA4-A8A2-B8BDCDDD0600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF786F82-BC41-4CA4-A8A2-B8BDCDDD0600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF786F82-BC41-4CA4-A8A2-B8BDCDDD0600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF786F82-BC41-4CA4-A8A2-B8BDCDDD0600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A53AE448-98B6-4997-A5F4-144CCA257029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A53AE448-98B6-4997-A5F4-144CCA257029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A53AE448-98B6-4997-A5F4-144CCA257029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A53AE448-98B6-4997-A5F4-144CCA257029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D1BDF59-47AF-49B2-9678-0F8A93146CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1BDF59-47AF-49B2-9678-0F8A93146CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1BDF59-47AF-49B2-9678-0F8A93146CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1BDF59-47AF-49B2-9678-0F8A93146CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{818AA272-4632-4B38-9453-A7F54522F819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818AA272-4632-4B38-9453-A7F54522F819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{818AA272-4632-4B38-9453-A7F54522F819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{818AA272-4632-4B38-9453-A7F54522F819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F072C3-D82A-451E-A5D1-594CC41ED734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F072C3-D82A-451E-A5D1-594CC41ED734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F072C3-D82A-451E-A5D1-594CC41ED734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F072C3-D82A-451E-A5D1-594CC41ED734}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{013BECF1-6923-4BEF-A7C2-F51226661CC6} = {E864C24C-B00C-4B73-8607-18D35AA3A142}
+		{9E6C5B81-8085-4066-8C27-C39E207DF2AF} = {EAC0E733-EADC-4028-A508-A02C735E02B8}
+		{94DB37E2-EFEB-4B8C-A524-722D65E7AB69} = {EAC0E733-EADC-4028-A508-A02C735E02B8}
+		{273E851B-291C-422F-B5DE-CFBDDD43AC0D} = {E864C24C-B00C-4B73-8607-18D35AA3A142}
+		{013F94AF-C0FA-46C8-B47E-6FE490460799} = {4FC94175-FEA7-4FD8-AA9F-2A8708F0F696}
+		{EF786F82-BC41-4CA4-A8A2-B8BDCDDD0600} = {EAC0E733-EADC-4028-A508-A02C735E02B8}
+		{A53AE448-98B6-4997-A5F4-144CCA257029} = {EAC0E733-EADC-4028-A508-A02C735E02B8}
+		{2D1BDF59-47AF-49B2-9678-0F8A93146CD5} = {91D16EEE-5639-4C85-A3A8-325EDD436003}
+		{818AA272-4632-4B38-9453-A7F54522F819} = {F8F42C74-BF59-4740-8207-9D0AC1D7DF02}
+		{F1F072C3-D82A-451E-A5D1-594CC41ED734} = {EAC0E733-EADC-4028-A508-A02C735E02B8}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://stalinalvaradosanchez.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Aplicacion\\Aplicacion.csproj
+		SccProjectTopLevelParentUniqueName1 = SEVENC.sln
+		SccProjectName1 = Aplicacion
+		SccLocalPath1 = Aplicacion
+		SccProjectUniqueName2 = Dominio\\Dominio.csproj
+		SccProjectTopLevelParentUniqueName2 = SEVENC.sln
+		SccProjectName2 = Dominio
+		SccLocalPath2 = Dominio
+		SccProjectUniqueName3 = Entidades\\Entidades.csproj
+		SccProjectTopLevelParentUniqueName3 = SEVENC.sln
+		SccProjectName3 = Entidades
+		SccLocalPath3 = Entidades
+		SccProjectUniqueName4 = Servicios\\Servicios.csproj
+		SccProjectTopLevelParentUniqueName4 = SEVENC.sln
+		SccProjectName4 = Servicios
+		SccLocalPath4 = Servicios
+		SccProjectUniqueName5 = ServiciosDominio\\ServiciosDominio.csproj
+		SccProjectTopLevelParentUniqueName5 = SEVENC.sln
+		SccProjectName5 = ServiciosDominio
+		SccLocalPath5 = ServiciosDominio
+		SccProjectUniqueName6 = SevencWpf\\SevencWpf.csproj
+		SccProjectTopLevelParentUniqueName6 = SEVENC.sln
+		SccProjectName6 = SevencWpf
+		SccLocalPath6 = SevencWpf
+		SccProjectUniqueName7 = SqlEntityFramework\\SqlEntityFramework.csproj
+		SccProjectTopLevelParentUniqueName7 = SEVENC.sln
+		SccProjectName7 = SqlEntityFramework
+		SccLocalPath7 = SqlEntityFramework
+		SccProjectUniqueName8 = TestsDominio\\TestsDominio.csproj
+		SccProjectTopLevelParentUniqueName8 = SEVENC.sln
+		SccProjectName8 = TestsDominio
+		SccLocalPath8 = TestsDominio
+		SccProjectUniqueName9 = TestsInfraestructura\\TestsInfraestructura.csproj
+		SccProjectTopLevelParentUniqueName9 = SEVENC.sln
+		SccProjectName9 = TestsInfraestructura
+		SccLocalPath9 = TestsInfraestructura
+		SccProjectUniqueName10 = General\\General.csproj
+		SccProjectTopLevelParentUniqueName10 = SEVENC.sln
+		SccProjectName10 = General
+		SccLocalPath10 = General
+	EndGlobalSection
+EndGlobal

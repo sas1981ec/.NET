@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloProasoftStoreContainer" CdmEntityContainer="ModeloProasoftContainer">
+    <EntitySetMapping Name="ITEMS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.ITEM)">
+        <MappingFragment StoreEntitySet="ITEMS">
+          <ScalarProperty Name="ID_ITEM" ColumnName="ID_ITEM" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ESTA_ACTIVO" ColumnName="ESTA_ACTIVO" />
+          <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+          <ScalarProperty Name="COSTO_POR_KILOGRAMO" ColumnName="COSTO_POR_KILOGRAMO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRAS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.COMPRA)">
+        <MappingFragment StoreEntitySet="COMPRAS">
+          <ScalarProperty Name="ID_COMPRA" ColumnName="ID_COMPRA" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ESTA_CONFIRMADA" ColumnName="ESTA_CONFIRMADA" />
+          <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLES_COMPRAS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.DETALLE_COMPRA)">
+        <MappingFragment StoreEntitySet="DETALLES_COMPRAS">
+          <ScalarProperty Name="ID_DETALLE" ColumnName="ID_DETALLE" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="ID_ITEM" ColumnName="ID_ITEM" />
+          <ScalarProperty Name="ID_COMPRA" ColumnName="ID_COMPRA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECETAS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.RECETA)">
+        <MappingFragment StoreEntitySet="RECETAS">
+          <ScalarProperty Name="ID_RECETA" ColumnName="ID_RECETA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ESTA_ACTIVA" ColumnName="ESTA_ACTIVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLES_RECETAS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.DETALLE_RECETA)">
+        <MappingFragment StoreEntitySet="DETALLES_RECETAS">
+          <ScalarProperty Name="ID_DETALLE_RECETA" ColumnName="ID_DETALLE_RECETA" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ID_RECETA" ColumnName="ID_RECETA" />
+          <ScalarProperty Name="ID_ITEM" ColumnName="ID_ITEM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.USUARIO)">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+          <ScalarProperty Name="ESTA_ACTIVO" ColumnName="ESTA_ACTIVO" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.ROL)">
+        <MappingFragment StoreEntitySet="ROLES">
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ESTA_ACTIVO" ColumnName="ESTA_ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCCIONES">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.PRODUCCION)">
+        <MappingFragment StoreEntitySet="PRODUCCIONES">
+          <ScalarProperty Name="ID_PRODUCCION" ColumnName="ID_PRODUCCION" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ES_REAL" ColumnName="ES_REAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLES_PRODUCCIONES">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.DETALLE_PRODUCCION)">
+        <MappingFragment StoreEntitySet="DETALLES_PRODUCCIONES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="ID_PRODUCCION" ColumnName="ID_PRODUCCION" />
+          <ScalarProperty Name="ID_RECETA" ColumnName="ID_RECETA" />
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIDAS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.MEDIDA)">
+        <MappingFragment StoreEntitySet="MEDIDAS">
+          <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+          <ScalarProperty Name="ETIQUETA" ColumnName="ETIQUETA" />
+          <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STOCK_PRODUCCION">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.STOCK_PRODUCCION)">
+        <MappingFragment StoreEntitySet="STOCK_PRODUCCION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="CANTIDAD_ORDEN_PRODUCCION" ColumnName="CANTIDAD_ORDEN_PRODUCCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDORES">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.PROVEEDOR)">
+        <MappingFragment StoreEntitySet="PROVEEDORES">
+          <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+          <ScalarProperty Name="ESTA_ACTIVO" ColumnName="ESTA_ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.EMPLEADO)">
+        <MappingFragment StoreEntitySet="EMPLEADOS">
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="ESTA_ACTIVO" ColumnName="ESTA_ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STOCK_BODEGA_PRINCIPAL">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloProasoft.STOCK_BODEGA_PRINCIPAL)">
+        <MappingFragment StoreEntitySet="STOCK_BODEGA_PRINCIPAL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ROLUSUARIO" TypeName="ModeloProasoft.ROLUSUARIO" StoreEntitySet="ROLUSUARIO">
+      <EndProperty Name="ROL">
+        <ScalarProperty Name="ID_ROL" ColumnName="ROLES_ID_ROL" />
+      </EndProperty>
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="ID_USUARIO" ColumnName="USUARIOS_ID_USUARIO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ITEMSTOCK_PRODUCCION" TypeName="ModeloProasoft.ITEMSTOCK_PRODUCCION" StoreEntitySet="STOCK_PRODUCCION">
+      <EndProperty Name="ITEM">
+        <ScalarProperty Name="ID_ITEM" ColumnName="ITEM_ID_ITEM" />
+      </EndProperty>
+      <EndProperty Name="STOCK_PRODUCCION">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ITEMSTOCK_BODEGA_PRINCIPAL" TypeName="ModeloProasoft.ITEMSTOCK_BODEGA_PRINCIPAL" StoreEntitySet="STOCK_BODEGA_PRINCIPAL">
+      <EndProperty Name="ITEM">
+        <ScalarProperty Name="ID_ITEM" ColumnName="ITEM_ID_ITEM" />
+      </EndProperty>
+      <EndProperty Name="STOCK_BODEGA_PRINCIPAL">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

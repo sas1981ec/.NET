@@ -1,0 +1,32 @@
+﻿<my:VentanaBase 
+        xmlns:my="clr-namespace:Proasoft.Views" x:Class="Proasoft.Views.EdicionItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xc="clr-namespace:Proasoft.InfraestructuraVM"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding Titulo}" Height="200" Width="220">
+    <Grid>
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Nombre:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="0" Text="{Binding Item.NOMBRE, Mode=TwoWay}" CharacterCasing="Upper" IsEnabled="{Binding EsNuevo}" Height="25" Width="100" MaxLength="100" Margin="34,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Medida:" VerticalAlignment="Center"/>
+                <ComboBox TabIndex="1" ItemsSource="{Binding Medidas}" DisplayMemberPath="ETIQUETA" SelectedItem="{Binding MedidaSeleccionada,Mode=TwoWay}" Height="25" IsEnabled="{Binding EsNuevo}" Width="100" Margin="37,0,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Esta Activo:" VerticalAlignment="Top"/>
+                <CheckBox TabIndex="2" IsChecked="{Binding Item.ESTA_ACTIVO,Mode=TwoWay}" Height="25" Width="100" Margin="15,0,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <Button TabIndex="3" Content="Grabar" Height="25" Width="70" Command="{Binding ComandoGrabar}" Margin="15,0,0,0"/>
+                <Button TabIndex="4" Content="Cancelar" Height="25" Width="70" Command="{Binding ComandoCancelar}" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</my:VentanaBase>

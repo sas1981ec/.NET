@@ -1,0 +1,94 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SevencWpf.Recursos.Estilos">
+    
+    <Style x:Key="EstiloContenidoListBox">
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                             Color="#FFFFBD69"/>
+        </Style.Resources>
+    </Style>
+    
+    <Style x:Key="ListBoxStandardStyle" TargetType="ListBox" >
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="BorderBrush" Value="#FFFFBD69" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource EstiloContenidoListBox}" />
+    </Style>
+
+    <DataTemplate x:Key="SucursalViewTemplate">
+        <DockPanel Height="50" Width="Auto" >
+
+            <StackPanel Width="40" Height="40" Margin="5,0,0,0">
+                <Image Source="/Recursos/Imagenes/Sucursal.jpg" />
+            </StackPanel>
+            <StackPanel Width="150" VerticalAlignment="Center" Height="40" Margin="10,0,0,0">
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding Nombre}" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Width="20" Height="20" Margin="40,0,0,0">
+                <Image Source="{Binding ImagenEstado}" ToolTip="{Binding ToolTipEstado}"/>
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="UsuarioViewTemplate">
+        <DockPanel Height="50" Width="Auto" >
+            <StackPanel Width="40" Height="40" Margin="5,0,0,0">
+                <Image Source="/Recursos/Imagenes/Usuario.png" />
+            </StackPanel>
+            <StackPanel Width="150" VerticalAlignment="Center" Height="40" Margin="10,0,0,0">
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding UserName}" />
+            </StackPanel>
+            <StackPanel Width="20" Height="20" Margin="40,0,0,0">
+                <Image Source="{Binding ImagenEstado}" ToolTip="{Binding ToolTipEstado}"/>
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="Usuario2ViewTemplate">
+        <DockPanel Height="70" Width="Auto" >
+            <StackPanel Width="40" Height="40" Margin="5,0,0,0">
+                <Image Source="{Binding FotoImagen}" />
+            </StackPanel>
+            <StackPanel Width="150" VerticalAlignment="Center" Height="70" Margin="10,0,0,0">
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding NombreCompleto}" />
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding UserName}" />
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding Email}" />
+            </StackPanel>
+            <StackPanel Width="20" Height="20" Margin="40,0,0,0">
+                <Image Source="{Binding ImagenEstado}" ToolTip="{Binding ToolTipEstado}"/>
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RolViewTemplate">
+        <DockPanel Height="50" Width="Auto" >
+            <StackPanel Width="40" Height="40" Margin="5,0,0,0">
+                <Image Source="/Recursos/Imagenes/Rol.png" />
+            </StackPanel>
+            <StackPanel Width="150" VerticalAlignment="Center" Height="40" Margin="10,0,0,0">
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding Nombre}" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Width="20" Height="20" Margin="40,0,0,0">
+                <Image Source="{Binding ImagenEstado}" ToolTip="{Binding ToolTipEstado}"/>
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="OperacionViewTemplate">
+        <DockPanel Height="50" Width="Auto" >
+            <StackPanel Width="40" Height="40" Margin="5,0,0,0">
+                <Image Source="/Recursos/Imagenes/Operaciones.jpg" />
+            </StackPanel>
+            <StackPanel Width="130" VerticalAlignment="Center" Height="40" Margin="10,0,0,0">
+                <TextBlock Foreground="#FF00002F" FontSize="12" Text="{Binding Nombre}" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Width="20" Height="20" Margin="40,0,0,0">
+                <Image Source="{Binding ImagenEstado}" ToolTip="{Binding ToolTipEstado}"/>
+            </StackPanel>
+            <StackPanel Width="20" Height="20" Margin="40,0,0,0">
+                <Image Source="{Binding ImagenAuditable}" ToolTip="{Binding ToolTipAuditable}"/>
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+        type="Proasoft.Aspectos.ThrowsException, Proasoft">
+  </object>
+
+  <object id="AdministradorLogin" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="PROASOFT.CapaDominio.ServiciosDominio.ServicioLogin, PROASOFT.CapaDominio.ServiciosDominio">
+        <constructor-arg ref="RepositorioUsuario"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="RepositorioUsuario" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioUsuario, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+</objects>

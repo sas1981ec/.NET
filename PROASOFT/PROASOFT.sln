@@ -1,0 +1,132 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Capa Presentación", "1. Capa Presentación", "{530F4367-3BA9-4FA9-B519-BBFAD42C0280}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Capa Aplicación", "2. Capa Aplicación", "{5CFCF827-8446-4EF4-8EF2-0A13D89207E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Capa Dominio", "3. Capa Dominio", "{463FAD80-2C05-4A80-85D1-CECDEA0EE1DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Capa Infraestructura", "4. Capa Infraestructura", "{C2F62FE7-692A-4BDD-9067-E0C578D991E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlEntityFramework", "SqlEntityFramework\SqlEntityFramework.csproj", "{8754F64A-CAE9-440D-B51E-FB7C7FE0C261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{E98C1AE5-0522-4D2A-9B85-217C35C8BDFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{744B68DE-57C3-4722-A105-7B785BA49C24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsInfraestructura", "TestsInfraestructura\TestsInfraestructura.csproj", "{1CCE7FD3-FBED-4096-8969-48808A0C580D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Aplicacion.csproj", "{2782A147-F2F3-4DED-99B9-69A36144143F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosDominio", "ServiciosDominio\ServiciosDominio.csproj", "{71ABC14C-BF74-41D7-9B0A-3BFC00CCB377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsDominio", "TestsDominio\TestsDominio.csproj", "{0AAF3FE9-5632-4A7B-A08D-9383194A42BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proasoft", "Proasoft\Proasoft.csproj", "{D0C2DA90-9F61-4306-876F-8ED04CF3316F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Recursos", "5. Recursos", "{D29DBD37-4DEE-4A3A-8C8F-DF5890AE030E}"
+	ProjectSection(SolutionItems) = preProject
+		Recursos\Common.Logging.dll = Recursos\Common.Logging.dll
+		Recursos\itextsharp.dll = Recursos\itextsharp.dll
+		Recursos\Spring.Aop.dll = Recursos\Spring.Aop.dll
+		Recursos\Spring.Core.dll = Recursos\Spring.Core.dll
+		Recursos\WPFToolkit.Extended.dll = Recursos\WPFToolkit.Extended.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8754F64A-CAE9-440D-B51E-FB7C7FE0C261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8754F64A-CAE9-440D-B51E-FB7C7FE0C261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8754F64A-CAE9-440D-B51E-FB7C7FE0C261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8754F64A-CAE9-440D-B51E-FB7C7FE0C261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E98C1AE5-0522-4D2A-9B85-217C35C8BDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E98C1AE5-0522-4D2A-9B85-217C35C8BDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E98C1AE5-0522-4D2A-9B85-217C35C8BDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E98C1AE5-0522-4D2A-9B85-217C35C8BDFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{744B68DE-57C3-4722-A105-7B785BA49C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{744B68DE-57C3-4722-A105-7B785BA49C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{744B68DE-57C3-4722-A105-7B785BA49C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{744B68DE-57C3-4722-A105-7B785BA49C24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCE7FD3-FBED-4096-8969-48808A0C580D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCE7FD3-FBED-4096-8969-48808A0C580D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCE7FD3-FBED-4096-8969-48808A0C580D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCE7FD3-FBED-4096-8969-48808A0C580D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2782A147-F2F3-4DED-99B9-69A36144143F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2782A147-F2F3-4DED-99B9-69A36144143F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2782A147-F2F3-4DED-99B9-69A36144143F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2782A147-F2F3-4DED-99B9-69A36144143F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71ABC14C-BF74-41D7-9B0A-3BFC00CCB377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71ABC14C-BF74-41D7-9B0A-3BFC00CCB377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71ABC14C-BF74-41D7-9B0A-3BFC00CCB377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71ABC14C-BF74-41D7-9B0A-3BFC00CCB377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAF3FE9-5632-4A7B-A08D-9383194A42BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAF3FE9-5632-4A7B-A08D-9383194A42BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAF3FE9-5632-4A7B-A08D-9383194A42BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAF3FE9-5632-4A7B-A08D-9383194A42BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C2DA90-9F61-4306-876F-8ED04CF3316F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C2DA90-9F61-4306-876F-8ED04CF3316F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C2DA90-9F61-4306-876F-8ED04CF3316F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C2DA90-9F61-4306-876F-8ED04CF3316F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8754F64A-CAE9-440D-B51E-FB7C7FE0C261} = {C2F62FE7-692A-4BDD-9067-E0C578D991E9}
+		{E98C1AE5-0522-4D2A-9B85-217C35C8BDFD} = {463FAD80-2C05-4A80-85D1-CECDEA0EE1DE}
+		{744B68DE-57C3-4722-A105-7B785BA49C24} = {463FAD80-2C05-4A80-85D1-CECDEA0EE1DE}
+		{1CCE7FD3-FBED-4096-8969-48808A0C580D} = {C2F62FE7-692A-4BDD-9067-E0C578D991E9}
+		{2782A147-F2F3-4DED-99B9-69A36144143F} = {5CFCF827-8446-4EF4-8EF2-0A13D89207E6}
+		{71ABC14C-BF74-41D7-9B0A-3BFC00CCB377} = {463FAD80-2C05-4A80-85D1-CECDEA0EE1DE}
+		{0AAF3FE9-5632-4A7B-A08D-9383194A42BD} = {463FAD80-2C05-4A80-85D1-CECDEA0EE1DE}
+		{D0C2DA90-9F61-4306-876F-8ED04CF3316F} = {530F4367-3BA9-4FA9-B519-BBFAD42C0280}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37DFCD63-7F1C-4BFF-8A24-9A6D5ED4BBE7}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://stalinalvaradosanchez.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Aplicacion\\Aplicacion.csproj
+		SccProjectTopLevelParentUniqueName1 = PROASOFT.sln
+		SccProjectName1 = Aplicacion
+		SccLocalPath1 = Aplicacion
+		SccProjectUniqueName2 = Dominio\\Dominio.csproj
+		SccProjectTopLevelParentUniqueName2 = PROASOFT.sln
+		SccProjectName2 = Dominio
+		SccLocalPath2 = Dominio
+		SccProjectUniqueName3 = Entidades\\Entidades.csproj
+		SccProjectTopLevelParentUniqueName3 = PROASOFT.sln
+		SccProjectName3 = Entidades
+		SccLocalPath3 = Entidades
+		SccProjectUniqueName4 = Proasoft\\Proasoft.csproj
+		SccProjectTopLevelParentUniqueName4 = PROASOFT.sln
+		SccProjectName4 = Proasoft
+		SccLocalPath4 = Proasoft
+		SccProjectUniqueName5 = ServiciosDominio\\ServiciosDominio.csproj
+		SccProjectTopLevelParentUniqueName5 = PROASOFT.sln
+		SccProjectName5 = ServiciosDominio
+		SccLocalPath5 = ServiciosDominio
+		SccProjectUniqueName6 = SqlEntityFramework\\SqlEntityFramework.csproj
+		SccProjectTopLevelParentUniqueName6 = PROASOFT.sln
+		SccProjectName6 = SqlEntityFramework
+		SccLocalPath6 = SqlEntityFramework
+		SccProjectUniqueName7 = TestsDominio\\TestsDominio.csproj
+		SccProjectTopLevelParentUniqueName7 = PROASOFT.sln
+		SccProjectName7 = TestsDominio
+		SccLocalPath7 = TestsDominio
+		SccProjectUniqueName8 = TestsInfraestructura\\TestsInfraestructura.csproj
+		SccProjectTopLevelParentUniqueName8 = PROASOFT.sln
+		SccProjectName8 = TestsInfraestructura
+		SccLocalPath8 = TestsInfraestructura
+	EndGlobalSection
+EndGlobal

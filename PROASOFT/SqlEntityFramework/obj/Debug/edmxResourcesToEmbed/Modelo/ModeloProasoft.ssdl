@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModeloProasoft.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModeloProasoftStoreContainer">
+    <EntitySet Name="ITEMS" EntityType="ModeloProasoft.Store.ITEMS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="COMPRAS" EntityType="ModeloProasoft.Store.COMPRAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLES_COMPRAS" EntityType="ModeloProasoft.Store.DETALLES_COMPRAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RECETAS" EntityType="ModeloProasoft.Store.RECETAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLES_RECETAS" EntityType="ModeloProasoft.Store.DETALLES_RECETAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOS" EntityType="ModeloProasoft.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ROLES" EntityType="ModeloProasoft.Store.ROLES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCCIONES" EntityType="ModeloProasoft.Store.PRODUCCIONES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DETALLES_PRODUCCIONES" EntityType="ModeloProasoft.Store.DETALLES_PRODUCCIONES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MEDIDAS" EntityType="ModeloProasoft.Store.MEDIDAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="STOCK_PRODUCCION" EntityType="ModeloProasoft.Store.STOCK_PRODUCCION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PROVEEDORES" EntityType="ModeloProasoft.Store.PROVEEDORES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EMPLEADOS" EntityType="ModeloProasoft.Store.EMPLEADOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="STOCK_BODEGA_PRINCIPAL" EntityType="ModeloProasoft.Store.STOCK_BODEGA_PRINCIPAL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ROLUSUARIO" EntityType="ModeloProasoft.Store.ROLUSUARIO" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DETALLE_COMPRAITEM" Association="ModeloProasoft.Store.DETALLE_COMPRAITEM">
+      <End Role="DETALLE_COMPRA" EntitySet="DETALLES_COMPRAS" />
+      <End Role="ITEM" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="COMPRADETALLE_COMPRA" Association="ModeloProasoft.Store.COMPRADETALLE_COMPRA">
+      <End Role="COMPRA" EntitySet="COMPRAS" />
+      <End Role="DETALLE_COMPRA" EntitySet="DETALLES_COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="RECETADETALLE_RECETA" Association="ModeloProasoft.Store.RECETADETALLE_RECETA">
+      <End Role="RECETA" EntitySet="RECETAS" />
+      <End Role="DETALLE_RECETA" EntitySet="DETALLES_RECETAS" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_RECETAITEM" Association="ModeloProasoft.Store.DETALLE_RECETAITEM">
+      <End Role="DETALLE_RECETA" EntitySet="DETALLES_RECETAS" />
+      <End Role="ITEM" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLUSUARIO_ROL" Association="ModeloProasoft.Store.FK_ROLUSUARIO_ROL">
+      <End Role="ROL" EntitySet="ROLES" />
+      <End Role="ROLUSUARIO" EntitySet="ROLUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLUSUARIO_USUARIO" Association="ModeloProasoft.Store.FK_ROLUSUARIO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+      <End Role="ROLUSUARIO" EntitySet="ROLUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="COMPRAUSUARIO" Association="ModeloProasoft.Store.COMPRAUSUARIO">
+      <End Role="COMPRA" EntitySet="COMPRAS" />
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUCCIONDETALLE_PRODUCCION" Association="ModeloProasoft.Store.PRODUCCIONDETALLE_PRODUCCION">
+      <End Role="PRODUCCION" EntitySet="PRODUCCIONES" />
+      <End Role="DETALLE_PRODUCCION" EntitySet="DETALLES_PRODUCCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="RECETADETALLE_PRODUCCION" Association="ModeloProasoft.Store.RECETADETALLE_PRODUCCION">
+      <End Role="RECETA" EntitySet="RECETAS" />
+      <End Role="DETALLE_PRODUCCION" EntitySet="DETALLES_PRODUCCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUCCIONUSUARIO" Association="ModeloProasoft.Store.PRODUCCIONUSUARIO">
+      <End Role="PRODUCCION" EntitySet="PRODUCCIONES" />
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMMEDIDA" Association="ModeloProasoft.Store.ITEMMEDIDA">
+      <End Role="ITEM" EntitySet="ITEMS" />
+      <End Role="MEDIDA" EntitySet="MEDIDAS" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMSTOCK_PRODUCCION" Association="ModeloProasoft.Store.ITEMSTOCK_PRODUCCION">
+      <End Role="ITEM" EntitySet="ITEMS" />
+      <End Role="STOCK_PRODUCCION" EntitySet="STOCK_PRODUCCION" />
+    </AssociationSet>
+    <AssociationSet Name="COMPRAPROVEEDOR" Association="ModeloProasoft.Store.COMPRAPROVEEDOR">
+      <End Role="COMPRA" EntitySet="COMPRAS" />
+      <End Role="PROVEEDOR" EntitySet="PROVEEDORES" />
+    </AssociationSet>
+    <AssociationSet Name="ITEMSTOCK_BODEGA_PRINCIPAL" Association="ModeloProasoft.Store.ITEMSTOCK_BODEGA_PRINCIPAL">
+      <End Role="ITEM" EntitySet="ITEMS" />
+      <End Role="STOCK_BODEGA_PRINCIPAL" EntitySet="STOCK_BODEGA_PRINCIPAL" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADODETALLE_PRODUCCION" Association="ModeloProasoft.Store.EMPLEADODETALLE_PRODUCCION">
+      <End Role="EMPLEADO" EntitySet="EMPLEADOS" />
+      <End Role="DETALLE_PRODUCCION" EntitySet="DETALLES_PRODUCCIONES" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ITEMS">
+    <Key>
+      <PropertyRef Name="ID_ITEM" />
+    </Key>
+    <Property Name="ID_ITEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ESTA_ACTIVO" Type="bit" Nullable="false" />
+    <Property Name="ID_MEDIDA" Type="tinyint" Nullable="false" />
+    <Property Name="COSTO_POR_KILOGRAMO" Type="decimal" Nullable="false" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="COMPRAS">
+    <Key>
+      <PropertyRef Name="ID_COMPRA" />
+    </Key>
+    <Property Name="ID_COMPRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="smallint" Nullable="false" />
+    <Property Name="ESTA_CONFIRMADA" Type="bit" Nullable="false" />
+    <Property Name="ID_PROVEEDOR" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLES_COMPRAS">
+    <Key>
+      <PropertyRef Name="ID_DETALLE" />
+    </Key>
+    <Property Name="ID_DETALLE" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CANTIDAD" Type="smallint" Nullable="false" />
+    <Property Name="PRECIO" Type="decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="ID_ITEM" Type="int" Nullable="false" />
+    <Property Name="ID_COMPRA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RECETAS">
+    <Key>
+      <PropertyRef Name="ID_RECETA" />
+    </Key>
+    <Property Name="ID_RECETA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="ESTA_ACTIVA" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLES_RECETAS">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_RECETA" />
+    </Key>
+    <Property Name="ID_DETALLE_RECETA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CANTIDAD" Type="float" Nullable="false" />
+    <Property Name="ID_RECETA" Type="int" Nullable="false" />
+    <Property Name="ID_ITEM" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_NAME" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="CONTRASENA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ESTA_ACTIVO" Type="bit" Nullable="false" />
+    <Property Name="NOMBRES" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="APELLIDOS" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ESTA_ACTIVO" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCCIONES">
+    <Key>
+      <PropertyRef Name="ID_PRODUCCION" />
+    </Key>
+    <Property Name="ID_PRODUCCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="smallint" Nullable="false" />
+    <Property Name="ES_REAL" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLES_PRODUCCIONES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CANTIDAD" Type="smallint" Nullable="false" />
+    <Property Name="ID_PRODUCCION" Type="int" Nullable="false" />
+    <Property Name="ID_RECETA" Type="int" Nullable="false" />
+    <Property Name="ID_EMPLEADO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEDIDAS">
+    <Key>
+      <PropertyRef Name="ID_MEDIDA" />
+    </Key>
+    <Property Name="ID_MEDIDA" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ETIQUETA" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="VALOR" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STOCK_PRODUCCION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CANTIDAD" Type="float" Nullable="false" />
+    <Property Name="CANTIDAD_ORDEN_PRODUCCION" Type="float" Nullable="false" />
+    <Property Name="ITEM_ID_ITEM" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROVEEDORES">
+    <Key>
+      <PropertyRef Name="ID_PROVEEDOR" />
+    </Key>
+    <Property Name="ID_PROVEEDOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RUC" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RAZON_SOCIAL" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="ESTA_ACTIVO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLEADOS">
+    <Key>
+      <PropertyRef Name="ID_EMPLEADO" />
+    </Key>
+    <Property Name="ID_EMPLEADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDENTIFICACION" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="NOMBRES" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="APELLIDOS" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ESTA_ACTIVO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STOCK_BODEGA_PRINCIPAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CANTIDAD" Type="float" Nullable="false" />
+    <Property Name="ITEM_ID_ITEM" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROLUSUARIO">
+    <Key>
+      <PropertyRef Name="ROLES_ID_ROL" />
+      <PropertyRef Name="USUARIOS_ID_USUARIO" />
+    </Key>
+    <Property Name="ROLES_ID_ROL" Type="smallint" Nullable="false" />
+    <Property Name="USUARIOS_ID_USUARIO" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="DETALLE_COMPRAITEM">
+    <End Role="DETALLE_COMPRA" Type="ModeloProasoft.Store.DETALLES_COMPRAS" Multiplicity="*" />
+    <End Role="ITEM" Type="ModeloProasoft.Store.ITEMS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ITEM">
+        <PropertyRef Name="ID_ITEM" />
+      </Principal>
+      <Dependent Role="DETALLE_COMPRA">
+        <PropertyRef Name="ID_ITEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="COMPRADETALLE_COMPRA">
+    <End Role="COMPRA" Type="ModeloProasoft.Store.COMPRAS" Multiplicity="1" />
+    <End Role="DETALLE_COMPRA" Type="ModeloProasoft.Store.DETALLES_COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPRA">
+        <PropertyRef Name="ID_COMPRA" />
+      </Principal>
+      <Dependent Role="DETALLE_COMPRA">
+        <PropertyRef Name="ID_COMPRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RECETADETALLE_RECETA">
+    <End Role="RECETA" Type="ModeloProasoft.Store.RECETAS" Multiplicity="1" />
+    <End Role="DETALLE_RECETA" Type="ModeloProasoft.Store.DETALLES_RECETAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="ID_RECETA" />
+      </Principal>
+      <Dependent Role="DETALLE_RECETA">
+        <PropertyRef Name="ID_RECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_RECETAITEM">
+    <End Role="DETALLE_RECETA" Type="ModeloProasoft.Store.DETALLES_RECETAS" Multiplicity="*" />
+    <End Role="ITEM" Type="ModeloProasoft.Store.ITEMS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ITEM">
+        <PropertyRef Name="ID_ITEM" />
+      </Principal>
+      <Dependent Role="DETALLE_RECETA">
+        <PropertyRef Name="ID_ITEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="COMPRAUSUARIO">
+    <End Role="COMPRA" Type="ModeloProasoft.Store.COMPRAS" Multiplicity="*" />
+    <End Role="USUARIO" Type="ModeloProasoft.Store.USUARIOS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUCCIONDETALLE_PRODUCCION">
+    <End Role="PRODUCCION" Type="ModeloProasoft.Store.PRODUCCIONES" Multiplicity="1" />
+    <End Role="DETALLE_PRODUCCION" Type="ModeloProasoft.Store.DETALLES_PRODUCCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCCION">
+        <PropertyRef Name="ID_PRODUCCION" />
+      </Principal>
+      <Dependent Role="DETALLE_PRODUCCION">
+        <PropertyRef Name="ID_PRODUCCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RECETADETALLE_PRODUCCION">
+    <End Role="RECETA" Type="ModeloProasoft.Store.RECETAS" Multiplicity="1" />
+    <End Role="DETALLE_PRODUCCION" Type="ModeloProasoft.Store.DETALLES_PRODUCCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="ID_RECETA" />
+      </Principal>
+      <Dependent Role="DETALLE_PRODUCCION">
+        <PropertyRef Name="ID_RECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUCCIONUSUARIO">
+    <End Role="PRODUCCION" Type="ModeloProasoft.Store.PRODUCCIONES" Multiplicity="*" />
+    <End Role="USUARIO" Type="ModeloProasoft.Store.USUARIOS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="PRODUCCION">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMMEDIDA">
+    <End Role="ITEM" Type="ModeloProasoft.Store.ITEMS" Multiplicity="*" />
+    <End Role="MEDIDA" Type="ModeloProasoft.Store.MEDIDAS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MEDIDA">
+        <PropertyRef Name="ID_MEDIDA" />
+      </Principal>
+      <Dependent Role="ITEM">
+        <PropertyRef Name="ID_MEDIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMSTOCK_PRODUCCION">
+    <End Role="ITEM" Type="ModeloProasoft.Store.ITEMS" Multiplicity="1" />
+    <End Role="STOCK_PRODUCCION" Type="ModeloProasoft.Store.STOCK_PRODUCCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEM">
+        <PropertyRef Name="ID_ITEM" />
+      </Principal>
+      <Dependent Role="STOCK_PRODUCCION">
+        <PropertyRef Name="ITEM_ID_ITEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="COMPRAPROVEEDOR">
+    <End Role="COMPRA" Type="ModeloProasoft.Store.COMPRAS" Multiplicity="*" />
+    <End Role="PROVEEDOR" Type="ModeloProasoft.Store.PROVEEDORES" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDOR">
+        <PropertyRef Name="ID_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="ID_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITEMSTOCK_BODEGA_PRINCIPAL">
+    <End Role="ITEM" Type="ModeloProasoft.Store.ITEMS" Multiplicity="1" />
+    <End Role="STOCK_BODEGA_PRINCIPAL" Type="ModeloProasoft.Store.STOCK_BODEGA_PRINCIPAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEM">
+        <PropertyRef Name="ID_ITEM" />
+      </Principal>
+      <Dependent Role="STOCK_BODEGA_PRINCIPAL">
+        <PropertyRef Name="ITEM_ID_ITEM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADODETALLE_PRODUCCION">
+    <End Role="EMPLEADO" Type="ModeloProasoft.Store.EMPLEADOS" Multiplicity="1" />
+    <End Role="DETALLE_PRODUCCION" Type="ModeloProasoft.Store.DETALLES_PRODUCCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Principal>
+      <Dependent Role="DETALLE_PRODUCCION">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLUSUARIO_ROL">
+    <End Role="ROL" Type="ModeloProasoft.Store.ROLES" Multiplicity="1" />
+    <End Role="ROLUSUARIO" Type="ModeloProasoft.Store.ROLUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="ROLUSUARIO">
+        <PropertyRef Name="ROLES_ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLUSUARIO_USUARIO">
+    <End Role="ROLUSUARIO" Type="ModeloProasoft.Store.ROLUSUARIO" Multiplicity="*" />
+    <End Role="USUARIO" Type="ModeloProasoft.Store.USUARIOS" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="ROLUSUARIO">
+        <PropertyRef Name="USUARIOS_ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

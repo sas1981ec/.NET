@@ -1,0 +1,35 @@
+﻿<my:VentanaBase 
+        xmlns:my="clr-namespace:SevencWpf.Views"
+        x:Class="SevencWpf.Views.Modulo_Seguridad.VistaEdicionSucursal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xc="clr-namespace:SevencWpf.InfraestructuraVM"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding Titulo}" Height="210" Width="300">
+    <Grid>
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Nombre:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="0" Text="{Binding Sucursal.Nombre,Mode=TwoWay}" Height="25" Width="200" Margin="10,0,0,0" MaxLength="150" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Dirección:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="1" Text="{Binding Sucursal.Direccion,Mode=TwoWay}" Height="25" Width="200" Margin="5,0,0,0" MaxLength="512" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <CheckBox TabIndex="2" IsChecked="{Binding Sucursal.EsMatriz,Mode=TwoWay}" Content="Matriz" FlowDirection="RightToLeft" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <CheckBox TabIndex="3" IsChecked="{Binding Sucursal.EstaActiva,Mode=TwoWay}" Content="Activa" FlowDirection="RightToLeft" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <Button TabIndex="4" Content="Grabar" Height="25" Width="70" Command="{Binding ComandoGrabar}" Margin="95,0,0,0"/>
+                <Button TabIndex="5" Content="Cancelar" Height="25" Width="70" Command="{Binding ComandoCancelar}" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</my:VentanaBase>

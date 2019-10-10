@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0C2DA90-9F61-4306-876F-8ED04CF3316F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Proasoft</RootNamespace>
+    <AssemblyName>Proasoft</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icono.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\Recursos\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\Recursos\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="Spring.Aop">
+      <HintPath>..\Recursos\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\Recursos\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\Recursos\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Aspectos\ThrowsException.cs" />
+    <Compile Include="Ayudas\Pdf.cs" />
+    <Compile Include="InfraestructuraVM\DialogCloser.cs" />
+    <Compile Include="ViewModels\CambioContrasenaViewModel.cs" />
+    <Compile Include="ViewModels\EdicionCompraViewModel.cs" />
+    <Compile Include="ViewModels\EdicionDetalleCompraViewModel.cs" />
+    <Compile Include="ViewModels\EdicionDetalleProduccionViewModel.cs" />
+    <Compile Include="ViewModels\EdicionDetalleRecetaViewModel.cs" />
+    <Compile Include="ViewModels\EdicionItemProduccionViewModel.cs" />
+    <Compile Include="ViewModels\EdicionItemViewModel.cs" />
+    <Compile Include="ViewModels\EdicionProduccionViewModel.cs" />
+    <Compile Include="ViewModels\EdicionRecetaViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\VistaAutenticacionViewModel.cs" />
+    <Compile Include="ViewModels\VistaItemsProduccionViewModel.cs" />
+    <Compile Include="ViewModels\VistaItemsViewModel.cs" />
+    <Compile Include="ViewModels\VistaOrdenProduccionViewModel.cs" />
+    <Compile Include="ViewModels\VistaPrincipalViewModel.cs" />
+    <Compile Include="ViewModels\VistaProduccionViewModel.cs" />
+    <Compile Include="ViewModels\VistaRecetasViewModel.cs" />
+    <Compile Include="ViewModels\VistaRegistroComprasViewModel.cs" />
+    <Compile Include="ViewModels\VistaReporteGerencialViewModel.cs" />
+    <Compile Include="ViewModels\VistaStockViewModel.cs" />
+    <Compile Include="Views\CambioContrasena.xaml.cs">
+      <DependentUpon>CambioContrasena.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionCompra.xaml.cs">
+      <DependentUpon>EdicionCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionDetalleCompra.xaml.cs">
+      <DependentUpon>EdicionDetalleCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionDetalleProduccion.xaml.cs">
+      <DependentUpon>EdicionDetalleProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionDetalleReceta.xaml.cs">
+      <DependentUpon>EdicionDetalleReceta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionItem.xaml.cs">
+      <DependentUpon>EdicionItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionItemProduccion.xaml.cs">
+      <DependentUpon>EdicionItemProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionProduccion.xaml.cs">
+      <DependentUpon>EdicionProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EdicionReceta.xaml.cs">
+      <DependentUpon>EdicionReceta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VentanaBase.cs" />
+    <Compile Include="Views\VistaAutenticacion.xaml.cs">
+      <DependentUpon>VistaAutenticacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InfraestructuraVM\RelayCommand.cs" />
+    <Compile Include="Views\VistaItems.xaml.cs">
+      <DependentUpon>VistaItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaItemsProduccion.xaml.cs">
+      <DependentUpon>VistaItemsProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaPrincipal.xaml.cs">
+      <DependentUpon>VistaPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaProduccion.xaml.cs">
+      <DependentUpon>VistaProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaRecetas.xaml.cs">
+      <DependentUpon>VistaRecetas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaRegistroCompras.xaml.cs">
+      <DependentUpon>VistaRegistroCompras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaReporteGerencial.xaml.cs">
+      <DependentUpon>VistaReporteGerencial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaStock.xaml.cs">
+      <DependentUpon>VistaStock.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Recursos\Estilos\EstilosGenerales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CambioContrasena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionCompra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionDetalleCompra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionDetalleProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionDetalleReceta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionItemProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EdicionReceta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaAutenticacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaItemsProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaRecetas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaRegistroCompras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaReporteGerencial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VistaStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aplicacion\Aplicacion.csproj">
+      <Project>{2782a147-f2f3-4ded-99b9-69a36144143f}</Project>
+      <Name>Aplicacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{744b68de-57c3-4722-a105-7b785ba49c24}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{e98c1ae5-0522-4d2a-9b85-217c35c8bdfd}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiciosDominio\ServiciosDominio.csproj">
+      <Project>{71abc14c-bf74-41d7-9b0a-3bfc00ccb377}</Project>
+      <Name>ServiciosDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlEntityFramework\SqlEntityFramework.csproj">
+      <Project>{8754f64a-cae9-440d-b51e-fb7c7fe0c261}</Project>
+      <Name>SqlEntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Contrasena.png" />
+    <Resource Include="Recursos\Imagenes\Login.png" />
+    <Resource Include="Recursos\Imagenes\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringLogin.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Add.png" />
+    <Resource Include="Recursos\Imagenes\Buscar.png" />
+    <Resource Include="Recursos\Imagenes\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringCompra.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Agregar.png" />
+    <Resource Include="Recursos\Imagenes\Quitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringItem.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringReceta.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringProduccion.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringStock.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringReporteGerencial.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Insumos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Recetas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Produccion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Compras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\IngresoProduccion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\ProductoTerminado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Cuadre.png" />
+    <Resource Include="Recursos\Imagenes\Reportes.png" />
+    <Resource Include="Recursos\Imagenes\Stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Icono.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icono.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Cambio.png" />
+    <Resource Include="Recursos\Imagenes\CerrarSesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Icono.png" />
+    <Resource Include="Recursos\Imagenes\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Autorizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringEmpleado.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Springs\SpringProveedor.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,32 @@
+﻿<my:VentanaBase 
+        xmlns:my="clr-namespace:SevencWpf.Views"
+        x:Class="SevencWpf.Views.Modulo_Seguridad.VistaEdicionRol"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xc="clr-namespace:SevencWpf.InfraestructuraVM"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding Titulo}" Height="210" Width="300">
+    <Grid>
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Nombre:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="0" Text="{Binding Rol.Nombre,Mode=TwoWay}" Height="25" Width="200" Margin="25,0,0,0" MaxLength="25" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Descripción:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="1" Text="{Binding Rol.Descripcion,Mode=TwoWay}" Height="60" Width="200" Margin="5,0,0,0" MaxLength="255" GotFocus="TextBoxGotFocus" TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <CheckBox TabIndex="2" IsChecked="{Binding Rol.EstaActivo,Mode=TwoWay}" Content="Activo" FlowDirection="RightToLeft" Margin="33,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <Button TabIndex="3" Content="Grabar" Height="25" Width="70" Command="{Binding ComandoGrabar}" Margin="95,0,0,0"/>
+                <Button TabIndex="4" Content="Cancelar" Height="25" Width="70" Command="{Binding ComandoCancelar}" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</my:VentanaBase>

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioWcf" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SEVENC.Dominio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SEVENC.Aplicacion.Aplicacion.Interfaces.Modulo_Seguridad" />
+      <xsd:import schemaLocation="http://localhost:59144/ServicioWcf.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SEVENC.Aplicacion.Aplicacion.Contratos.Modulo_Seguridad" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioWcf_ObtenerEmpresas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpresas" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerEmpresas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpresasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerSucursalesPorIdEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursalesPorIdEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerSucursalesPorIdEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursalesPorIdEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerUsuariosPorIdEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuariosPorIdEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerUsuariosPorIdEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuariosPorIdEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarSucursalesAEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarSucursalesAEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarSucursalesAEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarSucursalesAEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarUsuariosAEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarUsuariosAEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarUsuariosAEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarUsuariosAEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearError_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearError" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearError_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerSucursales_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursales" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerSucursales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerUsuariosPorCriteriosBusqueda_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuariosPorCriteriosBusqueda" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerUsuariosPorCriteriosBusqueda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuariosPorCriteriosBusquedaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerRolesPorIdUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRolesPorIdUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerRolesPorIdUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRolesPorIdUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CambiarContrasena_InputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarContrasena" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CambiarContrasena_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarContrasenaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_GenerarContrasena_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarContrasena" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_GenerarContrasena_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarContrasenaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ExisteUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteUserName" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ExisteUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ExisteEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ExisteEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarRolesAUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarRolesAUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarRolesAUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarRolesAUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CerrarSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CerrarSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRoles" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerOperacionesPorIdRol_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOperacionesPorIdRol" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerOperacionesPorIdRol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOperacionesPorIdRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearRol_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRol" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearRol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarRol_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRol" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarRol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarOperacionesARol_InputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarOperacionesARol" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_AsignarOperacionesARol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AsignarOperacionesARolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerOperaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOperaciones" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ObtenerOperaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOperacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarOperacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarOperacion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_ActualizarOperacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarOperacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearAuditoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAuditoria" />
+  </wsdl:message>
+  <wsdl:message name="IServicioWcf_CrearAuditoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAuditoriaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioWcf">
+    <wsdl:operation name="ObtenerEmpresas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/ObtenerEmpresas" message="tns:IServicioWcf_ObtenerEmpresas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/ObtenerEmpresasResponse" message="tns:IServicioWcf_ObtenerEmpresas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/CrearEmpresa" message="tns:IServicioWcf_CrearEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/CrearEmpresaResponse" message="tns:IServicioWcf_CrearEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/ActualizarEmpresa" message="tns:IServicioWcf_ActualizarEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/ActualizarEmpresaResponse" message="tns:IServicioWcf_ActualizarEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursalesPorIdEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/ObtenerSucursalesPorIdEmpresa" message="tns:IServicioWcf_ObtenerSucursalesPorIdEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/ObtenerSucursalesPorIdEmpresaResponse" message="tns:IServicioWcf_ObtenerSucursalesPorIdEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuariosPorIdEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/ObtenerUsuariosPorIdEmpresa" message="tns:IServicioWcf_ObtenerUsuariosPorIdEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/ObtenerUsuariosPorIdEmpresaResponse" message="tns:IServicioWcf_ObtenerUsuariosPorIdEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarSucursalesAEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/AsignarSucursalesAEmpresa" message="tns:IServicioWcf_AsignarSucursalesAEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/AsignarSucursalesAEmpresaResponse" message="tns:IServicioWcf_AsignarSucursalesAEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUsuariosAEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpresa/AsignarUsuariosAEmpresa" message="tns:IServicioWcf_AsignarUsuariosAEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpresa/AsignarUsuariosAEmpresaResponse" message="tns:IServicioWcf_AsignarUsuariosAEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearError">
+      <wsdl:input wsaw:Action="http://tempuri.org/IError/CrearError" message="tns:IServicioWcf_CrearError_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IError/CrearErrorResponse" message="tns:IServicioWcf_CrearError_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursales">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISucursal/ObtenerSucursales" message="tns:IServicioWcf_ObtenerSucursales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISucursal/ObtenerSucursalesResponse" message="tns:IServicioWcf_ObtenerSucursales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISucursal/CrearSucursal" message="tns:IServicioWcf_CrearSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISucursal/CrearSucursalResponse" message="tns:IServicioWcf_CrearSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISucursal/ActualizarSucursal" message="tns:IServicioWcf_ActualizarSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISucursal/ActualizarSucursalResponse" message="tns:IServicioWcf_ActualizarSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/ObtenerUsuarios" message="tns:IServicioWcf_ObtenerUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/ObtenerUsuariosResponse" message="tns:IServicioWcf_ObtenerUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuariosPorCriteriosBusqueda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/ObtenerUsuariosPorCriteriosBusqueda" message="tns:IServicioWcf_ObtenerUsuariosPorCriteriosBusqueda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/ObtenerUsuariosPorCriteriosBusquedaResponse" message="tns:IServicioWcf_ObtenerUsuariosPorCriteriosBusqueda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRolesPorIdUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/ObtenerRolesPorIdUsuario" message="tns:IServicioWcf_ObtenerRolesPorIdUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/ObtenerRolesPorIdUsuarioResponse" message="tns:IServicioWcf_ObtenerRolesPorIdUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/CrearUsuario" message="tns:IServicioWcf_CrearUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/CrearUsuarioResponse" message="tns:IServicioWcf_CrearUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/ActualizarUsuario" message="tns:IServicioWcf_ActualizarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/ActualizarUsuarioResponse" message="tns:IServicioWcf_ActualizarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiarContrasena">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/CambiarContrasena" message="tns:IServicioWcf_CambiarContrasena_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/CambiarContrasenaResponse" message="tns:IServicioWcf_CambiarContrasena_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarContrasena">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GenerarContrasena" message="tns:IServicioWcf_GenerarContrasena_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/GenerarContrasenaResponse" message="tns:IServicioWcf_GenerarContrasena_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/ExisteUserName" message="tns:IServicioWcf_ExisteUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/ExisteUserNameResponse" message="tns:IServicioWcf_ExisteUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/ExisteEmail" message="tns:IServicioWcf_ExisteEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/ExisteEmailResponse" message="tns:IServicioWcf_ExisteEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolesAUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/AsignarRolesAUsuario" message="tns:IServicioWcf_AsignarRolesAUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/AsignarRolesAUsuarioResponse" message="tns:IServicioWcf_AsignarRolesAUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/Login" message="tns:IServicioWcf_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/LoginResponse" message="tns:IServicioWcf_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CerrarSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/CerrarSesion" message="tns:IServicioWcf_CerrarSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsuario/CerrarSesionResponse" message="tns:IServicioWcf_CerrarSesion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRol/ObtenerRoles" message="tns:IServicioWcf_ObtenerRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRol/ObtenerRolesResponse" message="tns:IServicioWcf_ObtenerRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOperacionesPorIdRol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRol/ObtenerOperacionesPorIdRol" message="tns:IServicioWcf_ObtenerOperacionesPorIdRol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRol/ObtenerOperacionesPorIdRolResponse" message="tns:IServicioWcf_ObtenerOperacionesPorIdRol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearRol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRol/CrearRol" message="tns:IServicioWcf_CrearRol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRol/CrearRolResponse" message="tns:IServicioWcf_CrearRol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRol/ActualizarRol" message="tns:IServicioWcf_ActualizarRol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRol/ActualizarRolResponse" message="tns:IServicioWcf_ActualizarRol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarOperacionesARol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRol/AsignarOperacionesARol" message="tns:IServicioWcf_AsignarOperacionesARol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRol/AsignarOperacionesARolResponse" message="tns:IServicioWcf_AsignarOperacionesARol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOperaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOperacion/ObtenerOperaciones" message="tns:IServicioWcf_ObtenerOperaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOperacion/ObtenerOperacionesResponse" message="tns:IServicioWcf_ObtenerOperaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarOperacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOperacion/ActualizarOperacion" message="tns:IServicioWcf_ActualizarOperacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOperacion/ActualizarOperacionResponse" message="tns:IServicioWcf_ActualizarOperacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearAuditoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuditoria/CrearAuditoria" message="tns:IServicioWcf_CrearAuditoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuditoria/CrearAuditoriaResponse" message="tns:IServicioWcf_CrearAuditoria_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClearUsernameBinding_IServicioWcf" type="tns:IServicioWcf">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerEmpresas">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/ObtenerEmpresas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/CrearEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/ActualizarEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursalesPorIdEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/ObtenerSucursalesPorIdEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuariosPorIdEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/ObtenerUsuariosPorIdEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarSucursalesAEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/AsignarSucursalesAEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUsuariosAEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/IEmpresa/AsignarUsuariosAEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearError">
+      <soap12:operation soapAction="http://tempuri.org/IError/CrearError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursales">
+      <soap12:operation soapAction="http://tempuri.org/ISucursal/ObtenerSucursales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearSucursal">
+      <soap12:operation soapAction="http://tempuri.org/ISucursal/CrearSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarSucursal">
+      <soap12:operation soapAction="http://tempuri.org/ISucursal/ActualizarSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/ObtenerUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuariosPorCriteriosBusqueda">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/ObtenerUsuariosPorCriteriosBusqueda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRolesPorIdUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/ObtenerRolesPorIdUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/CrearUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/ActualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarContrasena">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/CambiarContrasena" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarContrasena">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/GenerarContrasena" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteUserName">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/ExisteUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteEmail">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/ExisteEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarRolesAUsuario">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/AsignarRolesAUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IUsuario/CerrarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRoles">
+      <soap12:operation soapAction="http://tempuri.org/IRol/ObtenerRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOperacionesPorIdRol">
+      <soap12:operation soapAction="http://tempuri.org/IRol/ObtenerOperacionesPorIdRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearRol">
+      <soap12:operation soapAction="http://tempuri.org/IRol/CrearRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRol">
+      <soap12:operation soapAction="http://tempuri.org/IRol/ActualizarRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarOperacionesARol">
+      <soap12:operation soapAction="http://tempuri.org/IRol/AsignarOperacionesARol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOperaciones">
+      <soap12:operation soapAction="http://tempuri.org/IOperacion/ObtenerOperaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarOperacion">
+      <soap12:operation soapAction="http://tempuri.org/IOperacion/ActualizarOperacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearAuditoria">
+      <soap12:operation soapAction="http://tempuri.org/IAuditoria/CrearAuditoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWcf">
+    <wsdl:port name="ClearUsernameBinding_IServicioWcf" binding="tns:ClearUsernameBinding_IServicioWcf">
+      <soap12:address location="http://localhost:59144/ServicioWcf.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

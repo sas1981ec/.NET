@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturacionElectronica", "FacturacionElectronica\FacturacionElectronica.csproj", "{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Deploy", "2. Deploy", "{95B312D5-ED3C-4868-A141-F56307741DF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Servicios", "1. Servicios", "{61BBE459-3F27-42CC-A6C9-4C5BCFF55141}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-17", "2017-01-17", "{7D3E5719-BCED-49D9-9B62-1BA4953A97E6}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-01-17\bin.zip = Publicaciones\2017-01-17\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-18", "2017-01-18", "{B3061AF4-5CB4-4D98-AE84-55466ACD63C5}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-01-18\bin.zip = Publicaciones\2017-01-18\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-21", "2017-01-21", "{64B6B2ED-EA35-4ED4-B35F-C252D2FBCF82}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-01-21\bin.zip = Publicaciones\2017-01-21\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-22", "2017-01-22", "{AB76A9A2-C557-46BF-94DC-CCD06B6F0284}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-01-22\bin.zip = Publicaciones\2017-01-22\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-23", "2017-01-23", "{E6BBFD7D-E3C5-42A8-AD17-FA61ED9D8444}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-01-23\bin.zip = Publicaciones\2017-01-23\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-01-26", "2017-01-26", "{F4E8FF0C-9A17-4987-8435-1BBD7E82F523}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-01-26\bin.zip = Publicaciones\2017-01-26\bin.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Tester", "3. Tester", "{6E2E04C7-4959-458E-8705-73AC4C1D2620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesterFe", "TesterFe\TesterFe.csproj", "{16ACEAD9-14DB-42F2-B2BC-58FBC5574D6A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A} = {2851C62F-E95B-4DE9-A8D3-0FE984F1E74A}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2017-02-03", "2017-02-03", "{865B15B3-8C33-4B0E-9B0C-32FF5E12B7BD}"
+	ProjectSection(SolutionItems) = preProject
+		Publicaciones\2017-02-03\bin.zip = Publicaciones\2017-02-03\bin.zip
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16ACEAD9-14DB-42F2-B2BC-58FBC5574D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16ACEAD9-14DB-42F2-B2BC-58FBC5574D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16ACEAD9-14DB-42F2-B2BC-58FBC5574D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16ACEAD9-14DB-42F2-B2BC-58FBC5574D6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2851C62F-E95B-4DE9-A8D3-0FE984F1E74A} = {61BBE459-3F27-42CC-A6C9-4C5BCFF55141}
+		{7D3E5719-BCED-49D9-9B62-1BA4953A97E6} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+		{B3061AF4-5CB4-4D98-AE84-55466ACD63C5} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+		{64B6B2ED-EA35-4ED4-B35F-C252D2FBCF82} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+		{AB76A9A2-C557-46BF-94DC-CCD06B6F0284} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+		{E6BBFD7D-E3C5-42A8-AD17-FA61ED9D8444} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+		{F4E8FF0C-9A17-4987-8435-1BBD7E82F523} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+		{16ACEAD9-14DB-42F2-B2BC-58FBC5574D6A} = {6E2E04C7-4959-458E-8705-73AC4C1D2620}
+		{865B15B3-8C33-4B0E-9B0C-32FF5E12B7BD} = {95B312D5-ED3C-4868-A141-F56307741DF7}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://stalinalvaradosanchez.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FacturacionElectronica\\FacturacionElectronica.csproj
+		SccProjectTopLevelParentUniqueName1 = FacturacionElectronica.sln
+		SccProjectName1 = FacturacionElectronica
+		SccLocalPath1 = FacturacionElectronica
+		SccProjectUniqueName2 = TesterFe\\TesterFe.csproj
+		SccProjectTopLevelParentUniqueName2 = FacturacionElectronica.sln
+		SccProjectName2 = TesterFe
+		SccLocalPath2 = TesterFe
+	EndGlobalSection
+EndGlobal

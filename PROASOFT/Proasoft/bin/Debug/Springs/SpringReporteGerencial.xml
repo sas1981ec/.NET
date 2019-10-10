@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+        type="Proasoft.Aspectos.ThrowsException, Proasoft">
+  </object>
+
+  <object id="AdministradorReporteGerencial" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="PROASOFT.CapaDominio.ServiciosDominio.ServicioReporteGerencial, PROASOFT.CapaDominio.ServiciosDominio">
+        <constructor-arg ref="RepositorioProduccion"/>
+        <constructor-arg ref="RepositorioItemProduccion"/>
+        <constructor-arg ref="RepositorioDetalleCompra"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="RepositorioProduccion" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioProduccion, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioItemProduccion" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioItemProduccion, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioDetalleCompra" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioDetalleCompra, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+</objects>

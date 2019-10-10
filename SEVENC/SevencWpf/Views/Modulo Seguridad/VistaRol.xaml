@@ -1,0 +1,61 @@
+﻿<Page x:Class="SevencWpf.Views.Modulo_Seguridad.VistaRol"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+	  Title="Roles" Loaded="PageLoaded">
+    <Grid>
+        <StackPanel Orientation="Vertical" Height="800" VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Background="Transparent" Width="Auto" Height="36" >
+                <Button Command="{Binding NuevoRol}" Height="30" VerticalAlignment="Center" Width="130" Margin="0" Visibility="{Binding EsVisibleCrearRol}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Add.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Nuevo Rol" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding EditarRol}"  Height="30" Width="130" VerticalAlignment="Center" Margin="0" Visibility="{Binding EsVisibleActualizarRol}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Edit.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Editar Rol" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding EliminarRol}"  Height="30" Width="140" VerticalAlignment="Center" Margin="0" Visibility="{Binding EsVisibleEliminarRol}" >
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Delete.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Eliminar Rol" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding AsignarOperaciones}"  Height="30" Width="145" VerticalAlignment="Center" Margin="0" TabIndex="4" Visibility="{Binding EsVisibleAsignarOperaciones}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Operaciones.jpg" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Asignar Operaciones" Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Height="700" Width="320" Margin="10,5,0,2" Orientation="Vertical">
+                    <TextBlock Text ="Roles" Foreground="#FF00002F" FontSize="22"  HorizontalAlignment="Left" />
+                    <ListBox ItemsSource="{Binding Roles}"
+                            ItemTemplate="{StaticResource RolViewTemplate}"
+                            Style="{StaticResource ListBoxStandardStyle}"
+                            SelectedItem="{Binding RolSeleccionado, Mode=TwoWay}" Height="660" Width="Auto" >
+                    </ListBox>
+                </StackPanel>
+                <StackPanel Margin="180,0,0,0" Width="320" Height="700">
+                    <TextBlock Text ="Operaciones" Foreground="#FF00002F" FontSize="22" Width="320" />
+                    <ListBox Height="660" ItemTemplate="{StaticResource OperacionViewTemplate}" ItemsSource="{Binding Operaciones}" Style="{StaticResource ListBoxStandardStyle}" Width="Auto" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

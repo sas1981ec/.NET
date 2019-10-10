@@ -1,0 +1,18 @@
+﻿<Window x:Class="SevencWpf.Views.Modulo_Seguridad.VistaSeleccionEmpresa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
+        Title="Seleccionar Empresa" Height="130" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Selección de Empresa" Width="150" Height="25" FontSize="15" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <TextBlock Text="Empresa" Width="60" Height="25"/>
+                <ComboBox ItemsSource="{Binding Empresas}" DisplayMemberPath="NombreComercial" SelectedItem="{Binding EmpresaSeleccionada}" Width="190" Height="25"/>
+            </StackPanel>
+            <Button Content="Aceptar" Height="25" Width="100" Margin="150,0,0,0" Command="{Binding ComandoAceptar}"/>
+        </StackPanel>
+    </Grid>
+</Window>

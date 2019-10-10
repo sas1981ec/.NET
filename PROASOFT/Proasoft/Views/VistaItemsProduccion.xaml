@@ -1,0 +1,77 @@
+﻿<Page x:Class="Proasoft.Views.VistaItemsProduccion"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+	  Title="Items Producción" Loaded="PageLoaded">
+
+    <Grid>
+        <Grid Height="800" VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Background="Transparent" Width="Auto" Height="36" >
+                <Button Command="{Binding NuevoItemProduccion}" Height="30" VerticalAlignment="Center" Width="110" Margin="10,0,0,0" TabIndex="0" Visibility="{Binding EsVisibleNuevoItemProduccion}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Add.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Nuevo Ingreso" Margin="3" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Command="{Binding EditarItemProduccion}" Height="30" Width="100" VerticalAlignment="Center" Margin="0" TabIndex="1" Visibility="{Binding EsVisibleEditarItemProduccion}">
+                    <Button.Content>
+                        <StackPanel Orientation ="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Edit.png" Width ="20" Height =" 20"/>
+                            <TextBlock Text="Editar" Margin="3" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <Expander Grid.Row="1" Background="Cornsilk" HorizontalAlignment="Left" IsExpanded="False" Margin="10,15,0,0" VerticalAlignment="Top" Width="1080" >
+                <Expander.Header>
+                    <TextBlock Text="Criterios de Búsqueda" FontSize="20"/>
+                </Expander.Header>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="80" Content="Fecha Desde" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                        <DatePicker TabIndex="2" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="130" Text="{Binding FechaDesde, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="80" Content="Fecha Hasta" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top"/>
+                        <DatePicker TabIndex="3" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Width="130" Text="{Binding FechaHasta, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <Button ToolTipService.ToolTip="Buscar" TabIndex="4" HorizontalAlignment="Left" Margin="20,0,0,0" Width="50" Height="30" Command="{Binding BuscarItemsProduccion}" VerticalAlignment="Center">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Recursos/Imagenes/Buscar.png"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Expander>
+            <DataGrid Grid.Row="2" TabIndex="5" HorizontalAlignment="Left" Height="Auto" MaxHeight="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="590"
+                 GridLinesVisibility="Horizontal" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" ItemsSource="{Binding ItemsProduccion}" SelectedItem="{Binding ItemProduccionSeleccionado, Mode=TwoWay}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="80" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Fecha"  Binding="{Binding FECHA,StringFormat= dd/MM/yyyy}" Width="80" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Ultimo Usuario Modificado" Binding="{Binding USUARIO.USER_NAME}" Width="160" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Row="3" TabIndex="6" HorizontalAlignment="Left" Height="Auto" MaxHeight="190" Margin="10,10,0,0" VerticalAlignment="Top" Width="590"
+                 GridLinesVisibility="Horizontal" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" ItemsSource="{Binding DetallesItemProduccion}" SelectedItem="{Binding DetalleItemProduccionSeleccionado, Mode=TwoWay}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Insumo" Binding="{Binding ITEM.NOMBRE}" Width="250" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Cantidad"  Binding="{Binding CANTIDAD}" Width="140" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Medida" Binding="{Binding ITEM.MEDIDA.ETIQUETA}" Width="80" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Cantidad Standard" Binding="{Binding ITEM.CANTIDAD}" Width="110" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Page>

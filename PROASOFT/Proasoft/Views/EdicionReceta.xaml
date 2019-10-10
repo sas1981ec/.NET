@@ -1,0 +1,55 @@
+﻿<my:VentanaBase 
+        xmlns:my="clr-namespace:Proasoft.Views"
+        x:Class="Proasoft.Views.EdicionReceta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xc="clr-namespace:Proasoft.InfraestructuraVM"
+        xc:DialogCloser.DialogResult="{Binding DialogResult}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding Titulo}" Height="430" Width="370">
+    <Grid>
+        <StackPanel Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Nombre:" VerticalAlignment="Center"/>
+                <TextBox TabIndex="0" Text="{Binding Receta.NOMBRE,Mode=TwoWay}" CharacterCasing="Upper" Height="25" Width="210" Margin="25,0,0,0" MaxLength="200" GotFocus="TextBoxGotFocus"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Esta Activa:" VerticalAlignment="Top"/>
+                <CheckBox TabIndex="1" IsChecked="{Binding Receta.ESTA_ACTIVA,Mode=TwoWay}" Height="25" Width="100" Margin="12,0,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button ToolTip="Agregar Insumo" Background="Wheat" TabIndex="2" Width="40" Height="40" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Command="{Binding ComandoAgregarDetalle}" IsEnabled="{Binding EsNuevo}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Agregar.png" Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button ToolTip="Quitar Insumo" Background="Wheat" TabIndex="3" Width="40" Height="40" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Command="{Binding ComandoQuitarDetalle}" IsEnabled="{Binding EsNuevo}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Recursos/Imagenes/Quitar.png" Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <DataGrid TabIndex="4" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                      CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" GridLinesVisibility="Horizontal"
+                      HorizontalAlignment="Left" Height="196" Margin="10,20,0,0" VerticalAlignment="Top" Width="320" ItemsSource="{Binding Detalles}" 
+                      SelectedItem="{Binding DetalleSeleccionado, Mode=TwoWay}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Insumo" Binding="{Binding ITEM.NOMBRE}" Width="150" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Cantidad" Binding="{Binding CANTIDAD}" Width="80" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Medida" Binding="{Binding ITEM.MEDIDA.ETIQUETA}" Width="80" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <Button TabIndex="5" Content="Grabar" Height="25" Width="70" Command="{Binding ComandoGrabar}" Margin="15,0,0,0"/>
+                <Button TabIndex="6" Content="Cancelar" Height="25" Width="70" Command="{Binding ComandoCancelar}" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</my:VentanaBase>

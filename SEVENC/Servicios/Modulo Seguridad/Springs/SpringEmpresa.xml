@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+        type="SEVENC.ServiciosDistribuidos.Servicios.Aspectos.ThrowsException, SEVENC.ServiciosDistribuidos.Servicios">
+  </object>
+  
+  <object id="throwsApplicationException"
+        type="SEVENC.ServiciosDistribuidos.Servicios.Aspectos.ThrowsApplicationException, SEVENC.ServiciosDistribuidos.Servicios">
+  </object>
+
+  <object id="throwsDbUpdateConcurrencyException"
+      type="SEVENC.ServiciosDistribuidos.Servicios.Aspectos.ThrowsDbUpdateConcurrencyException, SEVENC.ServiciosDistribuidos.Servicios">
+  </object>
+
+  <object id="AdministradorEmpresa" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="SEVENC.Dominio.ServiciosDominio.Modulo_Seguridad.ServicioEmpresa, SEVENC.Dominio.ServiciosDominio">
+        <constructor-arg ref="RepositorioEmpresa"/>
+        <constructor-arg ref="RepositorioUsuario"/>
+        <constructor-arg ref="RepositorioSucursal"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+        <value>throwsApplicationException</value>
+        <value>throwsDbUpdateConcurrencyException</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="RepositorioEmpresa" type="SEVENC.Infraestructura.SqlEntityFramework.Repositorios.Modulo_Seguridad.RepositorioEmpresa, SEVENC.Infraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioUsuario" type="SEVENC.Infraestructura.SqlEntityFramework.Repositorios.Modulo_Seguridad.RepositorioUsuario, SEVENC.Infraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioSucursal" type="SEVENC.Infraestructura.SqlEntityFramework.Repositorios.Modulo_Seguridad.RepositorioSucursal, SEVENC.Infraestructura.SqlEntityFramework"/>
+</objects>

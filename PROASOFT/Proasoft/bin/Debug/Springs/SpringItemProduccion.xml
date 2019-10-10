@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx"
+         xmlns:aop="http://www.springframework.net/aop">
+
+  <object id="throwsException"
+        type="Proasoft.Aspectos.ThrowsException, Proasoft">
+  </object>
+
+  <object id="AdministradorItemProduccion" type="Spring.Aop.Framework.ProxyFactoryObject">
+    <property name="Target">
+      <object type="PROASOFT.CapaDominio.ServiciosDominio.ServicioItemProduccion, PROASOFT.CapaDominio.ServiciosDominio">
+        <constructor-arg ref="RepositorioItemProduccion"/>
+        <constructor-arg ref="RepositorioDetalleItemProduccion"/>
+        <constructor-arg ref="RepositorioStockProduccion"/>
+        <constructor-arg ref="RepositorioItem"/>
+        <constructor-arg ref="RepositorioProduccion"/>
+      </object>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsException</value>
+      </list>
+    </property>
+  </object>
+
+  <object name ="RepositorioItemProduccion" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioItemProduccion, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioDetalleItemProduccion" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioDetalleItemProduccion, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioStockProduccion" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioStockProduccion, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioItem" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioItem, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+  <object name ="RepositorioProduccion" type="PROASOFT.CapaInfraestructura.SqlEntityFramework.Repositorios.RepositorioProduccion, PROASOFT.CapaInfraestructura.SqlEntityFramework"/>
+</objects>

@@ -1,0 +1,84 @@
+﻿<Page x:Class="Proasoft.Views.VistaReporteGerencial"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+	  Title="Reporte Gerencial" Loaded="PageLoaded">
+
+    <Grid>
+        <extToolkit:BusyIndicator Grid.Row="1" IsBusy="{Binding EstaOcupado}" BusyContent="Exportando Datos....">
+            <Grid Height="800" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="36" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="36" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="36" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Background="Transparent" Width="Auto" Height="36" >
+                    <Button Command="{Binding ExportarExcel}" Height="30" VerticalAlignment="Center" Width="120" Margin="10,0,0,0" TabIndex="0">
+                        <Button.Content>
+                            <StackPanel Orientation ="Horizontal">
+                                <Image Source="/Recursos/Imagenes/Excel.png" Width ="20" Height =" 20"/>
+                                <TextBlock Text="Exportar Excel" Margin="3" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <Expander Grid.Row="1" Background="Cornsilk" HorizontalAlignment="Left" IsExpanded="False" Margin="10,15,0,0" VerticalAlignment="Top" Width="1080" >
+                    <Expander.Header>
+                        <TextBlock Text="Criterios de Búsqueda" FontSize="20"/>
+                    </Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="50" Content="Fecha" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                            <DatePicker TabIndex="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="130" Text="{Binding Fecha, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <Button ToolTipService.ToolTip="Buscar" TabIndex="2" HorizontalAlignment="Left" Margin="20,0,0,0" Width="50" Height="30" Command="{Binding Buscar}" VerticalAlignment="Center">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Recursos/Imagenes/Buscar.png"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <TextBlock Grid.Row="2" Text="Productos del día" Foreground="Orange" FontSize="24" Margin="10,0,0,0"/>
+                <DataGrid Grid.Row="3" TabIndex="3" HorizontalAlignment="Left" Height="Auto" MaxHeight="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="700"
+                 GridLinesVisibility="Horizontal" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" ItemsSource="{Binding Produccion}" SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nombre Producto" Binding="{Binding NombreProducto}" Width="300" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" Width="80" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Costo Producción Unitaria"  Binding="{Binding CostoProduccionUnitaria, StringFormat='{}{0:c}'}" Width="150" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Costo Producción Total"  Binding="{Binding CostoProduccionTotal, StringFormat='{}{0:c}'}" Width="150" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock Grid.Row="4" Text="Detalle" Foreground="Orange" FontSize="24" Margin="10,0,0,0"/>
+                <DataGrid Grid.Row="5" TabIndex="4" HorizontalAlignment="Left" Height="Auto" MaxHeight="190" Margin="10,0,0,0" VerticalAlignment="Top" Width="700"
+                 GridLinesVisibility="Horizontal" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" ItemsSource="{Binding DetallesProduccion}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Insumo" Binding="{Binding NombreItem}" Width="250" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cantidad (gramos) que se debio producir"  Binding="{Binding CantidadQueSeDebioProducirEnGramos}" Width="230" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock Grid.Row="6" Text="Cuadre" Foreground="Orange" FontSize="24" Margin="10,0,0,0"/>
+                <DataGrid Grid.Row="7" TabIndex="5" HorizontalAlignment="Left" Height="Auto" MaxHeight="190" Margin="10,0,0,0" VerticalAlignment="Top" Width="700"
+                 GridLinesVisibility="Horizontal" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" ItemsSource="{Binding Verificador}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Insumo" Binding="{Binding NombreItem}" Width="250" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Medida"  Binding="{Binding Medida}" Width="60" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cantidad Ingresada"  Binding="{Binding CantidadIngresada}" Width="120" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cantidad Producida"  Binding="{Binding CantidadProducida}" Width="120" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cantidad Restante"  Binding="{Binding CantidadRestante}" Width="120" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </extToolkit:BusyIndicator>
+    </Grid>
+</Page>

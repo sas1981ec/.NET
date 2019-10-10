@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SEVENC.Aplicacion.Aplicacion.Interfaces.Modulo_Seguridad" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SEVENC.Aplicacion.Aplicacion.Interfaces.Modulo_Seguridad" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Busqueda">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PorId" />
+      <xs:enumeration value="PorUserName" />
+      <xs:enumeration value="PorEmail" />
+      <xs:enumeration value="PorNombresApellidos" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Busqueda" nillable="true" type="tns:Busqueda" />
+</xs:schema>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SEVENC.ServiciosDistribuidos.Servicios.ServicioWcf" CodeBehind="ServicioWcf.svc.cs" %>

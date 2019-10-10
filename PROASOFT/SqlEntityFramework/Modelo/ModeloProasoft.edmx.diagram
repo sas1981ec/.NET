@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6585cdb7a0ad43ae8374ff415be0118c" Name="Diagram1" >
+        <EntityTypeShape EntityType="ModeloProasoft.ITEM" Width="2.5" PointX="4.25" PointY="0.625" />
+        <EntityTypeShape EntityType="ModeloProasoft.COMPRA" Width="2" PointX="7" PointY="4.125" />
+        <EntityTypeShape EntityType="ModeloProasoft.DETALLE_COMPRA" Width="2" PointX="7.75" PointY="1" />
+        <AssociationConnector Association="ModeloProasoft.DETALLE_COMPRAITEM" />
+        <AssociationConnector Association="ModeloProasoft.COMPRADETALLE_COMPRA" />
+        <EntityTypeShape EntityType="ModeloProasoft.RECETA" Width="2.125" PointX="0.875" PointY="5.5" />
+        <EntityTypeShape EntityType="ModeloProasoft.DETALLE_RECETA" Width="1.875" PointX="1" PointY="2.5" />
+        <AssociationConnector Association="ModeloProasoft.RECETADETALLE_RECETA" />
+        <AssociationConnector Association="ModeloProasoft.DETALLE_RECETAITEM" />
+        <EntityTypeShape EntityType="ModeloProasoft.USUARIO" Width="2.375" PointX="7.375" PointY="7.375" />
+        <EntityTypeShape EntityType="ModeloProasoft.ROL" Width="1.5" PointX="10.625" PointY="7.625" />
+        <AssociationConnector Association="ModeloProasoft.ROLUSUARIO" />
+        <AssociationConnector Association="ModeloProasoft.COMPRAUSUARIO" />
+        <EntityTypeShape EntityType="ModeloProasoft.PRODUCCION" Width="2" PointX="7.125" PointY="10.875" />
+        <EntityTypeShape EntityType="ModeloProasoft.DETALLE_PRODUCCION" Width="2.125" PointX="2.5" PointY="8.75" />
+        <AssociationConnector Association="ModeloProasoft.PRODUCCIONDETALLE_PRODUCCION" />
+        <AssociationConnector Association="ModeloProasoft.RECETADETALLE_PRODUCCION" />
+        <AssociationConnector Association="ModeloProasoft.PRODUCCIONUSUARIO" />
+        <EntityTypeShape EntityType="ModeloProasoft.MEDIDA" Width="1.5" PointX="1.25" PointY="0.5" />
+        <AssociationConnector Association="ModeloProasoft.ITEMMEDIDA" />
+        <EntityTypeShape EntityType="ModeloProasoft.STOCK_PRODUCCION" Width="2.5" PointX="3.5" PointY="4.25" />
+        <AssociationConnector Association="ModeloProasoft.ITEMSTOCK_PRODUCCION" />
+        <EntityTypeShape EntityType="ModeloProasoft.PROVEEDOR" Width="1.5" PointX="10.625" PointY="4.375" />
+        <AssociationConnector Association="ModeloProasoft.COMPRAPROVEEDOR" />
+        <EntityTypeShape EntityType="ModeloProasoft.EMPLEADO" Width="2.25" PointX="1.125" PointY="12.125" />
+        <EntityTypeShape EntityType="ModeloProasoft.STOCK_BODEGA_PRINCIPAL" Width="2.25" PointX="4.25" PointY="6.5" />
+        <AssociationConnector Association="ModeloProasoft.ITEMSTOCK_BODEGA_PRINCIPAL" />
+        <AssociationConnector Association="ModeloProasoft.EMPLEADODETALLE_PRODUCCION" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
