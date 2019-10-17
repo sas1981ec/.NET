@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebChat.Models.User>
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Usuarios</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nick)
+        </th>
+        <th>
+            Esta Activo
+        </th>
+        <th>
+            Fue Expulsado
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WasRemoved)
+            </td>
+            <td>
+                @Html.ActionLink("Salas", "RoomsUser", new { idUser = item.IdUser })|
+                @if (item.IsActive && !item.WasRemoved)
+                {
+                    @Html.ActionLink("Expulsar", "RemoveUser", new { idUser = item.IdUser })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebChat.Models.Chat>
+
+<h2>@ViewBag.Title</h2>
+<div class="container">
+    <input type="text" id="message" />
+    <input type="button" id="sendmessage" value="Send" />
+    <input type="hidden" id="nickname" value=@ViewBag.nickname />
+    <input type="hidden" id="idUser" value=@ViewBag.idUser />
+    <input type="hidden" id="idRoom" value=@ViewBag.idRoom />
+    <ul id="discussion">
+        @foreach (var item in Model)
+        {
+        <li>
+            @if (item.IsEvent)
+            {
+                @item.Message
+                continue;
+            }
+            <strong>@item.User.Nick</strong>:@item.Message
+        </li>
+        }
+    </ul>
+    <div>
+        @Html.ActionLink("Salir", "Getout", new { nickname = @ViewBag.nickname, idUser = @ViewBag.idUser, idRoom = @ViewBag.idRoom }, new { id = "getoutLink"})
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            var chat = $.connection.chatHub;
+            chat.client.addNewMessageToPage = function (name, message, idRoom) {
+                if ($('#idRoom').val() == idRoom) {
+                    $('#discussion').append('<li><strong>' + htmlEncode(name)
+                        + '</strong>: ' + htmlEncode(message) + '</li>');
+                }
+                if (message == 'Ha sido expulsado') {
+                    //alert('Usted ha sido expulsado por el administrador!!!');
+                    if (window.confirm('Usted ha sido expulsado por el administrador!!!')) {
+                        window.location.href = '/Home/Index';
+                    }
+                    else {
+                        window.location.href = '/Home/Index';
+                    }
+                }
+            };
+            $('#message').focus();
+            $.connection.hub.start().done(function () {
+                $('#sendmessage').click(function () {
+                    chat.server.send($('#nickname').val(), $('#message').val(), $('#idRoom').val());
+                    $.ajax({
+                       url: '@Url.Action("SaveMessage", "Home")',
+                       type: 'GET',
+                       dataType: 'json',
+                       data: { message: $('#message').val(), idUser: $('#idUser').val(), idRoom: $('#idRoom').val() },
+                       cache: false,
+                    });
+                    $('#message').val('').focus();
+                });
+                $('#getoutLink').click(function () {
+                    chat.server.send($('#nickname').val(), 'Ha salido', $('#idRoom').val());
+                });
+            });
+        });
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
+}

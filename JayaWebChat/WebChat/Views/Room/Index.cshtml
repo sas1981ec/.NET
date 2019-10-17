@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebChat.Models.Room>
+
+@{
+    ViewBag.Title = "Salas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Salas</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Esta Activo
+        </th>
+        <th>
+            Usuarios Actuales
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentUsers)
+            </td>
+            <td>
+                @Html.ActionLink("Ver Chat", "Chat", new { idRoom = item.IdRoom })
+            </td>
+        </tr>
+    }
+
+</table>

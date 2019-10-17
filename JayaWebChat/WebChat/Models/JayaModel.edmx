@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JayaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="JayaModelStoreContainer">
+    <EntitySet Name="Rooms" EntityType="JayaModel.Store.Rooms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="JayaModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Chats" EntityType="JayaModel.Store.Chats" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ChatUser" Association="JayaModel.Store.ChatUser">
+      <End Role="Chat" EntitySet="Chats" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="RoomChat" Association="JayaModel.Store.RoomChat">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Chat" EntitySet="Chats" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Rooms">
+    <Key>
+      <PropertyRef Name="IdRoom" />
+    </Key>
+    <Property Name="IdRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CurrentUsers" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nick" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="WasRemoved" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Chats">
+    <Key>
+      <PropertyRef Name="IdChat" />
+    </Key>
+    <Property Name="IdChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdRoom" Type="int" Nullable="false" />
+    <Property Name="IsEvent" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="ChatUser">
+    <End Role="Chat" Type="JayaModel.Store.Chats" Multiplicity="*" />
+    <End Role="User" Type="JayaModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomChat">
+    <End Role="Room" Type="JayaModel.Store.Rooms" Multiplicity="1" />
+    <End Role="Chat" Type="JayaModel.Store.Chats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="IdRoom" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="IdRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="JayaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="JayaModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Rooms" EntityType="JayaModel.Room" />
+          <EntitySet Name="Users" EntityType="JayaModel.User" />
+          <EntitySet Name="Chats" EntityType="JayaModel.Chat" />
+          <AssociationSet Name="ChatUser" Association="JayaModel.ChatUser">
+            <End Role="Chat" EntitySet="Chats" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="RoomChat" Association="JayaModel.RoomChat">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Chat" EntitySet="Chats" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="IdRoom" />
+          </Key>
+          <Property Name="IdRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" FixedLength="false" MaxLength="50" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Chats" Relationship="JayaModel.RoomChat" FromRole="Room" ToRole="Chat" />
+          <Property Name="CurrentUsers" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="Nick" Nullable="false" MaxLength="50" FixedLength="false" Type="String" />
+          <Property Name="IsActive" Nullable="false" Type="Boolean" />
+          <Property Name="WasRemoved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Chats" Relationship="JayaModel.ChatUser" FromRole="User" ToRole="Chat" />
+        </EntityType>
+        <EntityType Name="Chat">
+          <Key>
+            <PropertyRef Name="IdChat" />
+          </Key>
+          <Property Name="IdChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="JayaModel.ChatUser" FromRole="Chat" ToRole="User" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="false" FixedLength="false" MaxLength="Max" />
+          <NavigationProperty Name="Room" Relationship="JayaModel.RoomChat" FromRole="Chat" ToRole="Room" />
+          <Property Name="IdRoom" Type="Int32" Nullable="false" />
+          <Property Name="IsEvent" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="ChatUser">
+          <End Type="JayaModel.Chat" Role="Chat" Multiplicity="*" />
+          <End Type="JayaModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomChat">
+          <End Type="JayaModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="JayaModel.Chat" Role="Chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="IdRoom" />
+            </Principal>
+            <Dependent Role="Chat">
+              <PropertyRef Name="IdRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JayaModelStoreContainer" CdmEntityContainer="JayaModelContainer">
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="IsTypeOf(JayaModel.Room)">
+        <MappingFragment StoreEntitySet="Rooms">
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CurrentUsers" ColumnName="CurrentUsers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(JayaModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Nick" ColumnName="Nick" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="WasRemoved" ColumnName="WasRemoved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chats">
+      <EntityTypeMapping TypeName="IsTypeOf(JayaModel.Chat)">
+        <MappingFragment StoreEntitySet="Chats">
+          <ScalarProperty Name="IdChat" ColumnName="IdChat" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+          <ScalarProperty Name="IsEvent" ColumnName="IsEvent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

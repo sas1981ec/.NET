@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebChat.Models.Room>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Ver Mensajes", "MessagesUser", new { idRoom = item.IdRoom, idUser = @ViewBag.idUser })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>

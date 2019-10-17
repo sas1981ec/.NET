@@ -1,0 +1,15 @@
+﻿@model WebChat.Models.User
+
+@{
+    ViewBag.Title = "WebChat";
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { name = "form", id = "form" }))
+{
+    @Html.ValidationMessageFor(model => model.Nick, "", new { @class = "text-danger" })
+    <div class="container" style="margin-top:20px">
+        <label>Escribe tu nickname</label>
+        <input type="text" name="nickname" value=@ViewData["NickName"] />
+        <input type="submit" id="In" value="Ingresar" />
+    </div>
+}

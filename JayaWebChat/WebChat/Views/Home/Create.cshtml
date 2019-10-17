@@ -1,0 +1,36 @@
+﻿@model WebChat.Models.Room
+
+@{
+    ViewBag.Title = "Crear Sala";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { name = "form", id = "form" }))
+{
+    <input type="hidden" name="nickname" value=@ViewBag.nickname />
+    <input type="hidden" name="id" value=@ViewBag.id />
+    <div class="form-horizontal">
+        <h4>Nueva Sala</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", style = "width:150px" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Grabar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Room", new { nickname = @ViewBag.nickname, id = @ViewBag.id })
+</div>
