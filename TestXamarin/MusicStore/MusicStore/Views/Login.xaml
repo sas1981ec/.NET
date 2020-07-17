@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:MusicStore.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MusicStore.Views.Login">
+
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView IsVisible="True" IsEnabled="True" Orientation="Vertical" InputTransparent="False">
+            <StackLayout Margin="10,0,0,0">
+                <Label Text="Email" WidthRequest="50" FontAttributes="Bold" Margin="0,15,0,0"/>
+                <Entry  WidthRequest="100" MaxLength="50" Text="{Binding Email, Mode=TwoWay}"/>
+                <Label Text="Contraseña" WidthRequest="50" FontAttributes="Bold"/>
+                <Entry IsPassword="True" WidthRequest="50" MaxLength="300" Text="{Binding Contrasena, Mode=TwoWay}"/>
+                <Button Text="Ingresar" Command="{Binding ComandoIngresar}"/>
+                <Label Text="¿No tienes cuenta aún?" WidthRequest="50" Margin="0,15,0,0" HorizontalTextAlignment="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,-50,0,0">
+                    <Label Text="Entonces" WidthRequest="72"/>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Registrate" TextColor="Blue" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ComandoNuevoCliente}"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <ActivityIndicator Color="#FAAC58" IsRunning="{Binding EstaOcupado, Mode=OneWay}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

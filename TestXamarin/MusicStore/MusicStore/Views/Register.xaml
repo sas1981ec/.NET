@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:MusicStore.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MusicStore.Views.Register">
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ScrollView Grid.Row="0" Grid.Column="0" IsVisible="True" IsEnabled="True" Orientation="Vertical" InputTransparent="False">
+                <StackLayout Margin="10,0,0,0">
+                    <Label Text="Identificación" WidthRequest="50" />
+                    <Entry WidthRequest="100" MaxLength="15" Text="{Binding Identificacion, Mode=TwoWay}" Keyboard="Numeric">
+        
+                    </Entry>
+                    <Label Text="Nombres" WidthRequest="50" />
+                    <Entry WidthRequest="100" MaxLength="100" Text="{Binding Nombres, Mode=TwoWay}"/>
+                    <Label Text="Apellidos" WidthRequest="50" />
+                    <Entry WidthRequest="100" MaxLength="100" Text="{Binding Apellidos, Mode=TwoWay}"/>
+                    <Label Text="Correo" WidthRequest="50" IsVisible="{Binding EsVisibleContrasena, Mode=OneWay}"/>
+                    <Entry WidthRequest="100" MaxLength="30" Text="{Binding Email, Mode=TwoWay}" IsVisible="{Binding EsVisibleContrasena, Mode=OneWay}"/>
+                    <Label Text="Contraseña" WidthRequest="50" IsVisible="{Binding EsVisibleContrasena, Mode=OneWay}"/>
+                    <Entry IsPassword="True" WidthRequest="50" IsVisible="{Binding EsVisibleContrasena, Mode=OneWay}" MaxLength="300" Text="{Binding Contrasena, Mode=TwoWay}"/>
+                    <Label Text="Repetir Contraseña" WidthRequest="50" IsVisible="{Binding EsVisibleContrasena, Mode=OneWay}" />
+                    <Entry IsPassword="True" WidthRequest="50" MaxLength="300" IsVisible="{Binding EsVisibleContrasena, Mode=OneWay}" Text="{Binding RepetirContrasena, Mode=TwoWay}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Regresar" Command="{Binding ComandoRegresar}"/>
+                        <Button Text="Grabar" Command="{Binding ComandoGrabar}"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ActivityIndicator Grid.Row="0" Grid.Column="0" Color="#FAAC58" IsRunning="{Binding EstaOcupado, Mode=OneWay}" />
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
